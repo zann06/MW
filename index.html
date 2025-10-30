@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>MindWealth Digital — E-book Finansial & Psikologi Uang</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="MindWealth Digital adalah platform e-book finansial dan psikologi uang yang dibuat oleh Farid, Rakha, dan Adit. Kami membantu kamu memahami perilaku finansial dan membangun mindset keuangan yang sehat." />
+    <meta name="keywords"
+        content="MindWealth Digital, e-book finansial, psikologi uang, literasi keuangan, mindset kaya, edukasi finansial, kebiasaan finansial, tim Farid Rakha Adit" />
+    <meta name="author" content="Farid, Rakha, Adit" />
+
+    <!-- Open Graph (untuk tampilan di WhatsApp, Telegram, Facebook, dll) -->
+    <meta property="og:title" content="MindWealth Digital — E-book Finansial & Psikologi Uang" />
+    <meta property="og:description"
+        content="Temukan wawasan baru tentang finansial dan psikologi uang bersama MindWealth Digital. Dibuat oleh Farid, Rakha, dan Adit." />
+    <meta property="og:image" content="https://contohdomain.com/assets/logoMW.png" />
+    <meta property="og:url" content="https://contohdomain.com" />
+    <meta property="og:type" content="website" />
+
+
+    <!--  Favicon untuk semua perangkat -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/fav" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
+
+
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #0f172a;
+            --section: #1e293b;
+            --panel: #111827;
+            --card: #1f2937;
+            --primary: #1e3a8a;
+            --accent: #22c55e;
+            --muted: #94a3b8;
+            --text: #e5e7eb;
+            --glass: rgba(255, 255, 255, 0.04);
+            --radius: 14px;
+            --max-width: 1100px;
+            --bp-lg: 1100px;
+            --bp-md: 900px;
+            --bp-sm: 700px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding-top: 90px;
+            /* agar konten tidak tertutup navbar */
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            color: var(--text);
+            background: linear-gradient(180deg, var(--bg), var(--section));
+            background-attachment: fixed;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 12px;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 0 4px rgba(0, 255, 128, 0.4));
+
+
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
+            flex-shrink: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .subbrand {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .nav-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-radius: 14px;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            opacity: 0.95;
+            padding: 6px 8px;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.15s ease, transform 0.12s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.02);
+            outline: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            box-shadow: inset 0 -2px 0 var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.06);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), #10b981);
+            color: #021018;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.12);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 64px 0;
+            display: grid;
+            grid-template-columns: 1fr 460px;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 18px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6);
+        }
+
+        .hero-title {
+            font-size: 34px;
+            margin: 0 0 12px;
+            line-height: 1.05;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-sub {
+            color: var(--muted);
+            margin: 0 0 18px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .illustration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        section {
+            padding: 48px 0;
+        }
+
+        h3 {
+            color: var(--text);
+            margin: 0 0 12px;
+        }
+
+        p.lead {
+            color: var(--muted);
+        }
+
+        /* Library */
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .filter-btn {
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s, transform 0.12s;
+        }
+
+        .filter-btn.active {
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--accent);
+            border-color: rgba(34, 197, 94, 0.16);
+        }
+
+        .ebooks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .ebook {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.015));
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            transition: transform 260ms ease, box-shadow 260ms ease;
+        }
+
+        .ebook:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 18px 50px rgba(2, 6, 23, 0.65);
+        }
+
+        .cover {
+            width: 86px;
+            height: 116px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, var(--primary), #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .ebooks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                right: 18px;
+                top: 72px;
+                background: var(--section);
+                padding: 14px;
+                border-radius: 12px;
+                box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
+                flex-direction: column;
+                min-width: 220px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .blog-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .ebooks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                flex-direction: row;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            header {
+                padding: 8px 0;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+        }
+
+        /* Blog */
+        .blog-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .post {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .post a {
+    color: #4f8ef7;       /* warna biru yang jelas */
+    text-decoration: underline;
+    cursor: pointer;       /* pastikan cursor berubah */
+}
+.post a:hover {
+    color: #1a5ed8;       /* warna saat hover */
+}
+
+
+        /* Pricing */
+        .pricing-container {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--card);
+            border: 1px solid rgba(34, 197, 94, 0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 280px;
+            color: var(--text);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.pro {
+            background: linear-gradient(135deg, #1e3a8a, #22c55e);
+            color: white;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .plan-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.12s;
+        }
+
+        .plan-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* Forms */
+        form {
+            background: transparent;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+        }
+
+        textarea {
+            min-height: 110px;
+        }
+
+        footer {
+            padding: 28px 0;
+            background: transparent;
+            margin-top: 32px;
+        }
+
+        .socials a {
+            margin-right: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .back-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            background: linear-gradient(90deg, var(--accent), #10b981);
+            color: #021018;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 18px 44px rgba(34, 197, 94, 0.16);
+            display: none;
+            /* hide by default */
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 560ms cubic-bezier(.2, .9, .3, 1);
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* highlights for plans */
+        .highlight-basic {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.24);
+        }
+
+        .highlight-pro {
+            border: 2px solid #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.24);
+        }
+
+        /* focus-visible for keyboard nav */
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav-wrap" aria-label="Main navigation">
+                <div class="nav-inner">
+                    <div class="brand" aria-hidden="false">
+                        <div class="logo">
+                            <img src="assets/logoMW.png" alt="MindWealth Digital Logo" />
+                        </div>
+
+                        <div>
+                            <h1>MindWealth Digital</h1>
+                            <div class="subbrand">E-book Finansial & Psikologi Uang</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px">
+                        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks"
+                            aria-label="Toggle menu">☰</button>
+
+                        <div class="nav-links" id="navLinks" role="menu">
+                            <a href="#home" role="menuitem">Home</a>
+                            <a href="#about" role="menuitem">About</a>
+                            <a href="#library" role="menuitem">E-Book Library</a>
+                            <a href="#blog" role="menuitem">Blog</a>
+                            <a href="#subscribe" role="menuitem">Subscribe</a>
+                            <a href="#contact" role="menuitem">Contact</a>
+                            <a class="btn btn-primary" href="#library">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="hero-card fade-in">
+                <span class="badge"
+                    style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);width:max-content"><svg
+                        class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path d="M12 3v18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg><strong>Premium</strong></span>
+                <h2 class="hero-title">Grow Your Mind, Build Your Wealth.</h2>
+                <p class="hero-sub">Panduan ringkas & aplikatif tentang literasi finansial, investasi awal, psikologi
+                    uang, dan manajemen uang untuk generasi muda yang ingin berevolusi.</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="#library">Explore E-books</a>
+                    <a class="btn btn-ghost" href="#subscribe">Subscribe</a>
+                </div>
+
+                <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+                    <div class="stat">
+                        <div style="font-size:12px;color:var(--muted)">E-books</div>
+                        <div style="font-weight:800;font-size:18px">+120</div>
+                    </div>
+                    <div class="stat">
+                        <div style="font-size:12px;color:var(--muted)">Subscribers</div>
+                        <div style="font-weight:800;font-size:18px">1.2k</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="illustration fade-in" style="flex-direction:column;gap:12px" aria-hidden="true">
+                <!-- Simple illustrative SVG: brain + chart combo -->
+                <svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1" x1="0" x2="1">
+                            <stop offset="0" stop-color="#22C55E" />
+                            <stop offset="1" stop-color="#3B82F6" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="8" y="8" width="244" height="204" rx="14" fill="url(#g1)" opacity="0.08" />
+                    <g transform="translate(28,30)" fill="none" stroke="#eafaf1" stroke-width="1.6">
+                        <path
+                            d="M34 26c-8 0-14 10-8 18 0 0 8 14 22 8 0 0 6-12 18-12 8 0 14-6 14-12 0-8-6-12-12-12-6 0-8 6-18 6s-18-2-36 4z"
+                            opacity="0.95" />
+                    </g>
+                    <g transform="translate(40,120)" fill="none" stroke="#d1fae5" stroke-width="2">
+                        <path d="M0 40 L40 10 L80 30 L120 0" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+                <div style="text-align:center;color:var(--muted);font-size:13px">Ilustrasi: Mindset & Growth</div>
+            </aside>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="fade-in">
+            <h3>About MindWealth Digital</h3>
+            <p class="lead">Visi kami adalah membangun generasi yang cakap finansial dan sehat secara psikologis dalam
+                mengambil keputusan ekonomi. Misi kami menyediakan e-book berkualitas, singkat, dan aplikatif untuk
+                membantu pembaca membangun kebiasaan finansial positif.</p>
+
+            <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px">
+                <div>
+                    <h4>Kenapa literasi finansial penting?</h4>
+                    <p class="muted">Generasi muda menghadapi pilihan finansial yang kompleks. Literasi finansial
+                        membantu mengurangi kecemasan, menemukan kebebasan finansial, dan membuka peluang investasi yang
+                        aman serta terukur.</p>
+                </div>
+                <aside
+                    style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+                    <strong>Visi</strong>
+                    <p class="muted">Menciptakan masyarakat yang mampu membuat keputusan finansial cerdas.</p>
+                    <strong>Misi</strong>
+                    <p class="muted">Mendistribusikan pengetahuan finansial dan psikologi uang dalam format yang mudah
+                        dicerna.</p>
+                </aside>
+            </div>
+        </section>
+
+        <!-- LIBRARY -->
+        <section id="library" class="fade-in">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+                <div>
+                    <h3>E-Book Library</h3>
+                    <p class="muted">Filter berdasarkan kategori, lalu baca atau unduh e-book favoritmu.</p>
+                </div>
+                <div class="muted">Total: <span id="totalCount">0</span> e-books</div>
+            </div>
+
+            <div class="filters" style="margin-top:12px">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Finance">Finance</button>
+                <button class="filter-btn" data-filter="Investment">Investment</button>
+                <button class="filter-btn" data-filter="Psychology">Psychology</button>
+                <button class="filter-btn" data-filter="Money">Money Management</button>
+            </div>
+
+            <div class="ebooks-grid" id="ebooksGrid" aria-live="polite"></div>
+        </section>
+
+        <!-- BLOG -->
+        <section id="blog" class="fade-in">
+            <h3>Blog / Insight</h3>
+            <p class="muted">Artikel singkat tentang kebiasaan finansial dan psikologi uang.</p>
+            <div class="blog-list" id="blogList"></div>
+        </section>
+
+        <div class="pricing-container fade-in">
+            <h2 class="section-title">Pilih Paket Langganan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic Plan</h3>
+                    <p class="price">Rp50.000 / bulan</p>
+                    <ul>
+                        <li> Akses ke 10 e-book populer</li>
+                        <li> Update mingguan</li>
+                        <li> Tidak termasuk e-book premium</li>
+                    </ul>
+                    <button class="plan-btn" onclick="viewBooks('basic')">Lihat Buku</button>
+                </div>
+
+                <div class="pricing-card pro">
+                    <h3>Pro Plan</h3>
+                    <p class="price">Rp120.000 / bulan</p>
+                    <ul>
+                        <li> Akses semua e-book (50+)</li>
+                        <li> Update mingguan & bulanan</li>
+                        <li> Early access e-book baru</li>
+                    </ul>
+                    <button class="plan-btn" onclick="viewBooks('pro')">Lihat Buku</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUBSCRIBE -->
+        <section id="subscribe" class="fade-in">
+            <h3>Subscribe</h3>
+            <p class="muted">Dapatkan update e-book baru dan insight eksklusif.</p>
+            <form id="subscribeForm" style="max-width:640px;margin-top:12px">
+                <div class="form-row">
+                    <input type="text" id="subName" placeholder="Nama" required />
+                    <input type="email" id="subEmail" placeholder="Email" required />
+                </div>
+                <div style="display:flex;gap:8px;align-items:center">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <button type="button" class="btn btn-ghost" id="downloadSubs">Download Subscribers (JSON)</button>
+                </div>
+                <div id="subscribeMsg" style="margin-top:12px"></div>
+            </form>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="fade-in">
+            <h3>Contact</h3>
+            <p class="muted">Ada pertanyaan, kerja sama, atau usulan e-book? Hubungi kami.</p>
+            <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:12px">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <input type="text" id="cName" placeholder="Nama" required />
+                        <input type="email" id="cEmail" placeholder="Email" required />
+                    </div>
+                    <div style="margin-bottom:12px">
+                        <textarea id="cMessage" placeholder="Pesan" required></textarea>
+                    </div>
+                    <div style="display:flex;gap:8px">
+                        <button class="btn btn-primary" type="submit">Kirim Pesan</button>
+                        <button class="btn btn-ghost" type="button" id="resetContact">Reset</button>
+                    </div>
+                    <div id="contactMsg" style="margin-top:12px"></div>
+                </form>
+
+                <aside>
+                    <h4>Socials</h4>
+                    <p class="muted">Ikuti MindWealth Digital di media sosial untuk konten singkat dan video.</p>
+                    <div class="socials" style="margin-top:12px">
+                        <a href="#" target="_blank" rel="noopener">Instagram</a>
+                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="#" target="_blank" rel="noopener">TikTok</a>
+                    </div>
+
+                    <div style="margin-top:18px">
+                        <strong>Alamat email</strong>
+                        <div class="muted">mindwealth.digital@gmail.com</div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container"
+            style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+            <div class="muted">© <span id="year"></span> MindWealth Digital — All rights reserved.</div>
+            <div><a href="mailto:hello@mindwealth.digital" class="muted">mindwealth.digital@gmail.com</a></div>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop" title="Back to top">↑</button>
+
+    <template id="ebookTpl">
+        <div class="ebook">
+            <div class="cover">CV</div>
+            <div style="flex:1">
+                <h4>Title</h4>
+                <p class="muted">Short description</p>
+                <div style="display:flex;gap:8px;margin-top:10px">
+                    <button class="btn btn-primary readBtn">Read</button>
+                    <button class="btn btn-ghost downloadBtn">Download</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // ===== Data (dummy) =====
+        const ebooks = [{
+                id: 1,
+                title: 'Mindful Finance — Panduan Praktis',
+                category: 'Finance',
+                desc: 'Strategi menyusun anggaran, menabung, serta mengelola pengeluaran harian.',
+                coverText: 'MF',
+                file: 'data:application/json,{"title":"Mindful Finance","content":"Contoh isi e-book..."}'
+            },
+            {
+                id: 2,
+                title: 'Investasi untuk Pemula',
+                category: 'Investment',
+                desc: 'Dasar-dasar instrumen investasi dan pendekatan bertahap untuk pemula.',
+                coverText: 'IP',
+                file: 'data:application/json,{"title":"Investasi untuk Pemula","content":"Contoh isi e-book investasi..."}'
+            },
+            {
+                id: 3,
+                title: 'Psikologi Uang',
+                category: 'Psychology',
+                desc: 'Bagaimana emosi dan kognisi memengaruhi keputusan finansial.',
+                coverText: 'PU',
+                file: 'data:application/json,{"title":"Psikologi Uang","content":"Contoh isi e-book psikologi..."}'
+            },
+            {
+                id: 4,
+                title: 'Manajemen Gaji Pertama',
+                category: 'Money',
+                desc: 'Langkah-langkah membuat rencana keuangan dari gaji pertama.',
+                coverText: 'MG',
+                file: 'data:application/json,{"title":"Manajemen Gaji Pertama","content":"Contoh isi e-book gaji..."}'
+            },
+            {
+                id: 5,
+                title: 'Perencanaan Tabungan Jangka Panjang',
+                category: 'Finance',
+                desc: 'Tips tabungan yang bisa bertahan terhadap inflasi dan kebutuhan hidup.',
+                coverText: 'PT',
+                file: 'data:application/json,{"title":"Perencanaan Tabungan","content":"Contoh isi..."}'
+            },
+            {
+                id: 6,
+                title: 'Diversifikasi Investasi',
+                category: 'Investment',
+                desc: 'Kenapa diversifikasi penting dan bagaimana melakukannya.',
+                coverText: 'DI',
+                file: 'data:application/json,{"title":"Diversifikasi Investasi","content":"Contoh isi..."}'
+            }
+        ];
+
+        const posts = [
+    {
+        id: 1,
+        title: '5 Kebiasaan Finansial Sehat',
+        excerpt: 'Praktik sederhana yang bisa kamu mulai hari ini untuk memperbaiki kondisi finansial.',
+        url: 'https://www.heygotrade.com/en/blog/langkah-bangun-kebiasaan-finansial-sehat/'
+    },
+    {
+        id: 2,
+        title: 'Cara Mengelola Gaji Pertama',
+        excerpt: 'Langkah praktis menyusun prioritas setelah menerima gaji pertama.',
+        url: 'https://www.prudential.co.id/id/pulse/article/gaji-pertama/'
+    },
+    {
+        id: 3,
+        title: 'Mengatasi FOMO saat Investasi',
+        excerpt: 'Bagaimana menjaga kepala tetap dingin saat pasar ramai.',
+        url: 'https://www.lbs.id/publication/investasi/viral-fatal-7-cara-mengatasi-fomo-investasi-agar-dompet-tebal-merdeka-finansial'
+    }
+];
+
+const blogList = document.getElementById("blogList");
+
+posts.forEach(post => {
+    const postEl = document.createElement("div");
+    postEl.classList.add("post");
+
+    postEl.innerHTML = `
+        <h4>${post.title}</h4>
+        <p>${post.excerpt}</p>
+        <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
+    `;
+
+    blogList.appendChild(postEl);
+});
+
+
+        // ===== Render functions =====
+        const ebooksGrid = document.getElementById('ebooksGrid');
+        const totalCount = document.getElementById('totalCount');
+
+        function renderEbooks(list) {
+            ebooksGrid.innerHTML = '';
+            list.forEach(e => {
+                const tpl = document.getElementById('ebookTpl').content.cloneNode(true);
+                tpl.querySelector('.cover').textContent = e.coverText;
+                tpl.querySelector('h4').textContent = e.title;
+                tpl.querySelector('p').textContent = e.desc;
+                tpl.querySelector('.readBtn').addEventListener('click', () => openReader(e));
+                tpl.querySelector('.downloadBtn').addEventListener('click', () => downloadFile(e));
+                ebooksGrid.appendChild(tpl);
+            });
+            totalCount.textContent = list.length;
+        }
+        renderEbooks(ebooks);
+
+        function renderBlog() {
+    const blogList = document.getElementById('blogList');
+    blogList.innerHTML = '';
+    posts.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'post';
+        el.innerHTML =
+            `<div class='meta'>${new Date().toLocaleDateString()}</div>
+             <h4 style="margin:0 0 8px">${p.title}</h4>
+             <p class='muted'>${p.excerpt}</p>
+             <div style='margin-top:8px'>
+                <a href='${p.url}' target='_blank' rel='noopener noreferrer' class='muted' aria-label='Read more'>Read more →</a>
+             </div>`;
+        blogList.appendChild(el);
+    });
+}
+renderBlog();
+
+
+        // ===== Filters =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                if (f === 'all') renderEbooks(ebooks);
+                else if (f === 'Money') renderEbooks(ebooks.filter(e => e.category === 'Money'));
+                else renderEbooks(ebooks.filter(e => e.category === f));
+            });
+        });
+
+        // ===== Reader & Download =====
+        function openReader(e) {
+            const modal = window.open('', '_blank', 'width=700,height=700');
+            const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text') || '#E5E7EB';
+            modal.document.write(
+                `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e.title}</title></head><body style="font-family:Poppins,Arial;padding:20px;background:#0b1220;color:${textColor};line-height:1.45"><h2>${e.title}</h2><p style='color:${textColor};opacity:.9'>${e.desc}</p><pre style='white-space:pre-wrap;color:rgba(229,231,235,.9)'>Contoh isi e-book (dummy). Untuk implementasi nyata gunakan PDF atau viewer yang sesuai.</pre></body></html>`
+            );
+            modal.document.close();
+        }
+
+        function downloadFile(e) {
+            const a = document.createElement('a');
+            a.href = e.file;
+            a.download = (e.title.replace(/\s+/g, '_') || 'ebook') + '.json';
+            // append not required but safe for some browsers
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+
+        // ===== Subscribe (localStorage + download) =====
+        const subsKey = 'mindwealt_subscribers_v2';
+
+        function loadSubs() {
+            try {
+                return JSON.parse(localStorage.getItem(subsKey) || '[]');
+            } catch (err) {
+                return [];
+            }
+        }
+
+        function saveSubs(arr) {
+            localStorage.setItem(subsKey, JSON.stringify(arr));
+        }
+
+        const subs = loadSubs();
+
+        document.getElementById('subscribeForm').addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            const name = document.getElementById('subName').value.trim();
+            const email = document.getElementById('subEmail').value.trim();
+            const msg = document.getElementById('subscribeMsg');
+            if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
+
+            subs.push({
+                name,
+                email,
+                time: new Date().toISOString()
+            });
+            saveSubs(subs);
+
+            msg.textContent = 'Berhasil berlangganan 🎉';
+            document.getElementById('subscribeForm').reset();
+        });
+
+        document.getElementById('downloadSubs').addEventListener('click', () => {
+            const data = JSON.stringify(loadSubs(), null, 2);
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([data], {
+                type: 'application/json'
+            }));
+            a.download = 'subscribers.json';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        });
+
+        // ===== Contact Form =====
+        document.getElementById('contactForm').addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            const msg = document.getElementById('contactMsg');
+            msg.textContent = 'Pesan berhasil dikirim (simulasi).';
+            document.getElementById('contactForm').reset();
+        });
+
+        document.getElementById('resetContact').addEventListener('click', () => {
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactMsg').textContent = '';
+        });
+
+        // ===== Back to Top =====
+        const backTop = document.getElementById('backTop');
+        backTop.addEventListener('click', () => window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        }));
+
+        window.addEventListener('scroll', () => {
+            backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+
+        // ===== Menu Toggle (mobile) =====
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('show');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // close mobile menu when clicking a link
+        navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // ===== Smooth scroll for nav links =====
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                const href = link.getAttribute('href');
+                if (!href || href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ===== Fade-in Observer (single observer) =====
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('show');
+            });
+        }, {
+            threshold: 0.12
+        });
+        fadeEls.forEach(el => obs.observe(el));
+
+        // ===== Footer Year =====
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ===== Plan view & highlight =====
+        function viewBooks(plan) {
+            localStorage.setItem('selectedPlan', plan);
+            // Scroll to library section (fixed id exists)
+            document.getElementById('library').scrollIntoView({
+                behavior: 'smooth'
+            });
+            highlightBooks(plan);
+        }
+
+        function highlightBooks(plan) {
+            const books = document.querySelectorAll('.ebook');
+            books.forEach(card => card.classList.remove('highlight-basic', 'highlight-pro'));
+            if (plan === 'basic') {
+                books.forEach((card, index) => {
+                    if (index < 10) card.classList.add('highlight-basic');
+                });
+            } else if (plan === 'pro') {
+                books.forEach(card => card.classList.add('highlight-pro'));
+            }
+        }
+
+        // make sure keyboard users can toggle using Enter/Space
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuToggle.click();
+            }
+        });
+    </script>
+</body>
+
+</html>
