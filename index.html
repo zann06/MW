@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="theme-color" content="#0f172a" />
     <title>MindWealth Digital — E-book Finansial & Psikologi Uang</title>
 
@@ -78,6 +79,7 @@
             line-height: 1.5;
             -webkit-text-size-adjust: 100%;
             overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .container {
@@ -292,6 +294,12 @@
             padding: 48px 0;
         }
 
+        section {
+            min-height: 100vh;
+            height: auto;
+        }
+
+
         h3 {
             color: var(--text);
             margin: 0 0 12px;
@@ -443,7 +451,7 @@
         }
 
         .layout-grid-responsive {
-            display: grid;
+            display: flexbox;
             grid-template-columns: 1fr 320px;
             gap: 18px;
         }
@@ -838,7 +846,7 @@
                     </div>
                     <div id="contactMsg" style="margin-top:12px"></div>
                 </form>
-            
+
                 <aside>
                     <h4>Socials</h4>
                     <p class="muted">Ikuti MindWealth Digital di media sosial untuk konten singkat dan video.</p>
@@ -847,7 +855,7 @@
                         <a href="#" target="_blank" rel="noopener">LinkedIn</a>
                         <a href="#" target="_blank" rel="noopener">TikTok</a>
                     </div>
-            
+
                     <div style="margin-top:18px">
                         <strong>Alamat email</strong>
                         <div class="muted">mindwealth.digital@gmail.com</div>
