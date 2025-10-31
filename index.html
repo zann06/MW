@@ -36,6 +36,7 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         html {
@@ -80,13 +81,66 @@
             -webkit-text-size-adjust: 100%;
             overflow-x: hidden;
             overflow-y: auto;
+
         }
+
+        /* ==== PAGE TRANSITION ==== */
+
+        body.loaded {
+            opacity: 1;
+        }
+
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        /* ==== PRELOADER ==== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.6s ease;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            border-top-color: #22c55e;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ==== SCROLL PROGRESS BAR ==== */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, #22c55e, #3b82f6);
+            z-index: 10000;
+            transition: width 0.15s linear;
+        }
+
 
         /* ==== WELCOME SCREEN ULTRA BLUR ==== */
         #welcome-screen {
@@ -755,11 +809,39 @@
         :focus:not(:focus-visible) {
             outline: none;
         }
+
+        /* ==== GLASSMORPHISM EFFECT ==== */
+        .hero-card,
+        .pricing-card,
+        .ebook {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ==== HOVER ANIMATION ==== */
+        .btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
+        }
+
+        .ebook:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.18);
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <header>
+        <div id="scroll-progress"></div>
+
+
         <!-- ==== WELCOME OVERLAY ==== -->
         <div id="welcome-screen">
             <div class="welcome-bg"></div>
@@ -867,7 +949,8 @@
 
         <!-- ABOUT -->
         <section id="about" class="fade-in">
-            <h3>About MindWealth Digital</h3>
+            <h3><i data-lucide="book-open"></i> About MindWealth Digital</h3>
+
             <p class="lead">Visi kami adalah membangun generasi yang cakap finansial dan sehat secara psikologis dalam
                 mengambil keputusan ekonomi. Misi kami menyediakan e-book berkualitas, singkat, dan aplikatif untuk
                 membantu pembaca membangun kebiasaan finansial positif.</p>
@@ -894,7 +977,7 @@
         <section id="library" class="fade-in">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
                 <div>
-                    <h3>E-Book Library</h3>
+                    <h3><i data-lucide="library"></i> E-Book Library</h3>
                     <p class="muted">Filter berdasarkan kategori, lalu baca atau unduh e-book favoritmu.</p>
                 </div>
                 <div class="muted">Total: <span id="totalCount">0</span> e-books</div>
@@ -947,7 +1030,7 @@
 
         <!-- SUBSCRIBE -->
         <section id="subscribe" class="fade-in">
-            <h3>Subscribe</h3>
+            <h3><i data-lucide="mail"></i> Subscribe</h3>
             <p class="muted">Dapatkan update e-book baru dan insight eksklusif.</p>
             <form id="subscribeForm" style="max-width:640px;margin-top:12px">
                 <div class="form-row">
@@ -1340,6 +1423,36 @@
                 e.preventDefault();
                 menuToggle.click();
             }
+        });
+        // Preloader + Welcome delay
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => preloader.classList.add('hide'), 800);
+        });
+
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('scroll-progress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progress.style.width = scrollPercent + '%';
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+        enterBtn.addEventListener("click", () => {
+            welcome.classList.add("hide");
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+                welcome.remove();
+                document.body.style.transition = "opacity 0.6s ease";
+                document.body.style.opacity = 1;
+            }, 800);
         });
     </script>
 </body>
