@@ -65,6 +65,7 @@
         html,
         body {
             margin: 0;
+            padding: 0;
             padding-top: 90px;
             /* agar konten tidak tertutup navbar */
             font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
@@ -76,6 +77,7 @@
             -moz-osx-font-smoothing: grayscale;
             line-height: 1.5;
             -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
         }
 
         .container {
@@ -235,6 +237,9 @@
             cursor: pointer;
         }
 
+
+
+
         /* HERO */
         .hero {
             padding: 64px 0;
@@ -368,21 +373,45 @@
         }
 
         @media (max-width: 900px) {
+            /* Di dalam @media (max-width: 900px) */
+
             .nav-links {
-                display: none;
+                display: flex;
                 position: fixed;
                 right: 18px;
                 top: 72px;
                 background: var(--section);
-                padding: 14px;
-                border-radius: 12px;
-                box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
                 flex-direction: column;
                 min-width: 220px;
+
+                /* --- PERUBAHAN TAMPILAN (ANTI-PERSEGI) --- */
+                border-radius: 8px;
+                /* <-- Bikin sudutnya tumpul */
+                box-shadow: 0 4px 12px #0000001a;
+                overflow: hidden;
+
+                /* --- PERUBAHAN ANIMASI (KANAN-KE-KIRI) --- */
+                opacity: 0;
+                transform: translateX(20px);
+
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
             }
 
+
             .nav-links.show {
-                display: flex;
+                opacity: 1;
+
+                transform: translateX(0);
+
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .layout-grid-responsive {
+                grid-template-columns: 1fr;
+                /* Membuat jadi 1 kolom di mobile */
             }
 
             .menu-toggle {
@@ -399,12 +428,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .nav-links {
-                position: static;
-                box-shadow: none;
-                background: transparent;
-                flex-direction: row;
-            }
 
             .menu-toggle {
                 display: block;
@@ -417,6 +440,12 @@
             .hero-title {
                 font-size: 28px;
             }
+        }
+
+        .layout-grid-responsive {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 18px;
         }
 
         /* Blog */
@@ -435,13 +464,17 @@
         }
 
         .post a {
-    color: #4f8ef7;       /* warna biru yang jelas */
-    text-decoration: underline;
-    cursor: pointer;       /* pastikan cursor berubah */
-}
-.post a:hover {
-    color: #1a5ed8;       /* warna saat hover */
-}
+            color: #4f8ef7;
+            /* warna biru yang jelas */
+            text-decoration: underline;
+            cursor: pointer;
+            /* pastikan cursor berubah */
+        }
+
+        .post a:hover {
+            color: #1a5ed8;
+            /* warna saat hover */
+        }
 
 
         /* Pricing */
@@ -696,7 +729,7 @@
                 mengambil keputusan ekonomi. Misi kami menyediakan e-book berkualitas, singkat, dan aplikatif untuk
                 membantu pembaca membangun kebiasaan finansial positif.</p>
 
-            <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px">
+            <div class="layout-grid-responsive" style="margin-top:18px">
                 <div>
                     <h4>Kenapa literasi finansial penting?</h4>
                     <p class="muted">Generasi muda menghadapi pilihan finansial yang kompleks. Literasi finansial
@@ -791,35 +824,38 @@
             <h3>Contact</h3>
             <p class="muted">Ada pertanyaan, kerja sama, atau usulan e-book? Hubungi kami.</p>
             <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:12px">
-                <form id="contactForm">
-                    <div class="form-row">
-                        <input type="text" id="cName" placeholder="Nama" required />
-                        <input type="email" id="cEmail" placeholder="Email" required />
-                    </div>
-                    <div style="margin-bottom:12px">
-                        <textarea id="cMessage" placeholder="Pesan" required></textarea>
-                    </div>
-                    <div style="display:flex;gap:8px">
-                        <button class="btn btn-primary" type="submit">Kirim Pesan</button>
-                        <button class="btn btn-ghost" type="button" id="resetContact">Reset</button>
-                    </div>
-                    <div id="contactMsg" style="margin-top:12px"></div>
-                </form>
 
-                <aside>
-                    <h4>Socials</h4>
-                    <p class="muted">Ikuti MindWealth Digital di media sosial untuk konten singkat dan video.</p>
-                    <div class="socials" style="margin-top:12px">
-                        <a href="#" target="_blank" rel="noopener">Instagram</a>
-                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="#" target="_blank" rel="noopener">TikTok</a>
-                    </div>
+                <div class="layout-grid-responsive" style="margin-top:12px">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <input type="text" id="cName" placeholder="Nama" required />
+                            <input type="email" id="cEmail" placeholder="Email" required />
+                        </div>
+                        <div style="margin-bottom:12px">
+                            <textarea id="cMessage" placeholder="Pesan" required></textarea>
+                        </div>
+                        <div style="display:flex;gap:8px">
+                            <button class="btn btn-primary" type="submit">Kirim Pesan</button>
+                            <button class="btn btn-ghost" type="button" id="resetContact">Reset</button>
+                        </div>
+                        <div id="contactMsg" style="margin-top:12px"></div>
+                    </form>
 
-                    <div style="margin-top:18px">
-                        <strong>Alamat email</strong>
-                        <div class="muted">mindwealth.digital@gmail.com</div>
-                    </div>
-                </aside>
+                    <aside>
+                        <h4>Socials</h4>
+                        <p class="muted">Ikuti MindWealth Digital di media sosial untuk konten singkat dan video.</p>
+                        <div class="socials" style="margin-top:12px">
+                            <a href="#" target="_blank" rel="noopener">Instagram</a>
+                            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="#" target="_blank" rel="noopener">TikTok</a>
+                        </div>
+
+                        <div style="margin-top:18px">
+                            <strong>Alamat email</strong>
+                            <div class="muted">mindwealth.digital@gmail.com</div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </section>
 
@@ -901,41 +937,40 @@
             }
         ];
 
-        const posts = [
-    {
-        id: 1,
-        title: '5 Kebiasaan Finansial Sehat',
-        excerpt: 'Praktik sederhana yang bisa kamu mulai hari ini untuk memperbaiki kondisi finansial.',
-        url: 'https://www.heygotrade.com/en/blog/langkah-bangun-kebiasaan-finansial-sehat/'
-    },
-    {
-        id: 2,
-        title: 'Cara Mengelola Gaji Pertama',
-        excerpt: 'Langkah praktis menyusun prioritas setelah menerima gaji pertama.',
-        url: 'https://www.prudential.co.id/id/pulse/article/gaji-pertama/'
-    },
-    {
-        id: 3,
-        title: 'Mengatasi FOMO saat Investasi',
-        excerpt: 'Bagaimana menjaga kepala tetap dingin saat pasar ramai.',
-        url: 'https://www.lbs.id/publication/investasi/viral-fatal-7-cara-mengatasi-fomo-investasi-agar-dompet-tebal-merdeka-finansial'
-    }
-];
+        const posts = [{
+                id: 1,
+                title: '5 Kebiasaan Finansial Sehat',
+                excerpt: 'Praktik sederhana yang bisa kamu mulai hari ini untuk memperbaiki kondisi finansial.',
+                url: 'https://www.heygotrade.com/en/blog/langkah-bangun-kebiasaan-finansial-sehat/'
+            },
+            {
+                id: 2,
+                title: 'Cara Mengelola Gaji Pertama',
+                excerpt: 'Langkah praktis menyusun prioritas setelah menerima gaji pertama.',
+                url: 'https://www.prudential.co.id/id/pulse/article/gaji-pertama/'
+            },
+            {
+                id: 3,
+                title: 'Mengatasi FOMO saat Investasi',
+                excerpt: 'Bagaimana menjaga kepala tetap dingin saat pasar ramai.',
+                url: 'https://www.lbs.id/publication/investasi/viral-fatal-7-cara-mengatasi-fomo-investasi-agar-dompet-tebal-merdeka-finansial'
+            }
+        ];
 
-const blogList = document.getElementById("blogList");
+        const blogList = document.getElementById("blogList");
 
-posts.forEach(post => {
-    const postEl = document.createElement("div");
-    postEl.classList.add("post");
+        posts.forEach(post => {
+            const postEl = document.createElement("div");
+            postEl.classList.add("post");
 
-    postEl.innerHTML = `
+            postEl.innerHTML = `
         <h4>${post.title}</h4>
         <p>${post.excerpt}</p>
         <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
     `;
 
-    blogList.appendChild(postEl);
-});
+            blogList.appendChild(postEl);
+        });
 
 
         // ===== Render functions =====
@@ -958,22 +993,22 @@ posts.forEach(post => {
         renderEbooks(ebooks);
 
         function renderBlog() {
-    const blogList = document.getElementById('blogList');
-    blogList.innerHTML = '';
-    posts.forEach(p => {
-        const el = document.createElement('div');
-        el.className = 'post';
-        el.innerHTML =
-            `<div class='meta'>${new Date().toLocaleDateString()}</div>
+            const blogList = document.getElementById('blogList');
+            blogList.innerHTML = '';
+            posts.forEach(p => {
+                const el = document.createElement('div');
+                el.className = 'post';
+                el.innerHTML =
+                    `<div class='meta'>${new Date().toLocaleDateString()}</div>
              <h4 style="margin:0 0 8px">${p.title}</h4>
              <p class='muted'>${p.excerpt}</p>
              <div style='margin-top:8px'>
                 <a href='${p.url}' target='_blank' rel='noopener noreferrer' class='muted' aria-label='Read more'>Read more →</a>
              </div>`;
-        blogList.appendChild(el);
-    });
-}
-renderBlog();
+                blogList.appendChild(el);
+            });
+        }
+        renderBlog();
 
 
         // ===== Filters =====
