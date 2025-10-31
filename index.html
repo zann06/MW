@@ -87,6 +87,121 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+/* ==== WELCOME SCREEN ==== */
+html, body {
+  height: 100%;
+}
+
+#welcome-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* Latar belakang blur */
+.welcome-bg {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(15, 23, 42, 0.7);
+  z-index: 0;
+}
+
+/* Konten di tengah */
+.welcome-inner {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  animation: fadeInUp 1s ease both;
+}
+
+.welcome-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+}
+
+#welcome-screen h1 {
+  font-size: 2rem;
+  margin: 6px 0;
+  font-weight: 700;
+}
+
+#welcome-screen h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+#welcome-screen p {
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+#welcome-screen button {
+  background: #22c55e;
+  color: #0f172a;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#welcome-screen button:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+/* Saat disembunyikan */
+#welcome-screen.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Animasi */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .welcome-logo {
+    width: 80px;
+  }
+  #welcome-screen h1 {
+    font-size: 1.6rem;
+  }
+  #welcome-screen h2 {
+    font-size: 1rem;
+  }
+  #welcome-screen p {
+    font-size: 0.9rem;
+  }
+}
+
+
 
         /* Header / Navbar */
         header {
@@ -640,6 +755,21 @@
 
 <body>
     <header>
+ <!-- ==== WELCOME OVERLAY ==== -->
+<div id="welcome-screen">
+    <div class="welcome-bg"></div>
+    <div class="welcome-inner">
+      <img src="assets/logoMW.png" alt="MindWealth Logo" class="welcome-logo" />
+      <h2>Selamat Datang di</h2>
+      <h1>MindWealth Digital</h1>
+      <p>E-book Finansial & Psikologi Uang</p>
+      <button id="enterBtn">Masuk</button>
+    </div>
+  </div>
+  <!-- ==== END WELCOME ==== -->
+  
+  
+
         <div class="container">
             <nav class="nav-wrap" aria-label="Main navigation">
                 <div class="nav-inner">
@@ -891,6 +1021,18 @@
     </template>
 
     <script>
+ // ==== Welcome Screen Logic ====
+document.addEventListener("DOMContentLoaded", () => {
+  const welcome = document.getElementById("welcome-screen");
+  const enterBtn = document.getElementById("enterBtn");
+
+  enterBtn.addEventListener("click", () => {
+    welcome.classList.add("hide");
+    setTimeout(() => welcome.remove(), 800);
+  });
+});
+
+
         // ===== Data (dummy) =====
         const ebooks = [{
                 id: 1,
