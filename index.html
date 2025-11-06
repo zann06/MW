@@ -8,14 +8,12 @@
     <meta name="theme-color" content="#0f172a" />
     <title>MindWealth Digital — E-book Finansial & Psikologi Uang</title>
 
-    <!-- SEO Meta Tags -->
     <meta name="description"
         content="MindWealth Digital adalah platform e-book finansial dan psikologi uang yang dibuat oleh Farid, Rakha, dan Adit. Kami membantu kamu memahami perilaku finansial dan membangun mindset keuangan yang sehat." />
     <meta name="keywords"
         content="MindWealth Digital, e-book finansial, psikologi uang, literasi keuangan, mindset kaya, edukasi finansial, kebiasaan finansial, tim Farid Rakha Adit" />
     <meta name="author" content="Farid, Rakha, Adit" />
 
-    <!-- Open Graph (untuk tampilan di WhatsApp, Telegram, Facebook, dll) -->
     <meta property="og:title" content="MindWealth Digital — E-book Finansial & Psikologi Uang" />
     <meta property="og:description"
         content="Temukan wawasan baru tentang finansial dan psikologi uang bersama MindWealth Digital. Dibuat oleh Farid, Rakha, dan Adit." />
@@ -24,7 +22,6 @@
     <meta property="og:type" content="website" />
 
 
-    <!--  Favicon untuk semua perangkat -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="assets/fav" />
     <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon.png" />
@@ -34,7 +31,6 @@
 
 
 
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -657,6 +653,27 @@
             color: #1a5ed8;
             /* warna saat hover */
         }
+        
+        /* ==== INI KODE BARU UNTUK KOMIK ==== */
+        .comic-container {
+            margin-top: 24px;
+            text-align: center;
+            /* Menggunakan variabel CSS yang sudah ada di file Anda */
+            background: var(--glass); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius); 
+            padding: 16px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+        }
+
+        .comic-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Radius lebih kecil untuk gambar di dalam padding */
+        }
+        /* ==== AKHIR DARI KODE TAMBAHAN ==== */
 
 
         /* Pricing */
@@ -842,7 +859,6 @@
         <div id="scroll-progress"></div>
 
 
-        <!-- ==== WELCOME OVERLAY ==== -->
         <div id="welcome-screen">
             <div class="welcome-bg"></div>
             <div class="welcome-inner">
@@ -853,10 +869,6 @@
                 <button id="enterBtn">Masuk</button>
             </div>
         </div>
-        <!-- ==== END WELCOME ==== -->
-
-
-
         <div class="container">
             <nav class="nav-wrap" aria-label="Main navigation">
                 <div class="nav-inner">
@@ -878,6 +890,7 @@
                         <div class="nav-links" id="navLinks" role="menu">
                             <a href="#home" role="menuitem">Home</a>
                             <a href="#about" role="menuitem">About</a>
+                            <a href="#journey" role="menuitem">Journey</a>
                             <a href="#library" role="menuitem">E-Book Library</a>
                             <a href="#blog" role="menuitem">Blog</a>
                             <a href="#subscribe" role="menuitem">Subscribe</a>
@@ -892,7 +905,6 @@
 
     <main class="container">
 
-        <!-- HERO -->
         <section id="home" class="hero">
             <div class="hero-card fade-in">
                 <span class="badge"
@@ -925,7 +937,6 @@
             </div>
 
             <aside class="illustration fade-in" style="flex-direction:column;gap:12px" aria-hidden="true">
-                <!-- Simple illustrative SVG: brain + chart combo -->
                 <svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="g1" x1="0" x2="1">
@@ -947,7 +958,6 @@
             </aside>
         </section>
 
-        <!-- ABOUT -->
         <section id="about" class="fade-in">
             <h3><i data-lucide="book-open"></i> About MindWealth Digital</h3>
 
@@ -973,7 +983,15 @@
             </div>
         </section>
 
-        <!-- LIBRARY -->
+        <section id="journey" class="fade-in">
+            <h3><i data-lucide="rocket"></i> Jeyo's Journey to MindWealth</h3>
+            <p class="muted">Ikuti kisah Jeyo dari bingung mengelola uang hingga menjadi investor cerdas bersama kami.</p>
+            
+            <div class="comic-container">
+                <img src="assets/image_b34096.png" alt="Komik Perjalanan Jeyo di MindWealth Digital">
+            </div>
+        </section>
+
         <section id="library" class="fade-in">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
                 <div>
@@ -994,7 +1012,6 @@
             <div class="ebooks-grid" id="ebooksGrid" aria-live="polite"></div>
         </section>
 
-        <!-- BLOG -->
         <section id="blog" class="fade-in">
             <h3>Blog / Insight</h3>
             <p class="muted">Artikel singkat tentang kebiasaan finansial dan psikologi uang.</p>
@@ -1028,7 +1045,6 @@
             </div>
         </div>
 
-        <!-- SUBSCRIBE -->
         <section id="subscribe" class="fade-in">
             <h3><i data-lucide="mail"></i> Subscribe</h3>
             <p class="muted">Dapatkan update e-book baru dan insight eksklusif.</p>
@@ -1045,7 +1061,6 @@
             </form>
         </section>
 
-        <!-- CONTACT -->
         <section id="contact" class="fade-in">
             <h3>Contact</h3>
             <p class="muted">Ada pertanyaan, kerja sama, atau usulan e-book? Hubungi kami.</p>
