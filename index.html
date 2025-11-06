@@ -466,9 +466,11 @@
 
         /* ==== INI YANG DIPERBAIKI (PROBLEM 1) ==== */
         section {
-            /* min-height: 100vh; <-- DIHAPUS */ 
-            height: auto; /* Memastikan tinggi seksi pas dengan konten */
+            /* min-height: 100vh; <-- DIHAPUS */
+            height: auto;
+            /* Memastikan tinggi seksi pas dengan konten */
         }
+
         /* ==== AKHIR PERBAIKAN 1 ==== */
 
 
@@ -550,6 +552,11 @@
             .hero {
                 grid-template-columns: 1fr;
             }
+
+            .calculator-glass-box {
+                grid-template-columns: 1fr;
+            }
+
         }
 
         @media (max-width: 900px) {
@@ -599,15 +606,18 @@
                 grid-template-columns: 1fr;
                 /* Membuat jadi 1 kolom di mobile */
             }
-            
+
             /* ==== INI CSS BARU UNTUK BLOG (RESPONSIVE) ==== */
             .blog-layout-grid {
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
+
             .blog-illustration-aside {
-                display: none; /* Sembunyikan total di mobile */
+                display: none;
+                /* Sembunyikan total di mobile */
             }
+
             /* ==== AKHIR CSS BLOG ==== */
 
             .menu-toggle {
@@ -617,26 +627,34 @@
             .blog-list {
                 grid-template-columns: 1fr;
             }
-            
+
             /* CSS RESPONSIVE LAINNYA */
             .calculator-glass-box {
                 grid-template-columns: 1fr;
             }
 
-   
+
             .nav-dropdown {
-                display: contents; /* Biar ga dianggap 'relative' di mobile */
+                display: contents;
+                /* Biar ga dianggap 'relative' di mobile */
             }
+
             .dropdown-toggle {
-                 /* Biar seperti link biasa */
-                 width: 100%; /* Memastikan tombol selebar menu */
+                /* Biar seperti link biasa */
+                width: 100%;
+                /* Memastikan tombol selebar menu */
             }
+
             .dropdown-toggle i {
-                display: none; /* Sembunyikan panah chevron di mobile */
+                display: none;
+                /* Sembunyikan panah chevron di mobile */
             }
+
             .dropdown-menu {
-                display: none; /* <-- DIUBAH: Sembunyikan by default di mobile */
-                position: static; /* Hapus 'absolute' */
+                display: none;
+                /* <-- DIUBAH: Sembunyikan by default di mobile */
+                position: static;
+                /* Hapus 'absolute' */
                 width: 100%;
                 background: none;
                 border: none;
@@ -646,12 +664,14 @@
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
             }
+
             .dropdown-menu a {
                 /* Beri sedikit indentasi agar terlihat sbg sub-menu */
-                padding-left: 30px !important; 
+                padding-left: 30px !important;
                 padding-top: 10px;
                 padding-bottom: 10px;
             }
+
             /* ==== AKHIR KODE RESPONSIVE DROPDOWN ==== */
         }
 
@@ -672,7 +692,7 @@
             .hero-title {
                 font-size: 28px;
             }
-            
+
         }
 
         .layout-grid-responsive {
@@ -681,29 +701,32 @@
             gap: 18px;
         }
 
-        
+
 
         .illustration-glass-box {
-            background: var(--glass); 
+            background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius); 
+            border-radius: var(--radius);
             padding: 20px;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             text-align: center;
         }
-        
+
         .blog-illustration-aside {
-            display: none; /* <-- DIHAPUS DENGAN CARA INI */
+            display: none;
+            /* <-- DIHAPUS DENGAN CARA INI */
         }
+
         /* ==== AKHIR KODE BLOG LAYOUT ==== */
 
 
         /* Blog */
         .blog-list {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom di desktop */
+            grid-template-columns: repeat(2, 1fr);
+            /* Tetap 2 kolom di desktop */
             gap: 16px;
             margin-top: 12px;
         }
@@ -781,14 +804,14 @@
         .hide {
             display: none !important;
         }
-        
+
         /* ==== KODE UNTUK KALKULATOR & TESTIMONI ==== */
 
         /* Kalkulator */
         .calculator-glass-box {
-            background: var(--glass); 
+            background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius); 
+            border-radius: var(--radius);
             padding: 24px;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
@@ -799,16 +822,18 @@
             gap: 24px;
             align-items: center;
         }
-        
+
         .calc-input-group {
             margin-bottom: 16px;
         }
+
         .calc-input-group label {
             display: block;
             font-size: 0.9rem;
             color: var(--muted);
             margin-bottom: 6px;
         }
+
         .calculator-glass-box input {
             width: 100%;
             padding: 12px;
@@ -818,19 +843,22 @@
             color: var(--text);
             font-size: 1rem;
         }
-        
+
         .calc-result-box {
-            background: rgba(34, 197, 94, 0.1); /* Aksen hijau */
+            background: rgba(34, 197, 94, 0.1);
+            /* Aksen hijau */
             border: 1px solid var(--accent);
             border-radius: var(--radius);
             padding: 20px;
             text-align: center;
         }
+
         .calc-result-box h4 {
             margin: 0 0 8px;
             color: var(--text);
             font-weight: 500;
         }
+
         .calc-result-box h2 {
             margin: 0;
             font-size: 2.2rem;
@@ -844,31 +872,33 @@
             overflow: hidden;
             border-radius: var(--radius);
             /* Pindahkan glassmorphism ke container slider */
-            background: var(--glass); 
+            background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
         }
-        
+
         .testimonial-track {
             display: flex;
-            width: 300%; /* 100% * 3 kartu */
+            width: 300%;
+            /* 100% * 3 kartu */
             /* Animasi: 15 detik total, 5 detik per slide */
             animation: slide 15s infinite ease-in-out;
         }
-        
+
         .testimonial-card {
-            width: 33.333%; /* 100% / 3 kartu */
+            width: 33.333%;
+            /* 100% / 3 kartu */
             flex-shrink: 0;
-            
+
             /* Hapus style glassmorphism dari kartu individual */
-            background: none; 
+            background: none;
             border: none;
             box-shadow: none;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
-            
+
             /* Tetap beri padding */
             padding: 24px;
             font-style: italic;
@@ -876,15 +906,18 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
         .testimonial-card p {
             margin: 0 0 16px;
         }
+
         .testimonial-footer {
             display: flex;
             align-items: center;
             gap: 12px;
             font-style: normal;
         }
+
         .testimonial-footer .avatar {
             width: 40px;
             height: 40px;
@@ -896,33 +929,57 @@
             font-weight: 600;
             flex-shrink: 0;
         }
+
         .testimonial-footer .name {
             font-weight: 600;
             color: var(--text);
         }
+
         .testimonial-footer .title {
             font-size: 0.85rem;
             color: var(--muted);
         }
-        
+
         /* Keyframes untuk animasi slider */
         @keyframes slide {
+
             /* Tetap di card 1 (0s - 4.5s) */
-            0%, 30% { transform: translateX(0%); } 
+            0%,
+            30% {
+                transform: translateX(0%);
+            }
+
             /* Transisi ke card 2 (4.5s - 5s) */
-            33.3% { transform: translateX(-33.333%); } 
+            33.3% {
+                transform: translateX(-33.333%);
+            }
+
             /* Tetap di card 2 (5s - 9.5s) */
-            33.3%, 63.3% { transform: translateX(-33.333%); }
+            33.3%,
+            63.3% {
+                transform: translateX(-33.333%);
+            }
+
             /* Transisi ke card 3 (9.5s - 10s) */
-            66.6% { transform: translateX(-66.666%); }
+            66.6% {
+                transform: translateX(-66.666%);
+            }
+
             /* Tetap di card 3 (10s - 14.5s) */
-            66.6%, 96.6% { transform: translateX(-66.666%); }
+            66.6%,
+            96.6% {
+                transform: translateX(-66.666%);
+            }
+
             /* Transisi kembali ke card 1 (14.5s - 15s) */
-            100% { transform: translateX(0%); }
+            100% {
+                transform: translateX(0%);
+            }
         }
+
         /* ==== AKHIR KODE TESTIMONI SLIDER ==== */
 
-        
+
         /* ==== KODE BARU UNTUK NAV DROPDOWN ==== */
         .nav-dropdown {
             position: relative;
@@ -936,9 +993,10 @@
             border: none;
             padding: 0;
             margin: 0;
-            font: inherit; /* Ambil style font dari parent */
+            font: inherit;
+            /* Ambil style font dari parent */
             cursor: pointer;
-            
+
             /* Ambil style dari .nav-links a */
             color: var(--text);
             text-decoration: none;
@@ -948,49 +1006,61 @@
             padding: 6px 8px;
             border-radius: 8px;
             transition: color 0.2s ease, background 0.15s ease, transform 0.12s ease;
-            
+
             /* Style untuk dropdown toggle */
-            display: flex; 
+            display: flex;
             align-items: center;
             gap: 4px;
         }
+
         .dropdown-toggle:hover {
             color: var(--accent);
             background: rgba(255, 255, 255, 0.02);
             outline: none;
         }
+
         /* AKHIR STYLE TOMBOL */
 
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%; /* Muncul di bawah link "Fitur" */
+            top: 100%;
+            /* Muncul di bawah link "Fitur" */
             left: 0;
             min-width: 220px;
-            
+
             /* Pakai style glassmorphism */
-            background: rgba(30, 41, 59, 0.9); /* Sedikit lebih solid */
+            background: rgba(30, 41, 59, 0.9);
+            /* Sedikit lebih solid */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius); 
+            border-radius: var(--radius);
             padding: 8px;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
-            z-index: 1001; /* Di atas segalanya */
+            z-index: 1001;
+            /* Di atas segalanya */
         }
+
         .dropdown-menu a {
             display: block;
             width: 100%;
             padding: 10px 12px;
-            border-radius: 8px; /* Bikin item di dalam dropdown juga rounded */
+            border-radius: 8px;
+            /* Bikin item di dalam dropdown juga rounded */
         }
+
         .dropdown-menu a:hover {
-            background: rgba(34, 197, 94, 0.2); /* Aksen hijau saat hover */
+            background: rgba(34, 197, 94, 0.2);
+            /* Aksen hijau saat hover */
             color: var(--accent);
         }
+
         .nav-dropdown:hover .dropdown-menu {
-            display: block; /* Tampilkan saat di-hover */
+            display: block;
+            /* Tampilkan saat di-hover */
         }
+
         /* ==== AKHIR KODE DROPDOWN ==== */
 
 
@@ -1208,7 +1278,8 @@
                         <div class="nav-links" id="navLinks" role="menu">
                             <a href="#home" role="menuitem">Home</a>
                             <a href="#about" role="menuitem">About</a>
-                            <a href="#library" role="menuitem">Library</a> <div class="nav-dropdown">
+                            <a href="#library" role="menuitem">Library</a>
+                            <div class="nav-dropdown">
                                 <button type="button" class="dropdown-toggle" role="menuitem" aria-haspopup="true">
                                     Fitur <i data-lucide="chevron-down" style="width:16px; height:16px;"></i>
                                 </button>
@@ -1220,9 +1291,10 @@
                                 </div>
                             </div>
                             <a href="#blog" role="menuitem">Blog</a>
-                            <a href="#contact" role="menuitem">Contact</a> <a class="btn btn-primary" href="#library">Explore</a>
+                            <a href="#contact" role="menuitem">Contact</a> <a class="btn btn-primary"
+                                href="#library">Explore</a>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -1321,7 +1393,7 @@
         <section id="quiz" class="fade-in">
             <h3><i data-lucide="help-circle"></i> Cek Profil Finansialmu</h3>
             <p class="muted">Tipe investor apakah kamu? Jawab 3 pertanyaan singkat ini untuk mengetahuinya.</p>
-            
+
             <div id="quiz-container" class="quiz-glass-box">
                 <h4 id="quiz-question" style="line-height: 1.4; min-height: 40px;">Memuat pertanyaan...</h4>
                 <div id="quiz-options">
@@ -1403,14 +1475,17 @@
                     <p class="muted">Artikel singkat tentang kebiasaan finansial dan psikologi uang.</p>
                     <div class="blog-list" id="blogList"></div>
                 </div>
-                </div>
+            </div>
         </section>
         <section id="testimonials" class="fade-in">
             <h3><i data-lucide="star"></i> Kata Mereka</h3>
             <p class="muted">Lihat apa kata para member yang sudah bergabung dengan MindWealth.</p>
 
-            <div class="testimonial-slider"> <div class="testimonial-track"> <div class="testimonial-card">
-                        <p>"MindWealth mengubah cara saya melihat uang. E-book 'Psikologi Uang'-nya wajib dibaca! Sangat membuka wawasan."</p>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <p>"MindWealth mengubah cara saya melihat uang. E-book 'Psikologi Uang'-nya wajib dibaca! Sangat
+                            membuka wawasan."</p>
                         <div class="testimonial-footer">
                             <div class="avatar">JR</div>
                             <div>
@@ -1419,9 +1494,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="testimonial-card">
-                        <p>"Kuis profilnya akurat! Saya jadi sadar kalau saya tipe moderat. Ini membantu saya memilih e-book yang tepat di library."</p>
+                        <p>"Kuis profilnya akurat! Saya jadi sadar kalau saya tipe moderat. Ini membantu saya memilih
+                            e-book yang tepat di library."</p>
                         <div class="testimonial-footer">
                             <div class="avatar">A</div>
                             <div>
@@ -1430,9 +1506,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="testimonial-card">
-                        <p>"Kontennya premium dan aplikatif. Jauh lebih baik dari seminar mahal. 'Pro Plan' sangat *worth it*!"</p>
+                        <p>"Kontennya premium dan aplikatif. Jauh lebih baik dari seminar mahal. 'Pro Plan' sangat
+                            *worth it*!"</p>
                         <div class="testimonial-footer">
                             <div class="avatar">T</div>
                             <div>
@@ -1442,7 +1519,9 @@
                         </div>
                     </div>
 
-                </div> </div> </section>
+                </div>
+            </div>
+        </section>
         <div class="pricing-container fade-in">
             <h2 class="section-title">Pilih Paket Langganan</h2>
             <div class="pricing-grid">
@@ -1638,29 +1717,52 @@
         // ===================================
         // ==== LOGIKA KUIS FINANSIAL ====
         // ===================================
-        const quizQuestions = [
-            {
+        const quizQuestions = [{
                 question: "Jika Anda mendapat uang bonus, apa yang pertama kali Anda lakukan?",
-                options: [
-                    { text: "Simpan di rekening tabungan agar aman.", value: 'A' },
-                    { text: "Sebagian ditabung, sebagian diinvestasikan.", value: 'B' },
-                    { text: "Cari peluang investasi berisiko tinggi untuk untung besar.", value: 'C' }
+                options: [{
+                        text: "Simpan di rekening tabungan agar aman.",
+                        value: 'A'
+                    },
+                    {
+                        text: "Sebagian ditabung, sebagian diinvestasikan.",
+                        value: 'B'
+                    },
+                    {
+                        text: "Cari peluang investasi berisiko tinggi untuk untung besar.",
+                        value: 'C'
+                    }
                 ]
             },
             {
                 question: "Bagaimana perasaan Anda jika nilai investasi Anda tiba-tiba turun 15%?",
-                options: [
-                    { text: "Sangat panik dan mungkin akan langsung menjualnya.", value: 'A' },
-                    { text: "Cemas, tapi akan menahannya dan berharap nilainya kembali.", value: 'B' },
-                    { text: "Melihatnya sebagai peluang untuk membeli lebih banyak (buy the dip).", value: 'C' }
+                options: [{
+                        text: "Sangat panik dan mungkin akan langsung menjualnya.",
+                        value: 'A'
+                    },
+                    {
+                        text: "Cemas, tapi akan menahannya dan berharap nilainya kembali.",
+                        value: 'B'
+                    },
+                    {
+                        text: "Melihatnya sebagai peluang untuk membeli lebih banyak (buy the dip).",
+                        value: 'C'
+                    }
                 ]
             },
             {
                 question: "Apa tujuan utama Anda dalam berinvestasi?",
-                options: [
-                    { text: "Keamanan modal. Yang penting uang tidak hilang.", value: 'A' },
-                    { text: "Pertumbuhan seimbang untuk jangka panjang (misal: dana pensiun).", value: 'B' },
-                    { text: "Mendapatkan keuntungan maksimal dalam waktu sesingkat mungkin.", value: 'C' }
+                options: [{
+                        text: "Keamanan modal. Yang penting uang tidak hilang.",
+                        value: 'A'
+                    },
+                    {
+                        text: "Pertumbuhan seimbang untuk jangka panjang (misal: dana pensiun).",
+                        value: 'B'
+                    },
+                    {
+                        text: "Mendapatkan keuntungan maksimal dalam waktu sesingkat mungkin.",
+                        value: 'C'
+                    }
                 ]
             }
         ];
@@ -1691,10 +1793,11 @@
         function startQuiz() {
             currentQuestionIndex = 0;
             userAnswers = [];
-            if(quizResultContainer) quizResultContainer.classList.add('hide');
-            if(quizContainer) quizContainer.classList.remove('hide');
+            if (quizResultContainer) quizResultContainer.classList.add('hide');
+            if (quizContainer) quizContainer.classList.remove('hide');
             showQuestion();
         }
+
         function showQuestion() {
             if (!quizQuestionEl || !quizQuestions[currentQuestionIndex]) {
                 return;
@@ -1710,6 +1813,7 @@
                 quizOptionsEl.appendChild(optionBtn);
             });
         }
+
         function optionClicked(value) {
             userAnswers.push(value);
             currentQuestionIndex++;
@@ -1719,11 +1823,14 @@
                 showResult();
             }
         }
+
         function showResult() {
-            if(quizContainer) quizContainer.classList.add('hide');
-            if(quizResultContainer) quizResultContainer.classList.remove('hide');
+            if (quizContainer) quizContainer.classList.add('hide');
+            if (quizResultContainer) quizResultContainer.classList.remove('hide');
             const counts = {};
-            userAnswers.forEach(answer => { counts[answer] = (counts[answer] || 0) + 1; });
+            userAnswers.forEach(answer => {
+                counts[answer] = (counts[answer] || 0) + 1;
+            });
             let finalProfile = 'B';
             let maxCount = 0;
             for (const [key, value] of Object.entries(counts)) {
@@ -1733,8 +1840,8 @@
                 }
             }
             const result = quizResultsData[finalProfile];
-            if(quizResultTitleEl) quizResultTitleEl.textContent = result.title;
-            if(quizResultDescEl) quizResultDescEl.textContent = result.desc;
+            if (quizResultTitleEl) quizResultTitleEl.textContent = result.title;
+            if (quizResultDescEl) quizResultDescEl.textContent = result.desc;
         }
         if (quizRetakeBtn) {
             quizRetakeBtn.addEventListener('click', startQuiz);
@@ -1777,7 +1884,7 @@
                 calcResultBox.classList.remove('hide');
             });
         }
-        
+
         // ===== Render functions =====
         const ebooksGrid = document.getElementById('ebooksGrid');
         const totalCount = document.getElementById('totalCount');
@@ -1836,6 +1943,7 @@
 
         // ===== Subscribe (localStorage + download) =====
         const subsKey = 'mindwealt_subscribers_v2';
+
         function loadSubs() {
             try {
                 return JSON.parse(localStorage.getItem(subsKey) || '[]');
@@ -1843,6 +1951,7 @@
                 return [];
             }
         }
+
         function saveSubs(arr) {
             localStorage.setItem(subsKey, JSON.stringify(arr));
         }
@@ -1855,18 +1964,24 @@
                 const email = document.getElementById('subEmail').value.trim();
                 const msg = document.getElementById('subscribeMsg');
                 if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
-                subs.push({ name, email, time: new Date().toISOString() });
+                subs.push({
+                    name,
+                    email,
+                    time: new Date().toISOString()
+                });
                 saveSubs(subs);
                 msg.textContent = 'Berhasil berlangganan 🎉';
                 subscribeForm.reset();
             });
         }
         const downloadSubsBtn = document.getElementById('downloadSubs');
-        if(downloadSubsBtn) {
+        if (downloadSubsBtn) {
             downloadSubsBtn.addEventListener('click', () => {
                 const data = JSON.stringify(loadSubs(), null, 2);
                 const a = document.createElement('a');
-                a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+                a.href = URL.createObjectURL(new Blob([data], {
+                    type: 'application/json'
+                }));
                 a.download = 'subscribers.json';
                 document.body.appendChild(a);
                 a.click();
@@ -1892,7 +2007,10 @@
         // ===== Back to Top =====
         const backTop = document.getElementById('backTop');
         if (backTop) {
-            backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            backTop.addEventListener('click', () => window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            }));
             window.addEventListener('scroll', () => {
                 backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
             });
@@ -1906,14 +2024,14 @@
                 const isOpen = navLinks.classList.toggle('show');
                 menuToggle.setAttribute('aria-expanded', String(isOpen));
             });
-            
+
             // ==== PERBAIKAN LOGIKA KLIK DROPDOWN ====
             navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
                 toggle.addEventListener('click', (e) => {
                     // Hentikan event agar tidak memicu penutupan menu utama
-                    e.stopPropagation(); 
-                    
-                    const submenu = toggle.nextElementSibling; 
+                    e.stopPropagation();
+
+                    const submenu = toggle.nextElementSibling;
                     if (submenu && submenu.classList.contains('dropdown-menu')) {
                         // Cek apakah sedang 'block' atau 'none'
                         const isVisible = submenu.style.display === 'block';
@@ -1932,7 +2050,7 @@
                     }
                 });
             });
-            
+
             menuToggle.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -1948,7 +2066,9 @@
                 if (!href || href === '#') return;
                 e.preventDefault();
                 const target = document.querySelector(href);
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                if (target) target.scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
@@ -1958,19 +2078,24 @@
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('show');
             });
-        }, { threshold: 0.12 });
+        }, {
+            threshold: 0.12
+        });
         fadeEls.forEach(el => obs.observe(el));
 
         // ===== Footer Year =====
         const yearEl = document.getElementById('year');
-        if(yearEl) yearEl.textContent = new Date().getFullYear();
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         // ===== Plan view & highlight =====
         function viewBooks(plan) {
             localStorage.setItem('selectedPlan', plan);
-            document.getElementById('library').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('library').scrollIntoView({
+                behavior: 'smooth'
+            });
             highlightBooks(plan);
         }
+
         function highlightBooks(plan) {
             const books = document.querySelectorAll('.ebook');
             books.forEach(card => card.classList.remove('highlight-basic', 'highlight-pro'));
@@ -1982,11 +2107,11 @@
                 books.forEach(card => card.classList.add('highlight-pro'));
             }
         }
-        
+
         // ===== Scroll progress bar =====
         window.addEventListener('scroll', () => {
             const progress = document.getElementById('scroll-progress');
-            if(!progress) return;
+            if (!progress) return;
             const scrollTop = window.scrollY;
             const docHeight = document.body.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
@@ -1997,7 +2122,7 @@
 
         // 1. Saat DOM (HTML) sudah siap
         document.addEventListener("DOMContentLoaded", () => {
-            
+
             // Logika Welcome Screen
             const welcome = document.getElementById("welcome-screen");
             const enterBtn = document.getElementById("enterBtn");
@@ -2012,24 +2137,23 @@
                     }, 800);
                 });
             }
-            
+
             // Mulai Kuis
             startQuiz();
-            
+
             // Inisialisasi Ikon
             lucide.createIcons();
         });
-        
+
         // 2. Saat semua resource (gambar, dll) sudah siap
         window.addEventListener('load', () => {
             // Sembunyikan Preloader
             const preloader = document.getElementById('preloader');
-            if(preloader) setTimeout(() => preloader.classList.add('hide'), 800);
-            
+            if (preloader) setTimeout(() => preloader.classList.add('hide'), 800);
+
             // Tampilkan body
             document.body.classList.add('loaded');
         });
-
     </script>
 </body>
 
