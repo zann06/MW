@@ -464,10 +464,12 @@
             padding: 48px 0;
         }
 
+        /* ==== INI YANG DIPERBAIKI (PROBLEM 1) ==== */
         section {
-            min-height: 100vh;
-            height: auto;
+            /* min-height: 100vh; <-- DIHAPUS */ 
+            height: auto; /* Memastikan tinggi seksi pas dengan konten */
         }
+        /* ==== AKHIR PERBAIKAN 1 ==== */
 
 
         h3 {
@@ -566,7 +568,13 @@
                 border-radius: 8px;
                 /* <-- Bikin sudutnya tumpul */
                 box-shadow: 0 4px 12px #0000001a;
-                overflow: hidden;
+                /* overflow: hidden; <-- INI PENYEBAB PROBLEM 2 */
+
+                /* ==== INI PERBAIKAN UNTUK PROBLEM 2 ==== */
+                /* Hapus max-height dan overflow agar menu bisa memanjang ke bawah */
+                /* overflow-y: auto; <-- DIHAPUS */
+                /* max-height: calc(100vh - 80px); <-- DIHAPUS */
+                /* ==== AKHIR PERBAIKAN 2 ==== */
 
                 /* --- PERUBAHAN ANIMASI (KANAN-KE-KIRI) --- */
                 opacity: 0;
@@ -591,6 +599,16 @@
                 grid-template-columns: 1fr;
                 /* Membuat jadi 1 kolom di mobile */
             }
+            
+            /* ==== INI CSS BARU UNTUK BLOG (RESPONSIVE) ==== */
+            .blog-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .blog-illustration-aside {
+                display: none; /* Sembunyikan total di mobile */
+            }
+            /* ==== AKHIR CSS BLOG ==== */
 
             .menu-toggle {
                 display: block;
@@ -599,6 +617,42 @@
             .blog-list {
                 grid-template-columns: 1fr;
             }
+            
+            /* CSS RESPONSIVE LAINNYA */
+            .calculator-glass-box {
+                grid-template-columns: 1fr;
+            }
+
+   
+            .nav-dropdown {
+                display: contents; /* Biar ga dianggap 'relative' di mobile */
+            }
+            .dropdown-toggle {
+                 /* Biar seperti link biasa */
+                 width: 100%; /* Memastikan tombol selebar menu */
+            }
+            .dropdown-toggle i {
+                display: none; /* Sembunyikan panah chevron di mobile */
+            }
+            .dropdown-menu {
+                display: none; /* <-- DIUBAH: Sembunyikan by default di mobile */
+                position: static; /* Hapus 'absolute' */
+                width: 100%;
+                background: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            .dropdown-menu a {
+                /* Beri sedikit indentasi agar terlihat sbg sub-menu */
+                padding-left: 30px !important; 
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            /* ==== AKHIR KODE RESPONSIVE DROPDOWN ==== */
         }
 
         @media (max-width: 700px) {
@@ -618,6 +672,7 @@
             .hero-title {
                 font-size: 28px;
             }
+            
         }
 
         .layout-grid-responsive {
@@ -626,10 +681,29 @@
             gap: 18px;
         }
 
+        
+
+        .illustration-glass-box {
+            background: var(--glass); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius); 
+            padding: 20px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+            text-align: center;
+        }
+        
+        .blog-illustration-aside {
+            display: none; /* <-- DIHAPUS DENGAN CARA INI */
+        }
+        /* ==== AKHIR KODE BLOG LAYOUT ==== */
+
+
         /* Blog */
         .blog-list {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom di desktop */
             gap: 16px;
             margin-top: 12px;
         }
@@ -643,22 +717,18 @@
 
         .post a {
             color: #4f8ef7;
-            /* warna biru yang jelas */
             text-decoration: underline;
             cursor: pointer;
-            /* pastikan cursor berubah */
         }
 
         .post a:hover {
             color: #1a5ed8;
-            /* warna saat hover */
         }
 
-        /* ==== INI KODE BARU UNTUK KOMIK ==== */
+        /* ==== KODE UNTUK KOMIK ==== */
         .comic-container {
             margin-top: 24px;
             text-align: center;
-            /* Menggunakan variabel CSS yang sudah ada di file Anda */
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
@@ -672,10 +742,256 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            /* Radius lebih kecil untuk gambar di dalam padding */
         }
 
-        /* ==== AKHIR DARI KODE TAMBAHAN ==== */
+        /* ==== KODE UNTUK KUIS ==== */
+        .quiz-glass-box {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 24px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+            margin-top: 24px;
+        }
+
+        .quiz-option-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-option-btn:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: scale(1.02);
+        }
+
+        .hide {
+            display: none !important;
+        }
+        
+        /* ==== KODE UNTUK KALKULATOR & TESTIMONI ==== */
+
+        /* Kalkulator */
+        .calculator-glass-box {
+            background: var(--glass); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius); 
+            padding: 24px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .calc-input-group {
+            margin-bottom: 16px;
+        }
+        .calc-input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .calculator-glass-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        
+        .calc-result-box {
+            background: rgba(34, 197, 94, 0.1); /* Aksen hijau */
+            border: 1px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+        }
+        .calc-result-box h4 {
+            margin: 0 0 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .calc-result-box h2 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: #fff;
+            filter: drop-shadow(0 0 8px var(--accent));
+        }
+
+        /* ==== KODE BARU UNTUK TESTIMONI SLIDER ==== */
+        .testimonial-slider {
+            margin-top: 24px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            /* Pindahkan glassmorphism ke container slider */
+            background: var(--glass); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+        }
+        
+        .testimonial-track {
+            display: flex;
+            width: 300%; /* 100% * 3 kartu */
+            /* Animasi: 15 detik total, 5 detik per slide */
+            animation: slide 15s infinite ease-in-out;
+        }
+        
+        .testimonial-card {
+            width: 33.333%; /* 100% / 3 kartu */
+            flex-shrink: 0;
+            
+            /* Hapus style glassmorphism dari kartu individual */
+            background: none; 
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            
+            /* Tetap beri padding */
+            padding: 24px;
+            font-style: italic;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .testimonial-card p {
+            margin: 0 0 16px;
+        }
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-style: normal;
+        }
+        .testimonial-footer .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .testimonial-footer .name {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .testimonial-footer .title {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        
+        /* Keyframes untuk animasi slider */
+        @keyframes slide {
+            /* Tetap di card 1 (0s - 4.5s) */
+            0%, 30% { transform: translateX(0%); } 
+            /* Transisi ke card 2 (4.5s - 5s) */
+            33.3% { transform: translateX(-33.333%); } 
+            /* Tetap di card 2 (5s - 9.5s) */
+            33.3%, 63.3% { transform: translateX(-33.333%); }
+            /* Transisi ke card 3 (9.5s - 10s) */
+            66.6% { transform: translateX(-66.666%); }
+            /* Tetap di card 3 (10s - 14.5s) */
+            66.6%, 96.6% { transform: translateX(-66.666%); }
+            /* Transisi kembali ke card 1 (14.5s - 15s) */
+            100% { transform: translateX(0%); }
+        }
+        /* ==== AKHIR KODE TESTIMONI SLIDER ==== */
+
+        
+        /* ==== KODE BARU UNTUK NAV DROPDOWN ==== */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* INI STYLE BARU UNTUK TOMBOL DROPDOWN */
+        .dropdown-toggle {
+            /* Reset button styles */
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font: inherit; /* Ambil style font dari parent */
+            cursor: pointer;
+            
+            /* Ambil style dari .nav-links a */
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            opacity: 0.95;
+            padding: 6px 8px;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.15s ease, transform 0.12s ease;
+            
+            /* Style untuk dropdown toggle */
+            display: flex; 
+            align-items: center;
+            gap: 4px;
+        }
+        .dropdown-toggle:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.02);
+            outline: none;
+        }
+        /* AKHIR STYLE TOMBOL */
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; /* Muncul di bawah link "Fitur" */
+            left: 0;
+            min-width: 220px;
+            
+            /* Pakai style glassmorphism */
+            background: rgba(30, 41, 59, 0.9); /* Sedikit lebih solid */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius); 
+            padding: 8px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+            z-index: 1001; /* Di atas segalanya */
+        }
+        .dropdown-menu a {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px; /* Bikin item di dalam dropdown juga rounded */
+        }
+        .dropdown-menu a:hover {
+            background: rgba(34, 197, 94, 0.2); /* Aksen hijau saat hover */
+            color: var(--accent);
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            display: block; /* Tampilkan saat di-hover */
+        }
+        /* ==== AKHIR KODE DROPDOWN ==== */
 
 
         /* Pricing */
@@ -892,14 +1208,21 @@
                         <div class="nav-links" id="navLinks" role="menu">
                             <a href="#home" role="menuitem">Home</a>
                             <a href="#about" role="menuitem">About</a>
-                            <a href="#journey" role="menuitem">Journey</a>
-                            <a href="#library" role="menuitem">E-Book Library</a>
+                            <a href="#library" role="menuitem">Library</a> <div class="nav-dropdown">
+                                <button type="button" class="dropdown-toggle" role="menuitem" aria-haspopup="true">
+                                    Fitur <i data-lucide="chevron-down" style="width:16px; height:16px;"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#journey" role="menuitem">Jeyo's Journey</a>
+                                    <a href="#quiz" role="menuitem">Financial Quiz</a>
+                                    <a href="#calculator" role="menuitem">Calculator</a>
+                                    <a href="#testimonials" role="menuitem">Testimonials</a>
+                                </div>
+                            </div>
                             <a href="#blog" role="menuitem">Blog</a>
-                            <a href="#subscribe" role="menuitem">Subscribe</a>
-                            <a href="#contact" role="menuitem">Contact</a>
-                            <a class="btn btn-primary" href="#library">Explore</a>
+                            <a href="#contact" role="menuitem">Contact</a> <a class="btn btn-primary" href="#library">Explore</a>
                         </div>
-                    </div>
+                        </div>
                 </div>
             </nav>
         </div>
@@ -995,6 +1318,64 @@
             </div>
         </section>
 
+        <section id="quiz" class="fade-in">
+            <h3><i data-lucide="help-circle"></i> Cek Profil Finansialmu</h3>
+            <p class="muted">Tipe investor apakah kamu? Jawab 3 pertanyaan singkat ini untuk mengetahuinya.</p>
+            
+            <div id="quiz-container" class="quiz-glass-box">
+                <h4 id="quiz-question" style="line-height: 1.4; min-height: 40px;">Memuat pertanyaan...</h4>
+                <div id="quiz-options">
+                </div>
+            </div>
+
+            <div id="quiz-result" class="quiz-glass-box hide">
+                <h4>Hasil Profil Anda:</h4>
+                <h2 id="quiz-result-title" style="color: var(--accent); margin: 0;"></h2>
+                <p id="quiz-result-desc" class="muted"></p>
+                <button id="quiz-retake-btn" class="btn btn-primary" style="margin-top: 12px;">
+                    <i data-lucide="refresh-cw" class="icon"></i> Ulangi Kuis
+                </button>
+            </div>
+        </section>
+
+        <section id="calculator" class="fade-in">
+            <h3><i data-lucide="bar-chart-2"></i> Kalkulator Investasi</h3>
+            <p class="muted">Hitung potensi pertumbuhan uang Anda dengan Bunga Majemuk (Compound Interest).</p>
+
+            <div class="calculator-glass-box">
+                <form id="calc-form">
+                    <div class="calc-input-group">
+                        <label for="calc-principal">Modal Awal (Rp)</label>
+                        <input type="number" id="calc-principal" value="1000000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="calc-monthly">Setoran Bulanan (Rp)</label>
+                        <input type="number" id="calc-monthly" value="500000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="calc-interest">Estimasi Bunga per Tahun (%)</label>
+                        <input type="number" id="calc-interest" value="8" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="calc-years">Lama Menabung (Tahun)</label>
+                        <input type="number" id="calc-years" value="10" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="gap: 8px;">
+                        <i data-lucide="calculator" class="icon"></i> Hitung
+                    </button>
+                </form>
+
+                <div id="calc-result" class="calc-result-box hide">
+                    <h4>Hasil Investasi Anda dalam 10 tahun:</h4>
+                    <h2 id="calc-result-total">Rp 0</h2>
+                    <p class="muted" style="font-size: 0.9rem; margin-top: 12px;">
+                        Total Modal: <span id="calc-result-principal">Rp 0</span><br>
+                        Total Bunga: <span id="calc-result-interest">Rp 0</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section id="library" class="fade-in">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
                 <div>
@@ -1016,11 +1397,52 @@
         </section>
 
         <section id="blog" class="fade-in">
-            <h3>Blog / Insight</h3>
-            <p class="muted">Artikel singkat tentang kebiasaan finansial dan psikologi uang.</p>
-            <div class="blog-list" id="blogList"></div>
+            <div class="blog-layout-grid">
+                <div class="blog-content">
+                    <h3><i data-lucide="file-text"></i> Blog / Insight</h3>
+                    <p class="muted">Artikel singkat tentang kebiasaan finansial dan psikologi uang.</p>
+                    <div class="blog-list" id="blogList"></div>
+                </div>
+                </div>
         </section>
+        <section id="testimonials" class="fade-in">
+            <h3><i data-lucide="star"></i> Kata Mereka</h3>
+            <p class="muted">Lihat apa kata para member yang sudah bergabung dengan MindWealth.</p>
 
+            <div class="testimonial-slider"> <div class="testimonial-track"> <div class="testimonial-card">
+                        <p>"MindWealth mengubah cara saya melihat uang. E-book 'Psikologi Uang'-nya wajib dibaca! Sangat membuka wawasan."</p>
+                        <div class="testimonial-footer">
+                            <div class="avatar">JR</div>
+                            <div>
+                                <div class="name">Jeyo R.</div>
+                                <div class="title">Investor Pemula</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"Kuis profilnya akurat! Saya jadi sadar kalau saya tipe moderat. Ini membantu saya memilih e-book yang tepat di library."</p>
+                        <div class="testimonial-footer">
+                            <div class="avatar">A</div>
+                            <div>
+                                <div class="name">Adit</div>
+                                <div class="title">Mahasiswa</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"Kontennya premium dan aplikatif. Jauh lebih baik dari seminar mahal. 'Pro Plan' sangat *worth it*!"</p>
+                        <div class="testimonial-footer">
+                            <div class="avatar">T</div>
+                            <div>
+                                <div class="name">Tama</div>
+                                <div class="title">Mahasiswa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> </div> </section>
         <div class="pricing-container fade-in">
             <h2 class="section-title">Pilih Paket Langganan</h2>
             <div class="pricing-grid">
@@ -1043,7 +1465,7 @@
                         <li> Update mingguan & bulanan</li>
                         <li> Early access e-book baru</li>
                     </ul>
-                    <button class="plan-btn" onclick="viewBooks('pro')">Lihat Buku</button>
+                    <button class="plan-btn" onclick="viewBooks('pro')">Liah Buku</button>
                 </div>
             </div>
         </div>
@@ -1127,18 +1549,6 @@
     </template>
 
     <script>
-        // ==== Welcome Screen Logic ====
-        document.addEventListener("DOMContentLoaded", () => {
-            const welcome = document.getElementById("welcome-screen");
-            const enterBtn = document.getElementById("enterBtn");
-
-            enterBtn.addEventListener("click", () => {
-                welcome.classList.add("hide");
-                setTimeout(() => welcome.remove(), 800);
-            });
-        });
-
-
         // ===== Data (dummy) =====
         const ebooks = [{
                 id: 1,
@@ -1212,25 +1622,168 @@
 
         const blogList = document.getElementById("blogList");
 
-        posts.forEach(post => {
-            const postEl = document.createElement("div");
-            postEl.classList.add("post");
+        if (blogList) {
+            posts.forEach(post => {
+                const postEl = document.createElement("div");
+                postEl.classList.add("post");
+                postEl.innerHTML = `
+                    <h4>${post.title}</h4>
+                    <p>${post.excerpt}</p>
+                    <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
+                `;
+                blogList.appendChild(postEl);
+            });
+        }
 
-            postEl.innerHTML = `
-        <h4>${post.title}</h4>
-        <p>${post.excerpt}</p>
-        <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
-    `;
+        // ===================================
+        // ==== LOGIKA KUIS FINANSIAL ====
+        // ===================================
+        const quizQuestions = [
+            {
+                question: "Jika Anda mendapat uang bonus, apa yang pertama kali Anda lakukan?",
+                options: [
+                    { text: "Simpan di rekening tabungan agar aman.", value: 'A' },
+                    { text: "Sebagian ditabung, sebagian diinvestasikan.", value: 'B' },
+                    { text: "Cari peluang investasi berisiko tinggi untuk untung besar.", value: 'C' }
+                ]
+            },
+            {
+                question: "Bagaimana perasaan Anda jika nilai investasi Anda tiba-tiba turun 15%?",
+                options: [
+                    { text: "Sangat panik dan mungkin akan langsung menjualnya.", value: 'A' },
+                    { text: "Cemas, tapi akan menahannya dan berharap nilainya kembali.", value: 'B' },
+                    { text: "Melihatnya sebagai peluang untuk membeli lebih banyak (buy the dip).", value: 'C' }
+                ]
+            },
+            {
+                question: "Apa tujuan utama Anda dalam berinvestasi?",
+                options: [
+                    { text: "Keamanan modal. Yang penting uang tidak hilang.", value: 'A' },
+                    { text: "Pertumbuhan seimbang untuk jangka panjang (misal: dana pensiun).", value: 'B' },
+                    { text: "Mendapatkan keuntungan maksimal dalam waktu sesingkat mungkin.", value: 'C' }
+                ]
+            }
+        ];
+        const quizResultsData = {
+            'A': {
+                title: "Si Penjaga Aman (Konservatif)",
+                desc: "Anda sangat menghargai keamanan dan stabilitas. Pilihan investasi Anda cenderung rendah risiko. E-book tentang 'Manajemen Gaji' dan 'Perencanaan Tabungan' sangat cocok untuk Anda."
+            },
+            'B': {
+                title: "Si Perencana Seimbang (Moderat)",
+                desc: "Anda memahami pentingnya pertumbuhan jangka panjang namun tetap berhati-hati. Anda siap mengambil risiko terukur. Coba lihat e-book 'Investasi untuk Pemula' dan 'Psikologi Uang'."
+            },
+            'C': {
+                title: "Si Pengambil Risiko (Agresif)",
+                desc: "Anda berani dan mencari keuntungan tinggi! Anda tidak takut fluktuasi pasar. E-book tentang 'Diversifikasi Investasi' dan strategi lanjutan akan menantang Anda."
+            }
+        };
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResultContainer = document.getElementById('quiz-result');
+        const quizQuestionEl = document.getElementById('quiz-question');
+        const quizOptionsEl = document.getElementById('quiz-options');
+        const quizRetakeBtn = document.getElementById('quiz-retake-btn');
+        const quizResultTitleEl = document.getElementById('quiz-result-title');
+        const quizResultDescEl = document.getElementById('quiz-result-desc');
 
-            blogList.appendChild(postEl);
-        });
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            if(quizResultContainer) quizResultContainer.classList.add('hide');
+            if(quizContainer) quizContainer.classList.remove('hide');
+            showQuestion();
+        }
+        function showQuestion() {
+            if (!quizQuestionEl || !quizQuestions[currentQuestionIndex]) {
+                return;
+            }
+            const questionData = quizQuestions[currentQuestionIndex];
+            quizQuestionEl.textContent = questionData.question;
+            quizOptionsEl.innerHTML = '';
+            questionData.options.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.textContent = option.text;
+                optionBtn.className = 'quiz-option-btn';
+                optionBtn.onclick = () => optionClicked(option.value);
+                quizOptionsEl.appendChild(optionBtn);
+            });
+        }
+        function optionClicked(value) {
+            userAnswers.push(value);
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+        function showResult() {
+            if(quizContainer) quizContainer.classList.add('hide');
+            if(quizResultContainer) quizResultContainer.classList.remove('hide');
+            const counts = {};
+            userAnswers.forEach(answer => { counts[answer] = (counts[answer] || 0) + 1; });
+            let finalProfile = 'B';
+            let maxCount = 0;
+            for (const [key, value] of Object.entries(counts)) {
+                if (value > maxCount) {
+                    maxCount = value;
+                    finalProfile = key;
+                }
+            }
+            const result = quizResultsData[finalProfile];
+            if(quizResultTitleEl) quizResultTitleEl.textContent = result.title;
+            if(quizResultDescEl) quizResultDescEl.textContent = result.desc;
+        }
+        if (quizRetakeBtn) {
+            quizRetakeBtn.addEventListener('click', startQuiz);
+        }
 
+        // ===================================
+        // ==== LOGIKA KALKULATOR BARU ====
+        // ===================================
+        const calcForm = document.getElementById('calc-form');
+        const calcResultBox = document.getElementById('calc-result');
 
+        if (calcForm) {
+            calcForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const principal = parseFloat(document.getElementById('calc-principal').value) || 0;
+                const monthly = parseFloat(document.getElementById('calc-monthly').value) || 0;
+                const interest = parseFloat(document.getElementById('calc-interest').value) || 0;
+                const years = parseFloat(document.getElementById('calc-years').value) || 0;
+                const r = interest / 100;
+                const n = 12;
+                const t = years;
+                const totalMonths = n * t;
+                const r_monthly = r / n;
+                const fv_principal = principal * Math.pow((1 + r_monthly), totalMonths);
+                const fv_pmt = monthly * ((Math.pow((1 + r_monthly), totalMonths) - 1) / r_monthly);
+                const totalValue = fv_principal + fv_pmt;
+                const totalInvested = principal + (monthly * totalMonths);
+                const totalInterest = totalValue - totalInvested;
+                const formatter = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                });
+                document.getElementById('calc-result-total').textContent = formatter.format(totalValue);
+                document.getElementById('calc-result-principal').textContent = formatter.format(totalInvested);
+                document.getElementById('calc-result-interest').textContent = formatter.format(totalInterest);
+                const resultTitle = calcResultBox.querySelector('h4');
+                resultTitle.textContent = `Hasil Investasi Anda dalam ${years} tahun:`;
+                calcResultBox.classList.remove('hide');
+            });
+        }
+        
         // ===== Render functions =====
         const ebooksGrid = document.getElementById('ebooksGrid');
         const totalCount = document.getElementById('totalCount');
 
         function renderEbooks(list) {
+            if (!ebooksGrid) return;
             ebooksGrid.innerHTML = '';
             list.forEach(e => {
                 const tpl = document.getElementById('ebookTpl').content.cloneNode(true);
@@ -1243,26 +1796,12 @@
             });
             totalCount.textContent = list.length;
         }
-        renderEbooks(ebooks);
+        renderEbooks(ebooks); // Panggil render awal
 
         function renderBlog() {
-            const blogList = document.getElementById('blogList');
-            blogList.innerHTML = '';
-            posts.forEach(p => {
-                const el = document.createElement('div');
-                el.className = 'post';
-                el.innerHTML =
-                    `<div class='meta'>${new Date().toLocaleDateString()}</div>
-             <h4 style="margin:0 0 8px">${p.title}</h4>
-             <p class='muted'>${p.excerpt}</p>
-             <div style='margin-top:8px'>
-                <a href='${p.url}' target='_blank' rel='noopener noreferrer' class='muted' aria-label='Read more'>Read more →</a>
-             </div>`;
-                blogList.appendChild(el);
-            });
+            // Logika blog sudah dipindah ke atas (di luar fungsi)
         }
-        renderBlog();
-
+        // renderBlog(); // Tidak perlu dipanggil lagi
 
         // ===== Filters =====
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1290,7 +1829,6 @@
             const a = document.createElement('a');
             a.href = e.file;
             a.download = (e.title.replace(/\s+/g, '_') || 'ebook') + '.json';
-            // append not required but safe for some browsers
             document.body.appendChild(a);
             a.click();
             a.remove();
@@ -1298,7 +1836,6 @@
 
         // ===== Subscribe (localStorage + download) =====
         const subsKey = 'mindwealt_subscribers_v2';
-
         function loadSubs() {
             try {
                 return JSON.parse(localStorage.getItem(subsKey) || '[]');
@@ -1306,85 +1843,103 @@
                 return [];
             }
         }
-
         function saveSubs(arr) {
             localStorage.setItem(subsKey, JSON.stringify(arr));
         }
-
         const subs = loadSubs();
-
-        document.getElementById('subscribeForm').addEventListener('submit', (ev) => {
-            ev.preventDefault();
-            const name = document.getElementById('subName').value.trim();
-            const email = document.getElementById('subEmail').value.trim();
-            const msg = document.getElementById('subscribeMsg');
-            if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
-
-            subs.push({
-                name,
-                email,
-                time: new Date().toISOString()
+        const subscribeForm = document.getElementById('subscribeForm');
+        if (subscribeForm) {
+            subscribeForm.addEventListener('submit', (ev) => {
+                ev.preventDefault();
+                const name = document.getElementById('subName').value.trim();
+                const email = document.getElementById('subEmail').value.trim();
+                const msg = document.getElementById('subscribeMsg');
+                if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
+                subs.push({ name, email, time: new Date().toISOString() });
+                saveSubs(subs);
+                msg.textContent = 'Berhasil berlangganan 🎉';
+                subscribeForm.reset();
             });
-            saveSubs(subs);
-
-            msg.textContent = 'Berhasil berlangganan 🎉';
-            document.getElementById('subscribeForm').reset();
-        });
-
-        document.getElementById('downloadSubs').addEventListener('click', () => {
-            const data = JSON.stringify(loadSubs(), null, 2);
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(new Blob([data], {
-                type: 'application/json'
-            }));
-            a.download = 'subscribers.json';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-        });
+        }
+        const downloadSubsBtn = document.getElementById('downloadSubs');
+        if(downloadSubsBtn) {
+            downloadSubsBtn.addEventListener('click', () => {
+                const data = JSON.stringify(loadSubs(), null, 2);
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+                a.download = 'subscribers.json';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            });
+        }
 
         // ===== Contact Form =====
-        document.getElementById('contactForm').addEventListener('submit', (ev) => {
-            ev.preventDefault();
-            const msg = document.getElementById('contactMsg');
-            msg.textContent = 'Pesan berhasil dikirim (simulasi).';
-            document.getElementById('contactForm').reset();
-        });
-
-        document.getElementById('resetContact').addEventListener('click', () => {
-            document.getElementById('contactForm').reset();
-            document.getElementById('contactMsg').textContent = '';
-        });
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (ev) => {
+                ev.preventDefault();
+                const msg = document.getElementById('contactMsg');
+                msg.textContent = 'Pesan berhasil dikirim (simulasi).';
+                contactForm.reset();
+            });
+            document.getElementById('resetContact').addEventListener('click', () => {
+                contactForm.reset();
+                document.getElementById('contactMsg').textContent = '';
+            });
+        }
 
         // ===== Back to Top =====
         const backTop = document.getElementById('backTop');
-        backTop.addEventListener('click', () => window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        }));
-
-        window.addEventListener('scroll', () => {
-            backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-        });
+        if (backTop) {
+            backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            window.addEventListener('scroll', () => {
+                backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+            });
+        }
 
         // ===== Menu Toggle (mobile) =====
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('show');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+            
+            // ==== PERBAIKAN LOGIKA KLIK DROPDOWN ====
+            navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    // Hentikan event agar tidak memicu penutupan menu utama
+                    e.stopPropagation(); 
+                    
+                    const submenu = toggle.nextElementSibling; 
+                    if (submenu && submenu.classList.contains('dropdown-menu')) {
+                        // Cek apakah sedang 'block' atau 'none'
+                        const isVisible = submenu.style.display === 'block';
+                        submenu.style.display = isVisible ? 'none' : 'block';
+                    }
+                });
+            });
+            // ==== AKHIR PERBAIKAN ====
 
-        menuToggle.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('show');
-            menuToggle.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        // close mobile menu when clicking a link
-        navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', () => {
-                if (navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                    menuToggle.setAttribute('aria-expanded', 'false');
+            // HANYA tutup menu jika link <a> yang BUKAN bagian dari dropdown di-klik
+            navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', () => {
+                    if (navLinks.classList.contains('show')) {
+                        navLinks.classList.remove('show');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+            
+            menuToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    menuToggle.click();
                 }
             });
-        });
+        }
 
         // ===== Smooth scroll for nav links =====
         document.querySelectorAll('nav a[href^="#"]').forEach(link => {
@@ -1393,9 +1948,7 @@
                 if (!href || href === '#') return;
                 e.preventDefault();
                 const target = document.querySelector(href);
-                if (target) target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
@@ -1405,24 +1958,19 @@
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('show');
             });
-        }, {
-            threshold: 0.12
-        });
+        }, { threshold: 0.12 });
         fadeEls.forEach(el => obs.observe(el));
 
         // ===== Footer Year =====
-        document.getElementById('year').textContent = new Date().getFullYear();
+        const yearEl = document.getElementById('year');
+        if(yearEl) yearEl.textContent = new Date().getFullYear();
 
         // ===== Plan view & highlight =====
         function viewBooks(plan) {
             localStorage.setItem('selectedPlan', plan);
-            // Scroll to library section (fixed id exists)
-            document.getElementById('library').scrollIntoView({
-                behavior: 'smooth'
-            });
+            document.getElementById('library').scrollIntoView({ behavior: 'smooth' });
             highlightBooks(plan);
         }
-
         function highlightBooks(plan) {
             const books = document.querySelectorAll('.ebook');
             books.forEach(card => card.classList.remove('highlight-basic', 'highlight-pro'));
@@ -1434,44 +1982,54 @@
                 books.forEach(card => card.classList.add('highlight-pro'));
             }
         }
-
-        // make sure keyboard users can toggle using Enter/Space
-        menuToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                menuToggle.click();
-            }
-        });
-        // Preloader + Welcome delay
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => preloader.classList.add('hide'), 800);
-        });
-
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-        });
-
-        // Scroll progress bar
+        
+        // ===== Scroll progress bar =====
         window.addEventListener('scroll', () => {
             const progress = document.getElementById('scroll-progress');
+            if(!progress) return;
             const scrollTop = window.scrollY;
             const docHeight = document.body.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
             progress.style.width = scrollPercent + '%';
         });
 
-        // Initialize Lucide icons
-        lucide.createIcons();
-        enterBtn.addEventListener("click", () => {
-            welcome.classList.add("hide");
-            document.body.style.opacity = 0;
-            setTimeout(() => {
-                welcome.remove();
-                document.body.style.transition = "opacity 0.6s ease";
-                document.body.style.opacity = 1;
-            }, 800);
+        // ===== FUNGSI LOAD UTAMA =====
+
+        // 1. Saat DOM (HTML) sudah siap
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Logika Welcome Screen
+            const welcome = document.getElementById("welcome-screen");
+            const enterBtn = document.getElementById("enterBtn");
+            if (enterBtn && welcome) {
+                enterBtn.addEventListener("click", () => {
+                    welcome.classList.add("hide");
+                    document.body.style.opacity = 0;
+                    setTimeout(() => {
+                        if (welcome) welcome.remove();
+                        document.body.style.transition = "opacity 0.6s ease";
+                        document.body.style.opacity = 1;
+                    }, 800);
+                });
+            }
+            
+            // Mulai Kuis
+            startQuiz();
+            
+            // Inisialisasi Ikon
+            lucide.createIcons();
         });
+        
+        // 2. Saat semua resource (gambar, dll) sudah siap
+        window.addEventListener('load', () => {
+            // Sembunyikan Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) setTimeout(() => preloader.classList.add('hide'), 800);
+            
+            // Tampilkan body
+            document.body.classList.add('loaded');
+        });
+
     </script>
 </body>
 
