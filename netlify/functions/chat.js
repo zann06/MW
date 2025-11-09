@@ -6,7 +6,6 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Ambil kepribadian bot (System Instruction)
-// KITA PINDAHKAN KE ATAS AGAR LEBIH RAPI
 const systemInstruction = {
     role: "model",
     parts: [{
@@ -29,14 +28,13 @@ exports.handler = async (event) => {
     // Ambil pesan dan riwayat chat dari frontend
     const { message, history } = JSON.parse(event.body);
 
-    // ===========================================
-    // === INI ADALAH KODE YANG DIPERBAIKI ===
-    // ===========================================
-
     // Inisialisasi model DENGAN systemInstruction
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-1.5-flash-latest",
-        // Masukkan instruksi kepribadian di sini, BUKAN di history
+        
+        // === INI ADALAH PERBAIKANNYA ===
+        model: "gemini-1.5-flash", // Menghapus '-latest'
+        // ================================
+
         systemInstruction: systemInstruction.parts[0].text 
     });
 
@@ -47,9 +45,6 @@ exports.handler = async (event) => {
             maxOutputTokens: 100,
         },
     });
-    // ===========================================
-    // === AKHIR PERBAIKAN ===
-    // ===========================================
 
     // Kirim pesan baru ke Google
     const result = await chat.sendMessage(message);
