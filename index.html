@@ -158,8 +158,8 @@
         .welcome-bg {
             position: absolute;
             inset: 0;
-            backdrop-filter: blur(95px) brightness(0.4) saturate(1.3);
             -webkit-backdrop-filter: blur(95px) brightness(0.4) saturate(1.3);
+            backdrop-filter: blur(95px) brightness(0.4) saturate(1.3);
             background: radial-gradient(circle at 50% 20%,
                     rgba(10, 15, 25, 0.9),
                     rgba(3, 5, 10, 0.92));
@@ -662,8 +662,8 @@
                 border-radius: 0;
                 padding: 0;
                 box-shadow: none;
-                backdrop-filter: none;
                 -webkit-backdrop-filter: none;
+                backdrop-filter: none;
             }
 
             .dropdown-menu a {
@@ -709,8 +709,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 20px;
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             text-align: center;
         }
@@ -757,8 +757,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 16px;
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
         }
 
@@ -774,8 +774,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 24px;
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             margin-top: 24px;
         }
@@ -814,8 +814,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 24px;
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             margin-top: 24px;
             display: flexbox;
@@ -876,8 +876,8 @@
             /* Pindahkan glassmorphism ke container slider */
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
         }
 
@@ -898,8 +898,8 @@
             background: none;
             border: none;
             box-shadow: none;
-            backdrop-filter: none;
             -webkit-backdrop-filter: none;
+            backdrop-filter: none;
 
             /* Tetap beri padding */
             padding: 24px;
@@ -1037,8 +1037,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 8px;
-            backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             z-index: 1001;
             /* Di atas segalanya */
@@ -1216,17 +1216,6 @@
         :focus:not(:focus-visible) {
             outline: none;
         }
-
-        /* ==== GLASSMORPHISM EFFECT ==== */
-        .hero-card,
-        .pricing-card,
-        .ebook {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         /* ==== HOVER ANIMATION ==== */
         .btn:hover {
             transform: translateY(-2px) scale(1.04);
@@ -1238,10 +1227,220 @@
             box-shadow: 0 0 25px rgba(34, 197, 94, 0.18);
             transition: all 0.3s ease;
         }
+
+      /* === STYLE UNTUK MINDWEALTH CHATBOT === */
+
+        /* Tombol Bubble Mengambang */
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            /* Gradient Blue/Green yang sesuai brand */
+            background: linear-gradient(45deg, #00A9B0, #1DE9B6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            /* Efek Glow Neon Green */
+            box-shadow: 0 0 15px #1DE9B6, 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+            z-index: 9998;
+        }
+
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
+
+        /* Logo Otak (SVG) - Sesuai ide "Holographic Brain" */
+        .chat-bubble svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+
+        /* Jendela Chat */
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            max-width: 90vw;
+            height: 450px;
+            background: #0F1A24;
+            /* Dark Blue Minimalist BG */
+            border-radius: 12px;
+            /* Rounded corners */
+            border: 1px solid #1DE9B6;
+            /* Border Neon */
+            /* Efek Glow untuk border */
+            box-shadow: 0 0 20px rgba(29, 233, 182, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-out;
+            z-index: 9999;
+        }
+
+        .chat-window.show {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Header Chat */
+        .chat-header {
+            background: #1A2B3A;
+            /* Sedikit lebih terang dari BG */
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1DE9B6;
+            /* Garis Neon */
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1DE9B6;
+            /* Warna Teks Neon */
+        }
+
+        .chat-header #closeChat {
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Badan Chat (Tempat Pesan) */
+        .chat-body {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #E0F2F1;
+            /* Teks putih kebiruan */
+        }
+
+        /* Styling Pesan */
+        .chat-message {
+            padding: 10px 14px;
+            border-radius: 18px;
+            max-width: 85%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .chat-message.bot {
+            background: #1A2B3A;
+            /* Warna Bot */
+            color: #E0F2F1;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+        }
+
+        .chat-message.user {
+            background: #1DE9B6;
+            /* Warna User (Neon Green) */
+            color: #0F1A24;
+            /* Teks gelap agar kontras */
+            border-bottom-right-radius: 4px;
+            align-self: flex-end;
+            font-weight: 500;
+        }
+
+        .chat-message.loading {
+            background: #1A2B3A;
+            color: #aaa;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            font-style: italic;
+        }
+
+        /* Footer Chat (Input) */
+        .chat-footer {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #1DE9B6;
+            background: #0F1A24;
+        }
+
+        .chat-footer input {
+            flex-grow: 1;
+            border: 1px solid #1A2B3A;
+            background: #1A2B3A;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-footer input:focus {
+            border-color: #1DE9B6;
+        }
+
+        .chat-footer button {
+            background: #1DE9B6;
+            color: #0F1A24;
+            /* Teks gelap */
+            border: none;
+            padding: 0 18px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .chat-footer button:hover {
+            background: #00A9B0;
+            /* Warna hover (biru) */
+        }
     </style>
 </head>
 
-<body>
+
+<body> <div class="chat-bubble" id="chatBubble">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+            d="M12 3c-1.38 0-2.63.56-3.54 1.46C7.56 5.37 7 6.62 7 8c0 1.93 1.57 3.5 3.5 3.5.35 0 .69-.05 1.01-.15.09.2.2.38.32.55 0 0 0 .01-.01.01-.22.33-.49.62-.79.88C10.6 13.2 10.15 13.5 9.71 13.85c-.99.79-2.28 1.98-2.3 2.01-.4.49-.61 1.11-.61 1.74 0 1.38 1.12 2.5 2.5 2.5.86 0 1.63-.44 2.09-1.12.02-.03.04-.06.06-.09.38.32.79.61 1.23.86.33.19.67.36 1.02.51.52.22 1.07.34 1.63.34 1.38 0 2.63-.56 3.54-1.46 1.09-1.09 1.62-2.48 1.46-3.96-.13-1.22-.72-2.35-1.57-3.2l-1.44-1.44c-.01 0-.01-.01-.01-.01.27-.27.5-.58.68-.91.07-.13.14-.27.19-.4.05-.12.09-.24.11-.37.01-.06.02-.12.03-.18.06-.28.09-.56.09-.85 0-1.93-1.57-3.5-3.5-3.5s-3.5 1.57-3.5 3.5c0 .09 0 .18.01.27.08.76.3 1.49.61 2.15.02.04.03.08.05.12.06.14.13.27.21.4.38.59.83 1.12 1.31 1.61.02-.02.04-.03.05-.05.81-.81 1.28-1.9 1.28-3.03 0-1.38-.56-2.63-1.46-3.54C14.63 3.56 13.38 3 12 3zm0 2c.83 0 1.58.34 2.12.88.54.54.88 1.29.88 2.12 0 .83-.34 1.58-.88 2.12C13.58 10.66 12.83 11 12 11c-.83 0-1.58-.34-2.12-.88C9.34 9.58 9 8.83 9 8c0-1.06.66-1.97 1.59-2.5C10.97 5.2 11.47 5 12 5zm-1.61 7.42c-.01 0 0 0 0 0zM10.5 14.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22.5.5zm2.09 1.62c.03.03.05.05.08.07.03-.02.06-.04.08-.07-.05-.02-.11-.04-.16-.04s-.11.02-.16.04zM13.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z" />
+    </svg>
+</div>
+
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <h3>Wealth Buddy 🌱</h3>
+        <span id="closeChat">×</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="chat-message bot">
+            Hey there, I’m your Wealth Buddy 🌱 ready to talk goals and good vibes?
+        </div>
+    </div>
+
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Ketik pesan..." />
+        <button id="sendButton">Kirim</button>
+    </div>
+</div>
+
+
     <div id="preloader">
         <div class="spinner"></div>
     </div>
@@ -1459,12 +1658,12 @@
                 <div class="muted">Total: <span id="totalCount">0</span> e-books</div>
             </div>
 
-                <div class="filters" style="margin-top:12px">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="Finance">Finance & Management</button> 
-                    <button class="filter-btn" data-filter="Investment">Investment</button>
-                    <button class="filter-btn" data-filter="Psychology">Psychology</button>
-                </div>
+            <div class="filters" style="margin-top:12px">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Finance">Finance & Management</button>
+                <button class="filter-btn" data-filter="Investment">Investment</button>
+                <button class="filter-btn" data-filter="Psychology">Psychology</button>
+            </div>
 
             <div class="ebooks-grid" id="ebooksGrid" aria-live="polite"></div>
         </section>
@@ -1629,7 +1828,35 @@
     </template>
 
     <script>
+        // ===== FUNGSI UNTUK NAVIGASI (DROPDOWN, ACTIVE LINKS) =====
+
+        // Fungsi untuk toggle dropdown
+        function toggleDropdown(event) {
+            event.preventDefault(); // Mencegah link pindah halaman
+            const dropdownMenu = event.currentTarget.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+
+            // Logika untuk mobile (jika dropdown dibuka, menu lain jangan ditutup)
+            if (window.innerWidth <= 900) {
+                // Biarkan menu utama tetap terbuka
+            }
+        }
+
+        // Fungsi untuk menutup dropdown jika klik di luar
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                const dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+
         // ===== Data (dummy) =====
+        // Kita letakkan datanya di atas agar bisa diakses oleh fungsi di bawah
         const ebooks = [{
                 id: 1,
                 title: 'Mindful Finance — Panduan Praktis',
@@ -1700,24 +1927,6 @@
             }
         ];
 
-        const blogList = document.getElementById("blogList");
-
-        if (blogList) {
-            posts.forEach(post => {
-                const postEl = document.createElement("div");
-                postEl.classList.add("post");
-                postEl.innerHTML = `
-                    <h4>${post.title}</h4>
-                    <p>${post.excerpt}</p>
-                    <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
-                `;
-                blogList.appendChild(postEl);
-            });
-        }
-
-        // ===================================
-        // ==== LOGIKA KUIS FINANSIAL ====
-        // ===================================
         const quizQuestions = [{
                 question: "Jika Anda mendapat uang bonus, apa yang pertama kali Anda lakukan?",
                 options: [{
@@ -1767,6 +1976,7 @@
                 ]
             }
         ];
+
         const quizResultsData = {
             'A': {
                 title: "Si Penjaga Aman (Konservatif)",
@@ -1781,22 +1991,36 @@
                 desc: "Anda berani dan mencari keuntungan tinggi! Anda tidak takut fluktuasi pasar. E-book tentang 'Diversifikasi Investasi' dan strategi lanjutan akan menantang Anda."
             }
         };
+
+        // ===== DEKLARASI VARIABEL KUIS (GLOBAL UNTUK SCRIPT INI) =====
         let currentQuestionIndex = 0;
         let userAnswers = [];
-        const quizContainer = document.getElementById('quiz-container');
-        const quizResultContainer = document.getElementById('quiz-result');
-        const quizQuestionEl = document.getElementById('quiz-question');
-        const quizOptionsEl = document.getElementById('quiz-options');
-        const quizRetakeBtn = document.getElementById('quiz-retake-btn');
-        const quizResultTitleEl = document.getElementById('quiz-result-title');
-        const quizResultDescEl = document.getElementById('quiz-result-desc');
+        let quizContainer, quizResultContainer, quizQuestionEl, quizOptionsEl, quizRetakeBtn, quizResultTitleEl, quizResultDescEl;
 
+
+        // ===== FUNGSI UNTUK KUIS =====
         function startQuiz() {
+            // Ambil elemennya di sini, SETELAH DOM siap
+            quizContainer = document.getElementById('quiz-container');
+            quizResultContainer = document.getElementById('quiz-result');
+            quizQuestionEl = document.getElementById('quiz-question');
+            quizOptionsEl = document.getElementById('quiz-options');
+            quizRetakeBtn = document.getElementById('quiz-retake-btn');
+            quizResultTitleEl = document.getElementById('quiz-result-title');
+            quizResultDescEl = document.getElementById('quiz-result-desc');
+
+            if (!quizContainer) return; // Hentikan jika kuis tidak ada di halaman
+
             currentQuestionIndex = 0;
             userAnswers = [];
             if (quizResultContainer) quizResultContainer.classList.add('hide');
             if (quizContainer) quizContainer.classList.remove('hide');
             showQuestion();
+
+            if (quizRetakeBtn) {
+                 quizRetakeBtn.removeEventListener('click', startQuiz); // Hapus listener lama jika ada
+                 quizRetakeBtn.addEventListener('click', startQuiz);
+            }
         }
 
         function showQuestion() {
@@ -1844,54 +2068,14 @@
             if (quizResultTitleEl) quizResultTitleEl.textContent = result.title;
             if (quizResultDescEl) quizResultDescEl.textContent = result.desc;
         }
-        if (quizRetakeBtn) {
-            quizRetakeBtn.addEventListener('click', startQuiz);
-        }
 
-        // ===================================
-        // ==== LOGIKA KALKULATOR BARU ====
-        // ===================================
-        const calcForm = document.getElementById('calc-form');
-        const calcResultBox = document.getElementById('calc-result');
 
-        if (calcForm) {
-            calcForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const principal = parseFloat(document.getElementById('calc-principal').value) || 0;
-                const monthly = parseFloat(document.getElementById('calc-monthly').value) || 0;
-                const interest = parseFloat(document.getElementById('calc-interest').value) || 0;
-                const years = parseFloat(document.getElementById('calc-years').value) || 0;
-                const r = interest / 100;
-                const n = 12;
-                const t = years;
-                const totalMonths = n * t;
-                const r_monthly = r / n;
-                const fv_principal = principal * Math.pow((1 + r_monthly), totalMonths);
-                const fv_pmt = monthly * ((Math.pow((1 + r_monthly), totalMonths) - 1) / r_monthly);
-                const totalValue = fv_principal + fv_pmt;
-                const totalInvested = principal + (monthly * totalMonths);
-                const totalInterest = totalValue - totalInvested;
-                const formatter = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                });
-                document.getElementById('calc-result-total').textContent = formatter.format(totalValue);
-                document.getElementById('calc-result-principal').textContent = formatter.format(totalInvested);
-                document.getElementById('calc-result-interest').textContent = formatter.format(totalInterest);
-                const resultTitle = calcResultBox.querySelector('h4');
-                resultTitle.textContent = `Hasil Investasi Anda dalam ${years} tahun:`;
-                calcResultBox.classList.remove('hide');
-            });
-        }
-
-        // ===== Render functions =====
-        const ebooksGrid = document.getElementById('ebooksGrid');
-        const totalCount = document.getElementById('totalCount');
-
+        // ===== FUNGSI RENDER EBOOK & BLOG =====
         function renderEbooks(list) {
-            if (!ebooksGrid) return;
+            const ebooksGrid = document.getElementById('ebooksGrid');
+            const totalCount = document.getElementById('totalCount');
+            if (!ebooksGrid || !totalCount) return;
+
             ebooksGrid.innerHTML = '';
             list.forEach(e => {
                 const tpl = document.getElementById('ebookTpl').content.cloneNode(true);
@@ -1904,48 +2088,29 @@
             });
             totalCount.textContent = list.length;
         }
-        renderEbooks(ebooks); // Panggil render awal
 
         function renderBlog() {
-            // Logika blog sudah dipindah ke atas (di luar fungsi)
-        }
-        // renderBlog(); // Tidak perlu dipanggil lagi
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Baris ini semua sama:
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // ---- AWAL MODIFIKASI ----
-        
-        const f = btn.dataset.filter; // Ambil nilai data-filter
-
-        if (f === 'all') {
-            // 1. Jika filternya 'all', tampilkan semua
-            renderEbooks(ebooks);
-
-        } else if (f === 'Finance') {
-            // 2. JIKA filternya 'Finance', cari yang kategori 'Finance' ATAU 'Money'
-            const filtered = ebooks.filter(e => e.category === 'Finance' || e.category === 'Money');
-            renderEbooks(filtered);
-
-        } else {
-            // 3. Untuk filter lainnya (Investment, Psychology)
-            const filtered = ebooks.filter(e => e.category === f);
-            renderEbooks(filtered);
+            const blogList = document.getElementById("blogList");
+            if (blogList) {
+                posts.forEach(post => {
+                    const postEl = document.createElement("div");
+                    postEl.classList.add("post");
+                    postEl.innerHTML = `
+                        <h4>${post.title}</h4>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read more →</a>
+                    `;
+                    blogList.appendChild(postEl);
+                });
+            }
         }
         
-        // ---- AKHIR MODIFIKASI ----
-    });
-});
-
         // ===== Reader & Download =====
         function openReader(e) {
             const modal = window.open('', '_blank', 'width=700,height=700');
             const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text') || '#E5E7EB';
             modal.document.write(
-                `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e.title}</title></head><body style="font-family:Poppins,Arial;padding:20px;background:#0b1220;color:${textColor};line-height:1.45"><h2>${e.title}</h2><p style='color:${textColor};opacity:.9'>${e.desc}</p><pre style='white-space:pre-wrap;color:rgba(229,231,235,.9)'>Isi e-book (dummy)</pre></body></html>`
+                `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e.title}</title></head><body style="font-family:Poppins,Arial;padding:20px;background:#0b1220;color:${textColor};line-height:1.45"><h2>${e.title}</h2><p style='color:${textColor};opacity:.9'>${e.desc}</p><pre style='white-space:pre-wrap;color:rgba(229,231,235,.9)'>Isi e-book (dummy).</pre></body></html>`
             );
             modal.document.close();
         }
@@ -1973,172 +2138,41 @@
         function saveSubs(arr) {
             localStorage.setItem(subsKey, JSON.stringify(arr));
         }
-        const subs = loadSubs();
-        const subscribeForm = document.getElementById('subscribeForm');
-        if (subscribeForm) {
-            subscribeForm.addEventListener('submit', (ev) => {
-                ev.preventDefault();
-                const name = document.getElementById('subName').value.trim();
-                const email = document.getElementById('subEmail').value.trim();
-                const msg = document.getElementById('subscribeMsg');
-                if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
-                subs.push({
-                    name,
-                    email,
-                    time: new Date().toISOString()
-                });
-                saveSubs(subs);
-                msg.textContent = 'Berhasil berlangganan 🎉';
-                subscribeForm.reset();
-            });
-        }
-        const downloadSubsBtn = document.getElementById('downloadSubs');
-        if (downloadSubsBtn) {
-            downloadSubsBtn.addEventListener('click', () => {
-                const data = JSON.stringify(loadSubs(), null, 2);
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(new Blob([data], {
-                    type: 'application/json'
-                }));
-                a.download = 'subscribers.json';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            });
-        }
 
-        // ===== Contact Form =====
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (ev) => {
-                ev.preventDefault();
-                const msg = document.getElementById('contactMsg');
-                msg.textContent = 'Pesan berhasil dikirim (simulasi).';
-                contactForm.reset();
-            });
-            document.getElementById('resetContact').addEventListener('click', () => {
-                contactForm.reset();
-                document.getElementById('contactMsg').textContent = '';
-            });
-        }
+        // ===== FUNGSI UNTUK SCROLL & NAVBAR =====
+        function handleScroll() {
+            const navLinks = document.querySelectorAll(".nav-links a");
+            const sections = document.querySelectorAll("section");
+            let currentSection = "";
 
-        // ===== Back to Top =====
-        const backTop = document.getElementById('backTop');
-        if (backTop) {
-            backTop.addEventListener('click', () => window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            }));
-            window.addEventListener('scroll', () => {
-                backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-            });
-        }
-
-        // ===== Menu Toggle (mobile) =====
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                const isOpen = navLinks.classList.toggle('show');
-                menuToggle.setAttribute('aria-expanded', String(isOpen));
-            });
-
-            // ==== PERBAIKAN LOGIKA KLIK DROPDOWN ====
-            navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    // Hentikan event agar tidak memicu penutupan menu utama
-                    e.stopPropagation();
-
-                    const submenu = toggle.nextElementSibling;
-                    if (submenu && submenu.classList.contains('dropdown-menu')) {
-                        // Cek apakah sedang 'block' atau 'none'
-                        const isVisible = submenu.style.display === 'block';
-                        submenu.style.display = isVisible ? 'none' : 'block';
-                    }
-                });
-            });
-            // ==== AKHIR PERBAIKAN ====
-
-            // HANYA tutup menu jika link <a> yang BUKAN bagian dari dropdown di-klik
-            navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', () => {
-                    if (navLinks.classList.contains('show')) {
-                        navLinks.classList.remove('show');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-
-            menuToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    menuToggle.click();
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Diberi offset 100px
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute("id");
                 }
             });
-        }
 
-        // ===== Smooth scroll for nav links =====
-        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-            link.addEventListener('click', e => {
-                const href = link.getAttribute('href');
-                if (!href || href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            navLinks.forEach(a => {
+                a.classList.remove("active");
+                if (a.getAttribute("href") === `#${currentSection}`) {
+                    a.classList.add("active");
+                }
             });
-        });
 
-        // ===== Fade-in Observer (single observer) =====
-        const fadeEls = document.querySelectorAll('.fade-in');
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('show');
-            });
-        }, {
-            threshold: 0.12
-        });
-        fadeEls.forEach(el => obs.observe(el));
-
-        // ===== Footer Year =====
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        // ===== Plan view & highlight =====
-        function viewBooks(plan) {
-            localStorage.setItem('selectedPlan', plan);
-            document.getElementById('library').scrollIntoView({
-                behavior: 'smooth'
-            });
-            highlightBooks(plan);
-        }
-
-        function highlightBooks(plan) {
-            const books = document.querySelectorAll('.ebook');
-            books.forEach(card => card.classList.remove('highlight-basic', 'highlight-pro'));
-            if (plan === 'basic') {
-                books.forEach((card, index) => {
-                    if (index < 10) card.classList.add('highlight-basic');
-                });
-            } else if (plan === 'pro') {
-                books.forEach(card => card.classList.add('highlight-pro'));
+            // Progress Bar
+            const progress = document.getElementById('scroll-progress');
+            if (progress) { // Cek apakah progress bar ada
+                const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (window.scrollY / totalHeight) * 100;
+                progress.style.width = scrollPercent + '%';
             }
         }
 
-        // ===== Scroll progress bar =====
-        window.addEventListener('scroll', () => {
-            const progress = document.getElementById('scroll-progress');
-            if (!progress) return;
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progress.style.width = scrollPercent + '%';
-        });
 
-        // ===== FUNGSI LOAD UTAMA =====
-
-        // 1. Saat DOM (HTML) sudah siap
+        // ===================================
+        // ===== FUNGSI LOAD UTAMA (DOM) =====
+        // ===================================
+        // Saat DOM (HTML) sudah siap, jalankan semua kode yang butuh getElementById
         document.addEventListener("DOMContentLoaded", () => {
 
             // Logika Welcome Screen
@@ -2159,11 +2193,388 @@
             // Mulai Kuis
             startQuiz();
 
+            // Render Ebooks
+            renderEbooks(ebooks);
+
+            // Render Blog
+            renderBlog();
+
             // Inisialisasi Ikon
             lucide.createIcons();
-        });
+
+            // ===== LOGIKA KALKULATOR BARU ====
+            const calcForm = document.getElementById('calc-form');
+            const calcResultBox = document.getElementById('calc-result');
+
+            if (calcForm) {
+                calcForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const principal = parseFloat(document.getElementById('calc-principal').value) || 0;
+                    const monthly = parseFloat(document.getElementById('calc-monthly').value) || 0;
+                    const interest = parseFloat(document.getElementById('calc-interest').value) || 0;
+                    const years = parseFloat(document.getElementById('calc-years').value) || 0;
+                    const r = interest / 100;
+                    const n = 12;
+                    const t = years;
+                    const totalMonths = n * t;
+                    const r_monthly = r / n;
+                    const fv_principal = principal * Math.pow((1 + r_monthly), totalMonths);
+                    const fv_pmt = monthly * ((Math.pow((1 + r_monthly), totalMonths) - 1) / r_monthly);
+                    const totalValue = fv_principal + fv_pmt;
+                    const totalInvested = principal + (monthly * totalMonths);
+                    const totalInterest = totalValue - totalInvested;
+                    const formatter = new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                    });
+                    document.getElementById('calc-result-total').textContent = formatter.format(totalValue);
+                    document.getElementById('calc-result-principal').textContent = formatter.format(totalInvested);
+                    document.getElementById('calc-result-interest').textContent = formatter.format(totalInterest);
+                    const resultTitle = calcResultBox.querySelector('h4');
+                    resultTitle.textContent = `Hasil Investasi Anda dalam ${years} tahun:`;
+                    calcResultBox.classList.remove('hide');
+                });
+            }
+            
+            // ===== Event Listener Filter Ebook =====
+             document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const f = btn.dataset.filter;
+                    if (f === 'all') {
+                        renderEbooks(ebooks);
+                    } else if (f === 'Finance') {
+                        const filtered = ebooks.filter(e => e.category === 'Finance' || e.category === 'Money');
+                        renderEbooks(filtered);
+                    } else {
+                        const filtered = ebooks.filter(e => e.category === f);
+                        renderEbooks(filtered);
+                    }
+                });
+            });
+
+            // ===== Subscribe (localStorage + download) =====
+            const subs = loadSubs();
+            const subscribeForm = document.getElementById('subscribeForm');
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', (ev) => {
+                    ev.preventDefault();
+                    const name = document.getElementById('subName').value.trim();
+                    const email = document.getElementById('subEmail').value.trim();
+                    const msg = document.getElementById('subscribeMsg');
+                    if (!name || !email) return msg.textContent = 'Lengkapi nama dan email.';
+                    subs.push({
+                        name,
+                        email,
+                        time: new Date().toISOString()
+                    });
+                    saveSubs(subs);
+                    msg.textContent = 'Berhasil berlangganan 🎉';
+                    subscribeForm.reset();
+                });
+            }
+            const downloadSubsBtn = document.getElementById('downloadSubs');
+            if (downloadSubsBtn) {
+                downloadSubsBtn.addEventListener('click', () => {
+                    const data = JSON.stringify(loadSubs(), null, 2);
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob([data], {
+                        type: 'application/json'
+                    }));
+                    a.download = 'subscribers.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                });
+            }
+
+            // ===== Contact Form =====
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (ev) => {
+                    ev.preventDefault();
+                    const msg = document.getElementById('contactMsg');
+                    msg.textContent = 'Pesan berhasil dikirim (simulasi).';
+                    contactForm.reset();
+                });
+                document.getElementById('resetContact').addEventListener('click', () => {
+                    contactForm.reset();
+                    document.getElementById('contactMsg').textContent = '';
+                });
+            }
+
+            // ===== Back to Top =====
+            const backTop = document.getElementById('backTop');
+            if (backTop) {
+                backTop.addEventListener('click', () => window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                }));
+                window.addEventListener('scroll', () => {
+                    backTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+                });
+            }
+
+            // ===== Menu Toggle (mobile) =====
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = navLinks.classList.toggle('show');
+                    menuToggle.setAttribute('aria-expanded', String(isOpen));
+                });
+
+                navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const submenu = toggle.nextElementSibling;
+                        if (submenu && submenu.classList.contains('dropdown-menu')) {
+                            const isVisible = submenu.style.display === 'block';
+                            submenu.style.display = isVisible ? 'none' : 'block';
+                        }
+                    });
+                });
+
+                navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+                    a.addEventListener('click', () => {
+                        if (navLinks.classList.contains('show')) {
+                            navLinks.classList.remove('show');
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+
+                menuToggle.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        menuToggle.click();
+                    }
+                });
+            }
+
+            // ===== Smooth scroll for nav links =====
+            document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+                link.addEventListener('click', e => {
+                    const href = link.getAttribute('href');
+                    if (!href || href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // ===== Fade-in Observer (single observer) =====
+            const fadeEls = document.querySelectorAll('.fade-in');
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add('show');
+                });
+            }, {
+                threshold: 0.12
+            });
+            fadeEls.forEach(el => obs.observe(el));
+
+            // ===== Footer Year =====
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // ===== Scroll progress bar =====
+            window.addEventListener('scroll', handleScroll); // Ganti dari ('scroll', () => { ... })
+
+
+            // ========================================================
+            // // ========================================================
+
+            // --- Ambil elemen-elemen HTML ---
+            const chatBubble = document.getElementById("chatBubble");
+            const chatWindow = document.getElementById("chatWindow");
+            const closeChat = document.getElementById("closeChat");
+            const sendButton = document.getElementById("sendButton");
+            const chatInput = document.getElementById("chatInput");
+            const chatBody = document.getElementById("chatBody");
+
+            // Variabel untuk menyimpan riwayat chat (PENTING untuk kepribadian)
+            let chatHistory = [];
+
+            // --- Logika untuk Buka/Tutup Jendela Chat ---
+            // Cek dulu apakah elemennya ada sebelum menambahkan listener
+            if (chatBubble) {
+                chatBubble.addEventListener("click", () => {
+                    if (chatWindow) chatWindow.classList.toggle("show");
+                });
+            }
+
+            if (closeChat) {
+                closeChat.addEventListener("click", () => {
+                    if (chatWindow) chatWindow.classList.remove("show");
+                });
+            }
+
+            // --- Logika untuk Mengirim Pesan ---
+            if (sendButton) {
+                sendButton.addEventListener("click", kirimPesan);
+            }
+            if (chatInput) {
+                chatInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault(); // Mencegah 'Enter' membuat baris baru
+                        kirimPesan();
+                    }
+                });
+            }
+
+            function kirimPesan() {
+                if (!chatInput) return;
+                const pesanPengguna = chatInput.value.trim();
+                if (pesanPengguna === "") return; // Jangan kirim pesan kosong
+
+                // Tampilkan pesan pengguna di chat
+                tampilkanPesan(pesanPengguna, "user");
+
+                // Tambahkan pesan pengguna ke riwayat
+                chatHistory.push({
+                    role: "user",
+                    parts: [{
+                        text: pesanPengguna
+                    }]
+                });
+
+                // Kosongkan input
+                chatInput.value = "";
+
+                // Tampilkan indikator loading
+                tampilkanLoading();
+
+                // Panggil API Gemini (backend)
+                panggilGeminiAPI(pesanPengguna);
+            }
+
+            // --- Fungsi untuk Menampilkan Pesan di Jendela Chat ---
+            function tampilkanPesan(pesan, pengirim) {
+                if (!chatBody) return;
+                const divPesan = document.createElement("div");
+                divPesan.classList.add("chat-message", pengirim);
+
+                divPesan.innerHTML = escapeHTML(pesan).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                chatBody.appendChild(divPesan);
+
+                // Auto-scroll ke pesan terbaru
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            // Fungsi keamanan sederhana untuk mencegah XSS
+            function escapeHTML(str) {
+                if (typeof str !== 'string') return '';
+                return str.replace(/[&<>"']/g, function (match) {
+                    return {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;'
+                    } [match];
+                });
+            }
+
+            // --- Fungsi untuk Menampilkan Indikator Loading ---
+            function tampilkanLoading() {
+                if (!chatBody) return;
+                const divLoading = document.createElement("div");
+                divLoading.classList.add("chat-message", "loading");
+                // Mengganti teks loading sesuai brand
+                divLoading.textContent = "Wealth Buddy lagi mikir... 🌱";
+                divLoading.id = "loadingIndicator"; // Beri ID agar mudah dihapus
+                chatBody.appendChild(divLoading);
+
+                // Auto-scroll
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            // --- Fungsi untuk Menghapus Indikator Loading ---
+            function hapusLoading() {
+                const loadingIndicator = document.getElementById("loadingIndicator");
+                if (loadingIndicator && chatBody) {
+                    chatBody.removeChild(loadingIndicator);
+                }
+            }
+
+            // --- Fungsi Inti: Memanggil API Gemini ---
+            async function panggilGeminiAPI(pesan) {
+
+                // URL sekarang mengarah ke backend Netlify Anda
+                const API_URL = "/.netlify/functions/chat"; // <-- INI YANG BERBEDA
+
+                // Ambil 5 riwayat chat terakhir (tanpa kepribadian, itu urusan server)
+                const historyForBackend = chatHistory.slice(-5);
+
+                const requestBody = {
+                    message: pesan,
+                    history: historyForBackend,
+                };
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(requestBody),
+                    });
+
+                    // Hapus loading setelah mendapat jawaban
+                    hapusLoading();
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error("Error response dari server:", errorData);
+                        tampilkanPesan(
+                            "Aduh, serverku lagi error nih: " + (errorData.error || response.statusText) + " 😥",
+                            "bot"
+                        );
+                        chatHistory.pop(); // Hapus pesan user dari history jika gagal
+                        return;
+                    }
+
+                    const data = await response.json();
+
+                    // Ambil teks jawaban dari respons server
+                    const jawabanBot = data.text;
+
+                    tampilkanPesan(jawabanBot, "bot");
+
+                    // Simpan jawaban bot ke riwayat
+                    chatHistory.push({
+                        role: "model",
+                        parts: [{
+                            text: jawabanBot
+                        }]
+                    });
+
+                } catch (error) {
+                    // Jika terjadi error di sisi klien (misal: jaringan putus)
+                    hapusLoading();
+                    console.error("Error fetching API:", error);
+                    tampilkanPesan(
+                        "Koneksi internet kamu kayaknya lagi kurang oke, bro. Coba cek lagi deh. 😅",
+                        "bot"
+                    );
+                    chatHistory.pop();
+                }
+            } // <-- PENUTUP FUNGSI panggilGeminiAPI
+            // ========================================================
+            // // ========================================================
+
+        }); // <-- INI ADALAH PENUTUP DOMContentLoaded YANG BENAR
+
 
         // 2. Saat semua resource (gambar, dll) sudah siap
+        //    Ini adalah blok terpisah. JANGAN digabung dengan DOMContentLoaded.
         window.addEventListener('load', () => {
             // Sembunyikan Preloader
             const preloader = document.getElementById('preloader');
@@ -2173,8 +2584,8 @@
             document.body.classList.add('loaded');
         });
     </script>
+
+
 </body>
 
 </html>
-
-
