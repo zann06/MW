@@ -1459,13 +1459,12 @@
                 <div class="muted">Total: <span id="totalCount">0</span> e-books</div>
             </div>
 
-            <div class="filters" style="margin-top:12px">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="Finance">Finance</button>
-                <button class="filter-btn" data-filter="Investment">Investment</button>
-                <button class="filter-btn" data-filter="Psychology">Psychology</button>
-                <button class="filter-btn" data-filter="Money">Money Management</button>
-            </div>
+                <div class="filters" style="margin-top:12px">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Finance">Finance & Management</button> 
+                    <button class="filter-btn" data-filter="Investment">Investment</button>
+                    <button class="filter-btn" data-filter="Psychology">Psychology</button>
+                </div>
 
             <div class="ebooks-grid" id="ebooksGrid" aria-live="polite"></div>
         </section>
@@ -1912,17 +1911,34 @@
         }
         // renderBlog(); // Tidak perlu dipanggil lagi
 
-        // ===== Filters =====
         document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const f = btn.dataset.filter;
-                if (f === 'all') renderEbooks(ebooks);
-                else if (f === 'Money') renderEbooks(ebooks.filter(e => e.category === 'Money'));
-                else renderEbooks(ebooks.filter(e => e.category === f));
-            });
-        });
+    btn.addEventListener('click', () => {
+        // Baris ini semua sama:
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // ---- AWAL MODIFIKASI ----
+        
+        const f = btn.dataset.filter; // Ambil nilai data-filter
+
+        if (f === 'all') {
+            // 1. Jika filternya 'all', tampilkan semua
+            renderEbooks(ebooks);
+
+        } else if (f === 'Finance') {
+            // 2. JIKA filternya 'Finance', cari yang kategori 'Finance' ATAU 'Money'
+            const filtered = ebooks.filter(e => e.category === 'Finance' || e.category === 'Money');
+            renderEbooks(filtered);
+
+        } else {
+            // 3. Untuk filter lainnya (Investment, Psychology)
+            const filtered = ebooks.filter(e => e.category === f);
+            renderEbooks(filtered);
+        }
+        
+        // ---- AKHIR MODIFIKASI ----
+    });
+});
 
         // ===== Reader & Download =====
         function openReader(e) {
@@ -2160,4 +2176,5 @@
 </body>
 
 </html>
+
 
