@@ -2390,18 +2390,8 @@
 
             lucide.createIcons();
 
-// ========================================================
-// // ========================================================
-
-// === TAMBAHKAN BARIS INI ===
-let hasDragged = false; // Variabel global untuk melacak status drag
-
-// --- Ambil elemen-elemen HTML ---
-const chatBubble = document.getElementById("chatBubble");
-            // ========================================================
-            // // ========================================================
-
-            // --- Ambil elemen-elemen HTML ---
+/// --- Ambil elemen-elemen HTML ---
+const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang hilang sudah ada di sini
             const chatWindow = document.getElementById("chatWindow");
             const closeChat = document.getElementById("closeChat");
             const sendButton = document.getElementById("sendButton");
@@ -2410,17 +2400,20 @@ const chatBubble = document.getElementById("chatBubble");
 
             // Variabel untuk menyimpan riwayat chat (PENTING untuk kepribadian)
             let chatHistory = [];
+            
+            // Variabel untuk melacak status drag (untuk fitur geser)
+            let hasDragged = false; 
 
             // --- Logika untuk Buka/Tutup Jendela Chat ---
             // Cek dulu apakah elemennya ada sebelum menambahkan listener
             if (chatBubble) {
                 chatBubble.addEventListener("click", () => {
-                    // === TAMBAHKAN 3 BARIS INI ===
+                    // Cek apakah baru selesai di-drag
                     if (hasDragged) {
                         hasDragged = false; // Reset status
                         return; // Jika ini adalah akhir dari 'drag', JANGAN buka chat
                     }
-                    // === AKHIR TAMBAHAN ===
+                    // Jika bukan drag, buka/tutup chat
                     if (chatWindow) chatWindow.classList.toggle("show");
                 });
             }
@@ -2431,6 +2424,7 @@ const chatBubble = document.getElementById("chatBubble");
                 });
             }
 
+            // --- Logika untuk Fitur Geser (Drag-and-Drop) ---
             if (chatBubble) {
                 let isDragging = false;
                 let offsetX, offsetY;
@@ -2580,7 +2574,6 @@ const chatBubble = document.getElementById("chatBubble");
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
 
-            // Fungsi keamanan sederhana untuk mencegah XSS
             function escapeHTML(str) {
                 if (typeof str !== 'string') return '';
                 return str.replace(/[&<>"']/g, function (match) {
@@ -2618,9 +2611,9 @@ const chatBubble = document.getElementById("chatBubble");
 
             // --- Fungsi Inti: Memanggil API Gemini ---
             async function panggilGeminiAPI(pesan) {
-
-                // URL sekarang mengarah ke backend Netlify Anda
-                const API_URL = "/.netlify/functions/chat"; // <-- INI YANG BERBEDA
+              
+                // URL sekarang mengarah ke backend Vercel Anda
+                const API_URL = "/api/chat"; // <-- Pastikan ini URL Vercel
 
                 // Ambil 5 riwayat chat terakhir (tanpa kepribadian, itu urusan server)
                 const historyForBackend = chatHistory.slice(-5);
