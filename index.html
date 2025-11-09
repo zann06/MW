@@ -1248,6 +1248,8 @@
             box-shadow: 0 0 15px #1DE9B6, 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
             z-index: 9998;
+
+            cursor: grab;
         }
 
         .chat-bubble:hover {
@@ -2386,12 +2388,20 @@
             // ===== Scroll progress bar =====
             window.addEventListener('scroll', handleScroll); // Ganti dari ('scroll', () => { ... })
 
+            lucide.createIcons();
 
+// ========================================================
+// // ========================================================
+
+// === TAMBAHKAN BARIS INI ===
+let hasDragged = false; // Variabel global untuk melacak status drag
+
+// --- Ambil elemen-elemen HTML ---
+const chatBubble = document.getElementById("chatBubble");
             // ========================================================
             // // ========================================================
 
             // --- Ambil elemen-elemen HTML ---
-            const chatBubble = document.getElementById("chatBubble");
             const chatWindow = document.getElementById("chatWindow");
             const closeChat = document.getElementById("closeChat");
             const sendButton = document.getElementById("sendButton");
@@ -2405,6 +2415,12 @@
             // Cek dulu apakah elemennya ada sebelum menambahkan listener
             if (chatBubble) {
                 chatBubble.addEventListener("click", () => {
+                    // === TAMBAHKAN 3 BARIS INI ===
+                    if (hasDragged) {
+                        hasDragged = false; // Reset status
+                        return; // Jika ini adalah akhir dari 'drag', JANGAN buka chat
+                    }
+                    // === AKHIR TAMBAHAN ===
                     if (chatWindow) chatWindow.classList.toggle("show");
                 });
             }
@@ -2413,6 +2429,102 @@
                 closeChat.addEventListener("click", () => {
                     if (chatWindow) chatWindow.classList.remove("show");
                 });
+            }
+
+            if (chatBubble) {
+                let isDragging = false;
+                let offsetX, offsetY;
+                let startX, startY;
+
+                function onDragStart(clientX, clientY) {
+                    isDragging = true;
+                    hasDragged = false; // Reset status drag
+                    
+                    // Posisi awal mouse
+                    startX = clientX;
+                    startY = clientY;
+
+                    // Offset dari top/left bubble
+                    offsetX = clientX - chatBubble.getBoundingClientRect().left;
+                    offsetY = clientY - chatBubble.getBoundingClientRect().top;
+
+                    chatBubble.style.cursor = 'grabbing';
+                    chatBubble.style.transition = 'none'; // Matikan transisi agar tidak lag
+                }
+
+                function onDragMove(clientX, clientY) {
+                    if (!isDragging) return;
+
+                    // Cek apakah sudah dianggap 'drag' (bergerak lebih dari 5px)
+                    const deltaX = Math.abs(clientX - startX);
+                    const deltaY = Math.abs(clientY - startY);
+                    if (deltaX > 5 || deltaY > 5) {
+                        hasDragged = true; // Konfirmasi ini adalah drag, bukan click
+                    }
+
+                    let newLeft = clientX - offsetX;
+                    let newTop = clientY - offsetY;
+
+                    // Batasan (Boundaries) agar tidak keluar layar
+                    const bubbleWidth = chatBubble.offsetWidth;
+                    const bubbleHeight = chatBubble.offsetHeight;
+                    const padding = 10; // Jarak minimal 10px dari pinggir layar
+
+                    newLeft = Math.max(padding, Math.min(newLeft, window.innerWidth - bubbleWidth - padding));
+                    newTop = Math.max(padding, Math.min(newTop, window.innerHeight - bubbleHeight - padding));
+
+                    chatBubble.style.left = newLeft + 'px';
+                    chatBubble.style.top = newTop + 'px';
+                    
+                    // Override style bottom/right agar tidak konflik
+                    chatBubble.style.right = 'auto';
+                    chatBubble.style.bottom = 'auto';
+                }
+
+                function onDragEnd() {
+                    isDragging = false;
+                    chatBubble.style.cursor = 'grab';
+                    chatBubble.style.transition = ''; // Kembalikan transisi (jika ada)
+
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    document.removeEventListener('touchmove', onTouchMove);
+                    document.removeEventListener('touchend', onTouchEnd);
+                }
+
+                // --- Mouse Events ---
+                chatBubble.addEventListener('mousedown', (e) => {
+                    onDragStart(e.clientX, e.clientY);
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                });
+
+                function onMouseMove(e) {
+                    onDragMove(e.clientX, e.clientY);
+                }
+
+                function onMouseUp() {
+                    onDragEnd();
+                }
+
+                // --- Touch Events (Mobile) ---
+                chatBubble.addEventListener('touchstart', (e) => {
+                    const touch = e.touches[0];
+                    onDragStart(touch.clientX, touch.clientY);
+                    document.addEventListener('touchmove', onTouchMove, { passive: false });
+                    document.addEventListener('touchend', onTouchEnd);
+                }, { passive: false });
+
+                function onTouchMove(e) {
+                    if (!isDragging) return;
+                    e.preventDefault(); // Mencegah scroll halaman saat bubble di-drag
+                    const touch = e.touches[0];
+                    onDragMove(touch.clientX, touch.clientY);
+                }
+
+                function onTouchEnd() {
+                    onDragEnd();
+                }
             }
 
             // --- Logika untuk Mengirim Pesan ---
