@@ -1,4 +1,4 @@
-// Isi untuk file: api/chat.js (VERSI VERCEL)
+// Isi untuk file: api/chat.js (VERSI VERCEL - FINAL)
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -27,7 +27,12 @@ module.exports = async (request, response) => {
 
     // Inisialisasi model DENGAN systemInstruction
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-1.5-flash", // Kita gunakan nama model yang stabil
+        
+        // ===================================
+        // === INI ADALAH PERBAIKANNYA ===
+        model: "gemini-pro", // Kita ganti ke 'gemini-pro' yang paling stabil
+        // ===================================
+
         systemInstruction: systemInstruction.parts[0].text 
     });
 
