@@ -1442,7 +1442,6 @@
     </div>
 </div>
 
-
     <div id="preloader">
         <div class="spinner"></div>
     </div>
@@ -2688,6 +2687,37 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
             // Tampilkan body
             document.body.classList.add('loaded');
         });
+
+        async function sendMessageToBot(userMessage) {
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          history: [], // bisa diisi kalau mau simpan percakapan
+        }),
+      });
+
+      const data = await response.json();
+      if (data.text) {
+        console.log("Bot:", data.text);
+        document.getElementById("botReply").innerText = data.text;
+      } else {
+        console.error("Error:", data.error);
+      }
+    } catch (err) {
+      console.error("Gagal kirim pesan:", err);
+    }
+  }
+
+  // contoh pemanggilan:
+  document.getElementById("sendBtn").addEventListener("click", () => {
+    const userMsg = document.getElementById("userInput").value;
+    sendMessageToBot(userMsg);
+  });
     </script>
 
 
