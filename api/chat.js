@@ -14,7 +14,6 @@ const systemInstruction = {
 };
 
 // Ini adalah fungsi handler Vercel
-// PERHATIKAN: Sintaksnya berbeda dari Netlify
 module.exports = async (request, response) => {
   
   // Pastikan ini adalah request POST
@@ -24,7 +23,6 @@ module.exports = async (request, response) => {
 
   try {
     // Ambil pesan dan riwayat chat dari frontend
-    // PERHATIKAN: Vercel otomatis mem-parsing JSON, jadi tidak perlu JSON.parse()
     const { message, history } = request.body;
 
     // Inisialisasi model DENGAN systemInstruction
@@ -47,7 +45,6 @@ module.exports = async (request, response) => {
     const text = botResponse.text();
 
     // Kirim balasan bot kembali ke frontend
-    // PERHATIKAN: Ini cara Vercel mengirim balasan
     response.status(200).json({ text: text });
 
   } catch (error) {
