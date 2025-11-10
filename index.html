@@ -65,7 +65,7 @@
             margin: 0;
             padding: 0;
             padding-top: 90px;
-            /* agar konten tidak tertutup navbar */
+            
             font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
             color: var(--text);
             background: linear-gradient(180deg, var(--bg), var(--section));
@@ -80,7 +80,7 @@
 
         }
 
-        /* ==== PAGE TRANSITION ==== */
+        
 
         body.loaded {
             opacity: 1;
@@ -93,7 +93,7 @@
             padding: 0 20px;
         }
 
-        /* ==== PRELOADER ==== */
+        
         #preloader {
             position: fixed;
             inset: 0;
@@ -125,7 +125,7 @@
             }
         }
 
-        /* ==== SCROLL PROGRESS BAR ==== */
+        
         #scroll-progress {
             position: fixed;
             top: 0;
@@ -138,7 +138,7 @@
         }
 
 
-        /* ==== WELCOME SCREEN ULTRA BLUR ==== */
+        
         #welcome-screen {
             position: fixed;
             inset: 0;
@@ -154,7 +154,7 @@
             transition: opacity 1s ease;
         }
 
-        /* 🌫️ Latar belakang super-tebal blur + overlay gradient */
+        
         .welcome-bg {
             position: absolute;
             inset: 0;
@@ -167,7 +167,7 @@
             transition: all 0.4s ease;
         }
 
-        /* Konten di tengah tetap sama */
+        
         .welcome-inner {
             position: relative;
             z-index: 1;
@@ -219,7 +219,7 @@
             box-shadow: 0 0 35px rgba(34, 197, 94, 0.45);
         }
 
-        /* Saat disembunyikan */
+        
         #welcome-screen.hide {
             opacity: 0;
             pointer-events: none;
@@ -258,7 +258,7 @@
 
 
 
-        /* Header / Navbar */
+        
         header {
             position: fixed;
             top: 0;
@@ -412,7 +412,7 @@
 
 
 
-        /* HERO */
+        
         .hero {
             padding: 64px 0;
             display: grid;
@@ -464,11 +464,14 @@
             padding: 48px 0;
         }
 
+        
         section {
             
             height: auto;
+            
         }
 
+        
 
 
         h3 {
@@ -480,7 +483,7 @@
             color: var(--muted);
         }
 
-        /* Library */
+        
         .filters {
             display: flex;
             gap: 8px;
@@ -506,16 +509,17 @@
 
         .ebooks-grid {
             display: flex;
-           
+            
             flex-wrap: nowrap;
             
             overflow-x: auto;
-           
+            
             gap: 18px;
             margin-top: 18px;
             padding-bottom: 12px;
-          
+            
 
+            
             scroll-snap-type: x mandatory;
         }
 
@@ -530,14 +534,15 @@
             transition: transform 260ms ease, box-shadow 260ms ease;
 
             .ebook {
-           
-             
+                
+
+                
                 width: 320px;
-            
+                
                 flex-shrink: 0;
-               
+                
                 scroll-snap-align: start;
-               
+                
             }
         }
 
@@ -578,6 +583,7 @@
         }
 
         @media (max-width: 900px) {
+            
 
             .nav-links {
                 display: flex;
@@ -588,13 +594,19 @@
                 flex-direction: column;
                 min-width: 220px;
 
-               
+                
                 border-radius: 8px;
-              
+                
                 box-shadow: 0 4px 12px #0000001a;
+                
 
+                
+                
+                
+                
+                
 
-                /* --- PERUBAHAN ANIMASI (KANAN-KE-KIRI) --- */
+                
                 opacity: 0;
                 transform: translateX(20px);
 
@@ -615,10 +627,10 @@
 
             .layout-grid-responsive {
                 grid-template-columns: 1fr;
-
+                
             }
 
-            /* ==== INI CSS BARU UNTUK BLOG (RESPONSIVE) ==== */
+            
             .blog-layout-grid {
                 grid-template-columns: 1fr;
                 gap: 18px;
@@ -626,10 +638,10 @@
 
             .blog-illustration-aside {
                 display: none;
-            
+                
             }
 
-            /* ==== AKHIR CSS BLOG ==== */
+            
 
             .menu-toggle {
                 display: block;
@@ -639,7 +651,7 @@
                 grid-template-columns: 1fr;
             }
 
-            /* CSS RESPONSIVE LAINNYA */
+            
             .calculator-glass-box {
                 grid-template-columns: 1fr;
             }
@@ -647,25 +659,25 @@
 
             .nav-dropdown {
                 display: contents;
-             
+                
             }
 
             .dropdown-toggle {
-               
+                
                 width: 100%;
                 
             }
 
             .dropdown-toggle i {
                 display: none;
-              
+                
             }
 
             .dropdown-menu {
                 display: none;
-              
+                
                 position: static;
-             
+                
                 width: 100%;
                 background: none;
                 border: none;
@@ -677,13 +689,13 @@
             }
 
             .dropdown-menu a {
-            
+                
                 padding-left: 30px !important;
                 padding-top: 10px;
                 padding-bottom: 10px;
             }
 
-            /* ==== AKHIR KODE RESPONSIVE DROPDOWN ==== */
+            
         }
 
         @media (max-width: 700px) {
@@ -724,17 +736,17 @@
 
         .blog-illustration-aside {
             display: none;
-        
+            
         }
 
-        /* ==== AKHIR KODE BLOG LAYOUT ==== */
+        
 
 
-        /* Blog */
+        
         .blog-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-          
+            
             gap: 16px;
             margin-top: 12px;
         }
@@ -756,7 +768,7 @@
             color: #1a5ed8;
         }
 
-        /* ==== KODE UNTUK KOMIK ==== */
+        
         .comic-container {
             margin-top: 24px;
             text-align: center;
@@ -775,7 +787,7 @@
             border-radius: 8px;
         }
 
-        /* ==== KODE UNTUK KUIS ==== */
+        
         .quiz-glass-box {
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -813,9 +825,9 @@
             display: none !important;
         }
 
-        /* ==== KODE UNTUK KALKULATOR & TESTIMONI ==== */
+        
 
-        /* Kalkulator */
+        
         .calculator-glass-box {
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -854,7 +866,7 @@
 
         .calc-result-box {
             background: rgba(34, 197, 94, 0.1);
-            /* Aksen hijau */
+            
             border: 1px solid var(--accent);
             border-radius: var(--radius);
             padding: 20px;
@@ -875,12 +887,12 @@
             filter: drop-shadow(0 0 8px var(--accent));
         }
 
-        /* ==== KODE BARU UNTUK TESTIMONI SLIDER ==== */
+        
         .testimonial-slider {
             margin-top: 24px;
             overflow: hidden;
             border-radius: var(--radius);
-            /* Pindahkan glassmorphism ke container slider */
+            
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
             -webkit-backdrop-filter: blur(18px);
@@ -891,23 +903,24 @@
         .testimonial-track {
             display: flex;
             width: 300%;
-           
+            
+            
             animation: slide 15s infinite ease-in-out;
         }
 
         .testimonial-card {
             width: 33.333%;
-          
+            
             flex-shrink: 0;
 
-            /* Hapus style glassmorphism dari kartu individual */
+            
             background: none;
             border: none;
             box-shadow: none;
             -webkit-backdrop-filter: none;
             backdrop-filter: none;
 
-            /* Tetap beri padding */
+            
             padding: 24px;
             font-style: italic;
             display: flex;
@@ -948,64 +961,64 @@
             color: var(--muted);
         }
 
-        /* Keyframes untuk animasi slider */
+        
         @keyframes slide {
 
-            /* Tetap di card 1 (0s - 4.5s) */
+            
             0%,
             30% {
                 transform: translateX(0%);
             }
 
-            /* Transisi ke card 2 (4.5s - 5s) */
+            
             33.3% {
                 transform: translateX(-33.333%);
             }
 
-            /* Tetap di card 2 (5s - 9.5s) */
+            
             33.3%,
             63.3% {
                 transform: translateX(-33.333%);
             }
 
-            /* Transisi ke card 3 (9.5s - 10s) */
+            
             66.6% {
                 transform: translateX(-66.666%);
             }
 
-            /* Tetap di card 3 (10s - 14.5s) */
+            
             66.6%,
             96.6% {
                 transform: translateX(-66.666%);
             }
 
-            /* Transisi kembali ke card 1 (14.5s - 15s) */
+            
             100% {
                 transform: translateX(0%);
             }
         }
 
-        /* ==== AKHIR KODE TESTIMONI SLIDER ==== */
+        
 
 
-        /* ==== KODE BARU UNTUK NAV DROPDOWN ==== */
+        
         .nav-dropdown {
             position: relative;
             display: inline-block;
         }
 
-        /* INI STYLE BARU UNTUK TOMBOL DROPDOWN */
+        
         .dropdown-toggle {
-          
+            
             background: none;
             border: none;
             padding: 0;
             margin: 0;
             font: inherit;
-          
+            
             cursor: pointer;
 
-            /* Ambil style dari .nav-links a */
+            
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
@@ -1015,7 +1028,7 @@
             border-radius: 8px;
             transition: color 0.2s ease, background 0.15s ease, transform 0.12s ease;
 
-            /* Style untuk dropdown toggle */
+            
             display: flex;
             align-items: center;
             gap: 4px;
@@ -1027,19 +1040,19 @@
             outline: none;
         }
 
-        /* AKHIR STYLE TOMBOL */
+        
 
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
-          
+            
             left: 0;
             min-width: 220px;
 
-            /* Pakai style glassmorphism */
+            
             background: rgba(30, 41, 59, 0.9);
-            /* Sedikit lebih solid */
+            
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 8px;
@@ -1047,7 +1060,7 @@
             backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             z-index: 1001;
-         
+            
         }
 
         .dropdown-menu a {
@@ -1055,24 +1068,24 @@
             width: 100%;
             padding: 10px 12px;
             border-radius: 8px;
-            /* Bikin item di dalam dropdown juga rounded */
+            
         }
 
         .dropdown-menu a:hover {
             background: rgba(34, 197, 94, 0.2);
-            /* Aksen hijau saat hover */
+            
             color: var(--accent);
         }
 
         .nav-dropdown:hover .dropdown-menu {
             display: block;
-            /* Tampilkan saat di-hover */
+            
         }
 
-        /* ==== AKHIR KODE DROPDOWN ==== */
+        
 
 
-        /* Pricing */
+        
         .pricing-container {
             text-align: center;
             margin-bottom: 3rem;
@@ -1128,7 +1141,7 @@
             transform: translateY(-2px);
         }
 
-        /* Forms */
+        
         form {
             background: transparent;
             padding: 12px;
@@ -1181,7 +1194,7 @@
             cursor: pointer;
             box-shadow: 0 18px 44px rgba(34, 197, 94, 0.16);
             display: none;
-            /* hide by default */
+            
         }
 
         .muted {
@@ -1195,7 +1208,7 @@
             vertical-align: middle;
         }
 
-        /* fade-in */
+        
         .fade-in {
             opacity: 0;
             transform: translateY(12px);
@@ -1207,7 +1220,7 @@
             transform: none;
         }
 
-        /* highlights for plans */
+        
         .highlight-basic {
             border: 2px solid #3b82f6;
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.24);
@@ -1218,12 +1231,12 @@
             box-shadow: 0 0 15px rgba(34, 197, 94, 0.24);
         }
 
-        /* focus-visible for keyboard nav */
+        
         :focus:not(:focus-visible) {
             outline: none;
         }
 
-        /* ==== HOVER ANIMATION ==== */
+        
         .btn:hover {
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
@@ -1235,23 +1248,23 @@
             transition: all 0.3s ease;
         }
 
-        /* === STYLE UNTUK MINDWEALTH CHATBOT === */
+        
 
-        /* Tombol Bubble Mengambang */
+        
         .chat-bubble {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 60px;
             height: 60px;
-            /* Gradient Blue/Green yang sesuai brand */
+            
             background: linear-gradient(45deg, #00A9B0, #1DE9B6);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            /* Efek Glow Neon Green */
+            
             box-shadow: 0 0 15px #1DE9B6, 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
             z-index: 9998;
@@ -1263,14 +1276,14 @@
             transform: scale(1.1);
         }
 
-        /* Logo Otak (SVG) - Sesuai ide "Holographic Brain" */
+        
         .chat-bubble svg {
             width: 30px;
             height: 30px;
             fill: #fff;
         }
 
-        /* Jendela Chat */
+        
         .chat-window {
             position: fixed;
             bottom: 100px;
@@ -1279,12 +1292,12 @@
             max-width: 90vw;
             height: 450px;
             background: #0F1A24;
-            /* Dark Blue Minimalist BG */
+            
             border-radius: 12px;
-            /* Rounded corners */
+            
             border: 1px solid #1DE9B6;
-            /* Border Neon */
-            /* Efek Glow untuk border */
+            
+            
             box-shadow: 0 0 20px rgba(29, 233, 182, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
@@ -1302,17 +1315,17 @@
             visibility: visible;
         }
 
-        /* Header Chat */
+        
         .chat-header {
             background: #1A2B3A;
-            /* Sedikit lebih terang dari BG */
+            
             color: #fff;
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1DE9B6;
-            /* Garis Neon */
+            
         }
 
         .chat-header h3 {
@@ -1321,7 +1334,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #1DE9B6;
-            /* Warna Teks Neon */
+            
         }
 
         .chat-header #closeChat {
@@ -1331,7 +1344,7 @@
             font-weight: bold;
         }
 
-        /* Badan Chat (Tempat Pesan) */
+        
         .chat-body {
             flex-grow: 1;
             padding: 15px;
@@ -1342,10 +1355,10 @@
             font-family: Arial, sans-serif;
             font-size: 14px;
             color: #E0F2F1;
-            /* Teks putih kebiruan */
+            
         }
 
-        /* Styling Pesan */
+        
         .chat-message {
             padding: 10px 14px;
             border-radius: 18px;
@@ -1356,7 +1369,7 @@
 
         .chat-message.bot {
             background: #1A2B3A;
-            /* Warna Bot */
+            
             color: #E0F2F1;
             border-bottom-left-radius: 4px;
             align-self: flex-start;
@@ -1364,9 +1377,9 @@
 
         .chat-message.user {
             background: #1DE9B6;
-            /* Warna User (Neon Green) */
+            
             color: #0F1A24;
-            /* Teks gelap agar kontras */
+            
             border-bottom-right-radius: 4px;
             align-self: flex-end;
             font-weight: 500;
@@ -1380,7 +1393,7 @@
             font-style: italic;
         }
 
-        /* Footer Chat (Input) */
+        
         .chat-footer {
             display: flex;
             padding: 10px;
@@ -1406,7 +1419,7 @@
         .chat-footer button {
             background: #1DE9B6;
             color: #0F1A24;
-            /* Teks gelap */
+            
             border: none;
             padding: 0 18px;
             border-radius: 20px;
@@ -1418,42 +1431,45 @@
 
         .chat-footer button:hover {
             background: #00A9B0;
-            /* Warna hover (biru) */
+            
         }
 
 
 
-        /* ===== CSS BARU LENGKAP UNTUK EBOOK SLIDER ===== */
+        
 
-        /* (Opsional) Ganti kursor saat nge-drag */
+        
         .ebooks-grid {
             cursor: grab;
-            /* Kursor 'tangan terbuka' */
+            
         }
 
         .ebooks-grid.active-drag {
             cursor: grabbing;
-            /* Kursor menggenggam */
+            
 
-    
+            /* INI EFEK ANIMASINYA:
+     Slider akan membesar 1% dan mendapat bayangan,
+     sehingga terlihat "terangkat" dari halaman.
+    */
             transform: scale(1.01);
             box-shadow: 0 10px 30px rgba(130, 16, 16, 0.15);
             -webkit-user-select: none;
-            /* Safari */
+            
             -moz-user-select: none;
-            /* Firefox */
+            
             -ms-user-select: none;
-            /* IE/Edge */
+            
             user-select: none;
         }
 
-        /* 1. Wrapper untuk menampung tombol dan grid */
+        
         .ebooks-container-wrapper {
             position: relative;
-            /* Kunci agar tombol panah bisa diposisikan */
+            
         }
 
-        /* 2. Grid Ebook (diubah jadi Flexbox Slider) */
+        
         .ebooks-grid {
             display: flex;
             flex-wrap: nowrap;
@@ -1464,14 +1480,14 @@
 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-        
+            
 
             -ms-overflow-style: none;
             scrollbar-width: none;
 
             cursor: grab;
 
-            /* (Opsional) Animasi ringan saat drag dimulai */
+            
             transition: background-color 0.2s ease-out, transform 0.1s ease-out;
         }
 
@@ -1481,35 +1497,44 @@
 
         .ebooks-grid.active-drag {
             cursor: grabbing;
-       
+            
+            
+            
+            
+            
         }
 
-        /* 3. Item Ebook (Kartu) */
+        
         .ebook {
+            /* CSS LAMA ANDA (seperti background, padding, border) 
+       TIDAK PERLU DIHAPUS, biarkan saja.
+    */
 
-
-          
+            
+            
+            width: 320px;
+            
             flex-shrink: 0;
-
+            
             scroll-snap-align: start;
-           
+            
         }
 
-        /* 4. Tombol Panah Navigasi */
+        
         .scroll-btn {
             position: absolute;
             top: 50%;
-            /* Posisi di tengah secara vertikal */
+            
             transform: translateY(-50%);
             z-index: 10;
 
-            /* Desain Tombol */
+            
             background: var(--surface-2);
-            /* Pakai warna variabel Anda */
+            
             color: var(--text);
             border: 1px solid var(--border);
             border-radius: 50%;
-            /* Bulat sempurna */
+            
             width: 40px;
             height: 40px;
             display: flex;
@@ -1519,7 +1544,7 @@
 
             transition: all 0.2s ease;
 
-            /* Sembunyikan tombol (JS akan menampilkannya) */
+            
             opacity: 0;
             pointer-events: none;
         }
@@ -1529,7 +1554,7 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        /* Kelas 'visible' ini ditambahkan oleh JavaScript */
+        
         .scroll-btn.visible {
             opacity: 1;
             pointer-events: auto;
@@ -1537,24 +1562,25 @@
 
         .scroll-btn.prev {
             left: 10px;
-            /* Jarak tombol kiri */
+            
         }
 
         .scroll-btn.next {
             right: 10px;
-            /* Jarak tombol kanan */
+            
         }
 
 
+        
         @media (max-width: 768px) {
 
-    
+            
             .scroll-btn {
                 display: none;
             }
 
             .ebooks-grid {
-                /* Beri padding di awal & akhir list pada mobile */
+                
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
@@ -1562,12 +1588,13 @@
 
         @media (max-width: 600px) {
 
-            /* Perkecil lebar kartu di HP agar tidak terlalu besar */
+            
             .ebook {
                 width: 280px;
             }
         }
 
+        
     </style>
 </head>
 
@@ -2123,7 +2150,7 @@
                 category: 'Investment',
                 desc: 'Metode trading yang berfokus pada identifikasi zona Supply (penawaran) dan Demand (permintaan) di pasar.',
                 coverText: 'ST',
-                imgUrl: '/assets/images/cover_ST.png',
+                imgUrl: 'assets/images/cover_ST.png',
                 file: 'https://drive.google.com/file/d/187CqMumpdNaQCr3U580oo82rgVqjTe8T/view?usp=drive_link'
             },
             {
@@ -2322,7 +2349,7 @@
             quizResultTitleEl = document.getElementById('quiz-result-title');
             quizResultDescEl = document.getElementById('quiz-result-desc');
 
-            if (!quizContainer) return; 
+            if (!quizContainer) return; // Hentikan jika kuis tidak ada di halaman
 
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -2427,7 +2454,7 @@
             }
         }
 
-
+        // ===== Reader & Download =====
         // ===== Reader & Download =====
         function openReader(e) {
             // Logika "Baca" (Gratis): Langsung buka link file di tab baru.
@@ -2442,6 +2469,7 @@
         function downloadFile(e) {
             // Logika "Download" (Cek Subscribe)
 
+            // 1. Cek status subscribe dari localStorage (fungsi ini sudah ada di file Anda)
             const subs = loadSubs();
 
             // 2. Cek apakah array 'subs' punya isi (artinya sudah pernah subscribe)
@@ -2473,13 +2501,16 @@
                 // JIKA SUDAH SUBSCRIBE (simulasi berhasil)
                 alert('Terima kasih sudah subscribe! Download Anda akan dimulai.');
 
+                // Lanjutkan logika "download". 
+                // Catatan: Cara terbaik untuk "download" link GDrive adalah membukanya di tab baru.
+                // Pengguna bisa men-download manual dari tampilan Google Drive.
                 if (e.file && (e.file.startsWith('https://') || e.file.startsWith('http://'))) {
                     window.open(e.file, '_blank');
                 } else {
                     console.error('Link e-book tidak valid:', e.file);
                     alert('Maaf, link e-book ini sepertinya rusak.');
                 }
-                
+                _
             }
         }
 
@@ -2528,7 +2559,9 @@
         }
 
 
+        // ===================================
         // ===== FUNGSI LOAD UTAMA (DOM) =====
+        // ===================================
         // Saat DOM (HTML) sudah siap, jalankan semua kode yang butuh getElementById
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -2791,7 +2824,7 @@
                     passive: true
                 });
 
-                
+                // Cek saat ukuran grid berubah (misal: buku ditambah/difilter)
                 // Ini JAUH LEBIH BAIK daripada mengedit renderEbooks
                 const gridObserver = new ResizeObserver(() => {
                     checkScroll();
@@ -3120,7 +3153,7 @@
                     hapusLoading();
                     console.error("Error fetching API:", error);
                     tampilkanPesan(
-                        "Maaf ya sedang ada kendala nihh dari Wealth Buddy 😁 ",
+                        "Maaf ya sedang ada kendala nihh dari Wealth Buddy😁 ",
                         "bot"
                     );
                     chatHistory.pop();
