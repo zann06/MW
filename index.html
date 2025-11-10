@@ -464,14 +464,11 @@
             padding: 48px 0;
         }
 
-        /* ==== INI YANG DIPERBAIKI (PROBLEM 1) ==== */
         section {
-            /* min-height: 100vh; <-- DIHAPUS */
+            
             height: auto;
-            /* Memastikan tinggi seksi pas dengan konten */
         }
 
-        /* ==== AKHIR PERBAIKAN 1 ==== */
 
 
         h3 {
@@ -508,10 +505,18 @@
         }
 
         .ebooks-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+           
+            flex-wrap: nowrap;
+            
+            overflow-x: auto;
+           
             gap: 18px;
             margin-top: 18px;
+            padding-bottom: 12px;
+          
+
+            scroll-snap-type: x mandatory;
         }
 
         .ebook {
@@ -523,6 +528,17 @@
             gap: 12px;
             align-items: flex-start;
             transition: transform 260ms ease, box-shadow 260ms ease;
+
+            .ebook {
+           
+             
+                width: 320px;
+            
+                flex-shrink: 0;
+               
+                scroll-snap-align: start;
+               
+            }
         }
 
         .ebook:hover {
@@ -542,12 +558,13 @@
             font-weight: 800;
             font-size: 20px;
             flex-shrink: 0;
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         @media (max-width: 1100px) {
-            .ebooks-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
 
             .hero {
                 grid-template-columns: 1fr;
@@ -561,7 +578,6 @@
         }
 
         @media (max-width: 900px) {
-            /* Di dalam @media (max-width: 900px) */
 
             .nav-links {
                 display: flex;
@@ -572,17 +588,11 @@
                 flex-direction: column;
                 min-width: 220px;
 
-                /* --- PERUBAHAN TAMPILAN (ANTI-PERSEGI) --- */
+               
                 border-radius: 8px;
-                /* <-- Bikin sudutnya tumpul */
+              
                 box-shadow: 0 4px 12px #0000001a;
-                /* overflow: hidden; <-- INI PENYEBAB PROBLEM 2 */
 
-                /* ==== INI PERBAIKAN UNTUK PROBLEM 2 ==== */
-                /* Hapus max-height dan overflow agar menu bisa memanjang ke bawah */
-                /* overflow-y: auto; <-- DIHAPUS */
-                /* max-height: calc(100vh - 80px); <-- DIHAPUS */
-                /* ==== AKHIR PERBAIKAN 2 ==== */
 
                 /* --- PERUBAHAN ANIMASI (KANAN-KE-KIRI) --- */
                 opacity: 0;
@@ -605,7 +615,7 @@
 
             .layout-grid-responsive {
                 grid-template-columns: 1fr;
-                /* Membuat jadi 1 kolom di mobile */
+
             }
 
             /* ==== INI CSS BARU UNTUK BLOG (RESPONSIVE) ==== */
@@ -616,7 +626,7 @@
 
             .blog-illustration-aside {
                 display: none;
-                /* Sembunyikan total di mobile */
+            
             }
 
             /* ==== AKHIR CSS BLOG ==== */
@@ -637,25 +647,25 @@
 
             .nav-dropdown {
                 display: contents;
-                /* Biar ga dianggap 'relative' di mobile */
+             
             }
 
             .dropdown-toggle {
-                /* Biar seperti link biasa */
+               
                 width: 100%;
-                /* Memastikan tombol selebar menu */
+                
             }
 
             .dropdown-toggle i {
                 display: none;
-                /* Sembunyikan panah chevron di mobile */
+              
             }
 
             .dropdown-menu {
                 display: none;
-                /* <-- DIUBAH: Sembunyikan by default di mobile */
+              
                 position: static;
-                /* Hapus 'absolute' */
+             
                 width: 100%;
                 background: none;
                 border: none;
@@ -667,7 +677,7 @@
             }
 
             .dropdown-menu a {
-                /* Beri sedikit indentasi agar terlihat sbg sub-menu */
+            
                 padding-left: 30px !important;
                 padding-top: 10px;
                 padding-bottom: 10px;
@@ -677,9 +687,6 @@
         }
 
         @media (max-width: 700px) {
-            .ebooks-grid {
-                grid-template-columns: 1fr;
-            }
 
 
             .menu-toggle {
@@ -717,7 +724,7 @@
 
         .blog-illustration-aside {
             display: none;
-            /* <-- DIHAPUS DENGAN CARA INI */
+        
         }
 
         /* ==== AKHIR KODE BLOG LAYOUT ==== */
@@ -727,7 +734,7 @@
         .blog-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            /* Tetap 2 kolom di desktop */
+          
             gap: 16px;
             margin-top: 12px;
         }
@@ -884,14 +891,13 @@
         .testimonial-track {
             display: flex;
             width: 300%;
-            /* 100% * 3 kartu */
-            /* Animasi: 15 detik total, 5 detik per slide */
+           
             animation: slide 15s infinite ease-in-out;
         }
 
         .testimonial-card {
             width: 33.333%;
-            /* 100% / 3 kartu */
+          
             flex-shrink: 0;
 
             /* Hapus style glassmorphism dari kartu individual */
@@ -990,13 +996,13 @@
 
         /* INI STYLE BARU UNTUK TOMBOL DROPDOWN */
         .dropdown-toggle {
-            /* Reset button styles */
+          
             background: none;
             border: none;
             padding: 0;
             margin: 0;
             font: inherit;
-            /* Ambil style font dari parent */
+          
             cursor: pointer;
 
             /* Ambil style dari .nav-links a */
@@ -1027,7 +1033,7 @@
             display: none;
             position: absolute;
             top: 100%;
-            /* Muncul di bawah link "Fitur" */
+          
             left: 0;
             min-width: 220px;
 
@@ -1041,7 +1047,7 @@
             backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             z-index: 1001;
-            /* Di atas segalanya */
+         
         }
 
         .dropdown-menu a {
@@ -1216,6 +1222,7 @@
         :focus:not(:focus-visible) {
             outline: none;
         }
+
         /* ==== HOVER ANIMATION ==== */
         .btn:hover {
             transform: translateY(-2px) scale(1.04);
@@ -1228,7 +1235,7 @@
             transition: all 0.3s ease;
         }
 
-      /* === STYLE UNTUK MINDWEALTH CHATBOT === */
+        /* === STYLE UNTUK MINDWEALTH CHATBOT === */
 
         /* Tombol Bubble Mengambang */
         .chat-bubble {
@@ -1413,34 +1420,183 @@
             background: #00A9B0;
             /* Warna hover (biru) */
         }
+
+
+
+        /* ===== CSS BARU LENGKAP UNTUK EBOOK SLIDER ===== */
+
+        /* (Opsional) Ganti kursor saat nge-drag */
+        .ebooks-grid {
+            cursor: grab;
+            /* Kursor 'tangan terbuka' */
+        }
+
+        .ebooks-grid.active-drag {
+            cursor: grabbing;
+            /* Kursor menggenggam */
+
+    
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(130, 16, 16, 0.15);
+            -webkit-user-select: none;
+            /* Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* IE/Edge */
+            user-select: none;
+        }
+
+        /* 1. Wrapper untuk menampung tombol dan grid */
+        .ebooks-container-wrapper {
+            position: relative;
+            /* Kunci agar tombol panah bisa diposisikan */
+        }
+
+        /* 2. Grid Ebook (diubah jadi Flexbox Slider) */
+        .ebooks-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 18px;
+            margin-top: 18px;
+            padding-bottom: 12px;
+
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            cursor: grab;
+
+            /* (Opsional) Animasi ringan saat drag dimulai */
+            transition: background-color 0.2s ease-out, transform 0.1s ease-out;
+        }
+
+        .ebooks-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ebooks-grid.active-drag {
+            cursor: grabbing;
+       
+        }
+
+        /* 3. Item Ebook (Kartu) */
+        .ebook {
+
+
+          
+            flex-shrink: 0;
+
+            scroll-snap-align: start;
+           
+        }
+
+        /* 4. Tombol Panah Navigasi */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            /* Posisi di tengah secara vertikal */
+            transform: translateY(-50%);
+            z-index: 10;
+
+            /* Desain Tombol */
+            background: var(--surface-2);
+            /* Pakai warna variabel Anda */
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            /* Bulat sempurna */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+
+            /* Sembunyikan tombol (JS akan menampilkannya) */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-btn:hover {
+            background: var(--surface-3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Kelas 'visible' ini ditambahkan oleh JavaScript */
+        .scroll-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-btn.prev {
+            left: 10px;
+            /* Jarak tombol kiri */
+        }
+
+        .scroll-btn.next {
+            right: 10px;
+            /* Jarak tombol kanan */
+        }
+
+
+        @media (max-width: 768px) {
+
+    
+            .scroll-btn {
+                display: none;
+            }
+
+            .ebooks-grid {
+                /* Beri padding di awal & akhir list pada mobile */
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            /* Perkecil lebar kartu di HP agar tidak terlalu besar */
+            .ebook {
+                width: 280px;
+            }
+        }
+
     </style>
 </head>
 
 
-<body> <div class="chat-bubble" id="chatBubble">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path
-            d="M12 3c-1.38 0-2.63.56-3.54 1.46C7.56 5.37 7 6.62 7 8c0 1.93 1.57 3.5 3.5 3.5.35 0 .69-.05 1.01-.15.09.2.2.38.32.55 0 0 0 .01-.01.01-.22.33-.49.62-.79.88C10.6 13.2 10.15 13.5 9.71 13.85c-.99.79-2.28 1.98-2.3 2.01-.4.49-.61 1.11-.61 1.74 0 1.38 1.12 2.5 2.5 2.5.86 0 1.63-.44 2.09-1.12.02-.03.04-.06.06-.09.38.32.79.61 1.23.86.33.19.67.36 1.02.51.52.22 1.07.34 1.63.34 1.38 0 2.63-.56 3.54-1.46 1.09-1.09 1.62-2.48 1.46-3.96-.13-1.22-.72-2.35-1.57-3.2l-1.44-1.44c-.01 0-.01-.01-.01-.01.27-.27.5-.58.68-.91.07-.13.14-.27.19-.4.05-.12.09-.24.11-.37.01-.06.02-.12.03-.18.06-.28.09-.56.09-.85 0-1.93-1.57-3.5-3.5-3.5s-3.5 1.57-3.5 3.5c0 .09 0 .18.01.27.08.76.3 1.49.61 2.15.02.04.03.08.05.12.06.14.13.27.21.4.38.59.83 1.12 1.31 1.61.02-.02.04-.03.05-.05.81-.81 1.28-1.9 1.28-3.03 0-1.38-.56-2.63-1.46-3.54C14.63 3.56 13.38 3 12 3zm0 2c.83 0 1.58.34 2.12.88.54.54.88 1.29.88 2.12 0 .83-.34 1.58-.88 2.12C13.58 10.66 12.83 11 12 11c-.83 0-1.58-.34-2.12-.88C9.34 9.58 9 8.83 9 8c0-1.06.66-1.97 1.59-2.5C10.97 5.2 11.47 5 12 5zm-1.61 7.42c-.01 0 0 0 0 0zM10.5 14.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22.5.5zm2.09 1.62c.03.03.05.05.08.07.03-.02.06-.04.08-.07-.05-.02-.11-.04-.16-.04s-.11.02-.16.04zM13.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z" />
-    </svg>
-</div>
-
-<div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-        <h3>Wealth Buddy 🌱</h3>
-        <span id="closeChat">×</span>
+<body>
+    <div class="chat-bubble" id="chatBubble">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+                d="M12 3c-1.38 0-2.63.56-3.54 1.46C7.56 5.37 7 6.62 7 8c0 1.93 1.57 3.5 3.5 3.5.35 0 .69-.05 1.01-.15.09.2.2.38.32.55 0 0 0 .01-.01.01-.22.33-.49.62-.79.88C10.6 13.2 10.15 13.5 9.71 13.85c-.99.79-2.28 1.98-2.3 2.01-.4.49-.61 1.11-.61 1.74 0 1.38 1.12 2.5 2.5 2.5.86 0 1.63-.44 2.09-1.12.02-.03.04-.06.06-.09.38.32.79.61 1.23.86.33.19.67.36 1.02.51.52.22 1.07.34 1.63.34 1.38 0 2.63-.56 3.54-1.46 1.09-1.09 1.62-2.48 1.46-3.96-.13-1.22-.72-2.35-1.57-3.2l-1.44-1.44c-.01 0-.01-.01-.01-.01.27-.27.5-.58.68-.91.07-.13.14-.27.19-.4.05-.12.09-.24.11-.37.01-.06.02-.12.03-.18.06-.28.09-.56.09-.85 0-1.93-1.57-3.5-3.5-3.5s-3.5 1.57-3.5 3.5c0 .09 0 .18.01.27.08.76.3 1.49.61 2.15.02.04.03.08.05.12.06.14.13.27.21.4.38.59.83 1.12 1.31 1.61.02-.02.04-.03.05-.05.81-.81 1.28-1.9 1.28-3.03 0-1.38-.56-2.63-1.46-3.54C14.63 3.56 13.38 3 12 3zm0 2c.83 0 1.58.34 2.12.88.54.54.88 1.29.88 2.12 0 .83-.34 1.58-.88 2.12C13.58 10.66 12.83 11 12 11c-.83 0-1.58-.34-2.12-.88C9.34 9.58 9 8.83 9 8c0-1.06.66-1.97 1.59-2.5C10.97 5.2 11.47 5 12 5zm-1.61 7.42c-.01 0 0 0 0 0zM10.5 14.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22.5.5zm2.09 1.62c.03.03.05.05.08.07.03-.02.06-.04.08-.07-.05-.02-.11-.04-.16-.04s-.11.02-.16.04zM13.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z" />
+        </svg>
     </div>
 
-    <div class="chat-body" id="chatBody">
-        <div class="chat-message bot">
-            Hey there, I’m your Wealth Buddy 🌱 ready to talk goals and good vibes?
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3>Wealth Buddy 🌱</h3>
+            <span id="closeChat">×</span>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                Hey there, I’m your Wealth Buddy 🌱 ready to talk goals and good vibes?
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Ketik pesan..." />
+            <button id="sendButton">Kirim</button>
         </div>
     </div>
-
-    <div class="chat-footer">
-        <input type="text" id="chatInput" placeholder="Ketik pesan..." />
-        <button id="sendButton">Kirim</button>
-    </div>
-</div>
 
     <div id="preloader">
         <div class="spinner"></div>
@@ -1666,7 +1822,18 @@
                 <button class="filter-btn" data-filter="Psychology">Psychology</button>
             </div>
 
-            <div class="ebooks-grid" id="ebooksGrid" aria-live="polite"></div>
+            <div class.ebooks-container-wrapper">
+                <button class="scroll-btn prev" id="scrollPrev" ...>
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <div id="ebooksGrid" class="ebooks-grid">
+                </div>
+
+                <button class="scroll-btn next" id="scrollNext" ...>
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
         </section>
 
         <section id="blog" class="fade-in">
@@ -1789,9 +1956,11 @@
                     <h4>Socials</h4>
                     <p class="muted">Ikuti MindWealth Digital di media sosial untuk konten singkat dan video.</p>
                     <div class="socials" style="margin-top:12px">
-                        <a href="#" target="_blank" rel="noopener">Instagram</a>
+                        <a href="https://www.instagram.com/mindwealth.digital?igsh=MTAyZmp5NnJkanZ3aQ==" target="_blank"
+                            rel="noopener">Instagram</a>
                         <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="#" target="_blank" rel="noopener">TikTok</a>
+                        <a href="https://www.tiktok.com/@mindwealth.digita?_r=1&_t=ZS-91HcPGMKNNQ" target="_blank"
+                            rel="noopener">TikTok</a>
                     </div>
 
                     <div style="margin-top:18px">
@@ -1860,52 +2029,194 @@
         // Kita letakkan datanya di atas agar bisa diakses oleh fungsi di bawah
         const ebooks = [{
                 id: 1,
-                title: 'Mindful Finance — Panduan Praktis',
+                title: 'Cashflow Quadrant',
                 category: 'Finance',
-                desc: 'Strategi menyusun anggaran, menabung, serta mengelola pengeluaran harian.',
-                coverText: 'MF',
-                file: 'data:application/json,{"title":"Mindful Finance","content":"Contoh isi e-book..."}'
+                desc: 'Panduan Robert Kiyosaki tentang 4 tipe penghasil uang (E, S, B, I) dan cara beralih ke kuadran B (Bisnis) dan I (Investor).',
+                coverText: 'CQ',
+                imgUrl: 'assets/images/cover_CQ.jpg',
+                file: 'https://drive.google.com/file/d/1_NUoE0To3VKEpiQgo6EktdwLDPpZ0d7x/view?usp=drive_link'
             },
             {
                 id: 2,
-                title: 'Investasi untuk Pemula',
-                category: 'Investment',
-                desc: 'Dasar-dasar instrumen investasi dan pendekatan bertahap untuk pemula.',
-                coverText: 'IP',
-                file: 'data:application/json,{"title":"Investasi untuk Pemula","content":"Contoh isi e-book investasi..."}'
+                title: 'CTK',
+                category: 'Money',
+                desc: 'Panduan praktis dan strategi jitu untuk mengelola keuangan pribadi Anda sehari-hari agar lebih efektif dan terarah.',
+                coverText: 'CT',
+                imgUrl: 'assets/images/cover_CT.png',
+                file: 'https://drive.google.com/file/d/1aLYjgpdZCpfEIUiABbQkhcvYD1b3Uq0k/view?usp=drive_link'
             },
             {
                 id: 3,
-                title: 'Psikologi Uang',
-                category: 'Psychology',
-                desc: 'Bagaimana emosi dan kognisi memengaruhi keputusan finansial.',
-                coverText: 'PU',
-                file: 'data:application/json,{"title":"Psikologi Uang","content":"Contoh isi e-book psikologi..."}'
+                title: 'The Ricshest Man in Babylon',
+                category: 'Finance',
+                desc: 'Kumpulan perumpamaan dari Babilonia kuno yang mengajarkan prinsip abadi tentang menabung, mengelola utang, dan berinvestasi.',
+                coverText: 'TB',
+                imgUrl: 'assets/images/cover_TB.png',
+                file: 'https://drive.google.com/file/d/1ZykyRcAfEWhSNso-vfphiWRYteGTeHQt/view?usp=drive_link'
             },
             {
                 id: 4,
-                title: 'Manajemen Gaji Pertama',
+                title: 'Rich Dad Poor Dad',
                 category: 'Money',
-                desc: 'Langkah-langkah membuat rencana keuangan dari gaji pertama.',
-                coverText: 'MG',
-                file: 'data:application/json,{"title":"Manajemen Gaji Pertama","content":"Contoh isi e-book gaji..."}'
+                desc: 'Buku klasik yang membandingkan pola pikir "Ayah Kaya" dan "Ayah Miskin" tentang uang, aset, dan literasi finansial.',
+                coverText: 'RD',
+                imgUrl: 'assets/images/cover_RD.jpg',
+                file: 'https://drive.google.com/file/d/1i9PDKpmC9bc9Y42UdMDM_lcIDq7PYyTU/view?usp=drive_link'
             },
             {
                 id: 5,
-                title: 'Perencanaan Tabungan Jangka Panjang',
+                title: 'TIA Research',
                 category: 'Finance',
-                desc: 'Tips tabungan yang bisa bertahan terhadap inflasi dan kebutuhan hidup.',
-                coverText: 'PT',
-                file: 'data:application/json,{"title":"Perencanaan Tabungan","content":"Contoh isi..."}'
+                desc: 'Laporan riset mendalam mengenai tren keuangan terbaru, analisis pasar, dan proyeksi ekonomi untuk keputusan strategis.',
+                coverText: 'TR',
+                imgUrl: 'assets/images/cover_TR.png',
+                file: 'https://drive.google.com/file/d/1CLLYbZEbrpXBqtB8KI4LZNQXvqus2bv5/view?usp=drive_link'
             },
             {
                 id: 6,
-                title: 'Diversifikasi Investasi',
+                title: 'Kebebasan Financial',
+                category: 'Finance',
+                desc: 'Sebuah panduan strategi untuk mencapai kebebasan finansial, mulai dari mengelola utang hingga membangun arus pendapatan pasif.',
+                coverText: 'KF',
+                imgUrl: 'assets/images/cover_KF.png',
+                file: 'https://drive.google.com/file/d/1ZqlK6xCKw0cPChuh9Yoj1nBwim82y-gj/view?usp=drive_link'
+            },
+            {
+                id: 7,
+                title: 'Candlestick Bible',
                 category: 'Investment',
-                desc: 'Kenapa diversifikasi penting dan bagaimana melakukannya.',
-                coverText: 'DI',
-                file: 'data:application/json,{"title":"Diversifikasi Investasi","content":"Contoh isi..."}'
-            }
+                desc: 'Panduan komprehensif untuk trader dalam membaca dan menginterpretasi berbagai pola candlestick untuk analisis teknikal.',
+                coverText: 'CB',
+                imgUrl: 'assets/images/cover_CB.png',
+                file: 'https://drive.google.com/file/d/12yIJZYuRBDWmarLur_XZKZBxOwrt9Jd9/view?usp=drive_link'
+            },
+            {
+                id: 8,
+                title: 'How to Trade with Price Action',
+                category: 'Investment',
+                desc: 'Strategi trading yang berfokus pada analisis pergerakan harga murni (price action) tanpa bergantung pada indikator.',
+                coverText: 'HT',
+                imgUrl: 'assets/images/cover_HT.png',
+                file: 'https://drive.google.com/file/d/1ynX1K-qGTADd8kIqDS0xw6TBatHZ_1q6/view?usp=drive_link'
+            },
+            {
+                id: 9,
+                title: 'AC Research',
+                category: 'Investment',
+                desc: 'Kumpulan data dan analisis riset eksklusif mengenai peluang investasi, valuasi aset, dan sektor-sektor yang berpotensi.',
+                coverText: 'AC',
+                imgUrl: 'assets/images/cover_AC.png',
+                file: 'https://drive.google.com/file/d/15ZMKVVyvgFMhvSWBloD-II-iEC4lDes2/view?usp=drive_link'
+            },
+            {
+                id: 10,
+                title: 'SMC Davinci',
+                category: 'Investment',
+                desc: 'Panduan mendalam tentang strategi trading \'Smart Money Concept\' (SMC), berfokus pada likuiditas dan struktur pasar.',
+                coverText: 'SD',
+                imgUrl: 'assets/images/cover_SD.png',
+                file: 'https://drive.google.com/file/d/1bjqimRx-qOK3Au5rZd7gLmOvgHjyvQdM/view?usp=drive_link'
+            },
+            {
+                id: 11,
+                title: 'Supply and Demand by Uncensored Trader',
+                category: 'Investment',
+                desc: 'Metode trading yang berfokus pada identifikasi zona Supply (penawaran) dan Demand (permintaan) di pasar.',
+                coverText: 'ST',
+                imgUrl: '/assets/images/cover_ST.png',
+                file: 'https://drive.google.com/file/d/187CqMumpdNaQCr3U580oo82rgVqjTe8T/view?usp=drive_link'
+            },
+            {
+                id: 12,
+                title: 'Technical Analiysis For Mega Profit',
+                category: 'Investment',
+                desc: 'Kumpulan teknik dan strategi analisis teknikal untuk mengidentifikasi tren dan peluang profit di pasar saham atau forex.',
+                coverText: 'TA',
+                imgUrl: 'assets/images/cover_TA.png',
+                file: 'https://drive.google.com/file/d/1IuISTMU5q8B3kpzZS9eI3xZF_xb0DVL8/view?usp=drive_link'
+            },
+            {
+                id: 13,
+                title: 'Trade Your Way to Financial Fredom',
+                category: 'Investment',
+                desc: 'Karya klasik Van K. Tharp yang fokus pada psikologi trading, manajemen risiko, dan position sizing untuk profit konsisten.',
+                coverText: 'TY',
+                imgUrl: 'assets/images/cover_TY.png',
+                file: 'https://drive.google.com/file/d/1Q2Fk7dfslcm7a72WW8giLTaZQ63pKw61/view?usp=drive_link'
+            },
+            {
+                id: 14,
+                title: 'Dark Psychology The Partical Uses and Best Defenses of Psychological Warfare in Everyday Life',
+                category: 'Psychology',
+                desc: 'Menjelajahi sisi gelap psikologi, termasuk teknik manipulasi, persuasi, dan cara bertahan dari perang psikologis sehari-hari.',
+                coverText: 'DP',
+                imgUrl: 'assets/images/cover_DP.png',
+                file: 'https://drive.google.com/file/d/1x3uVO9i-kj0jay1hqomY_Kd1SJzQqb-H/view?usp=drive_link'
+            },
+            {
+                id: 15,
+                title: 'The Communication Book 44 Ideas for Better Conversations Every Day',
+                category: 'Psychology',
+                desc: 'Kumpulan 44 ide praktis untuk meningkatkan keterampilan komunikasi, percakapan, dan interaksi sosial Anda setiap hari.',
+                coverText: 'TC',
+                imgUrl: 'assets/images/cover_TC.png',
+                file: 'https://drive.google.com/file/d/1_vl6fCiwLwBYHx9hWCDchuT_Er7JQg6i/view?usp=drive_link'
+            },
+            {
+                id: 16,
+                title: 'The Psychology of Money',
+                category: 'Psychology',
+                desc: 'Buku populer oleh Morgan Housel yang menjelaskan bahwa kesuksesan finansial lebih tentang perilaku daripada kecerdasan teknis.',
+                coverText: 'TM',
+                imgUrl: 'assets/images/cover_TM.png',
+                file: 'https://drive.google.com/file/d/18EBB-ws_fHWsqJVOK_YWEB39ver2a-dU/view?usp=drive_link'
+            },
+            {
+                id: 17,
+                title: 'Think and Grow Rich',
+                category: 'Psychology',
+                desc: 'Karya klasik Napoleon Hill yang menguraikan 13 langkah menuju kesuksesan, berfokus pada kekuatan pikiran dan mindset positif.',
+                coverText: 'TG',
+                imgUrl: 'assets/images/cover_TG.png',
+                file: 'https://drive.google.com/file/d/16LRm8ZWxGu9xvdHQf0YHHzHP2MOF_IUm/view?usp=drive_link'
+            },
+            {
+                id: 18,
+                title: 'How To Win Friends Influence People In The Digital Age',
+                category: 'Psychology',
+                desc: 'Adaptasi modern dari buku klasik Dale Carnegie untuk menjalin hubungan dan berkomunikasi di era digital dan media sosial.',
+                coverText: 'HI',
+                imgUrl: 'assets/images/cover_HI.png',
+                file: 'https://drive.google.com/file/d/1HBMr-e1rCpB5vssSUvqdhT_yt7BHFIBz/view?usp=drive_link'
+            },
+            {
+                id: 19,
+                title: 'Copywriting Revolution',
+                category: 'Psychology',
+                desc: 'Panduan modern tentang seni *copywriting* yang persuasif, menggabungkan psikologi penjualan dengan teknik menulis era digital.',
+                coverText: 'CR',
+                imgUrl: 'assets/images/cover_CR.png',
+                file: 'https://drive.google.com/file/d/1emXja7c8em7xi501AuNKFvyUCPcMRNnK/view?usp=drive_link'
+            },
+            {
+                id: 20,
+                title: 'The Art of Manipulation',
+                category: 'Psychology',
+                desc: 'Mengungkap teknik-teknik manipulasi psikologis, cara kerjanya, dan bagaimana cara mengenali serta melawannya.',
+                coverText: 'AM',
+                imgUrl: 'assets/images/cover_AM.png',
+                file: 'https://drive.google.com/file/d/13mVN741BIZnBQls5UDOZT755uYPU4NtF/view?usp=drive_link'
+            },
+            {
+                id: 21,
+                title: 'You Are a Badass at Making Money Master',
+                category: 'Psychology',
+                desc: 'Panduan motivasional oleh Jen Sincero untuk mengatasi \'mental block\' dan ketakutan Anda seputar uang agar bisa kaya.',
+                coverText: 'YB',
+                imgUrl: 'assets/images/cover_YB.png',
+                file: 'https://drive.google.com/file/d/1HIVQ7jcXx8sJrmvPygF-MV1cYOk9z9WS/view?usp=drive_link'
+            },
+
         ];
 
         const posts = [{
@@ -1996,7 +2307,8 @@
         // ===== DEKLARASI VARIABEL KUIS (GLOBAL UNTUK SCRIPT INI) =====
         let currentQuestionIndex = 0;
         let userAnswers = [];
-        let quizContainer, quizResultContainer, quizQuestionEl, quizOptionsEl, quizRetakeBtn, quizResultTitleEl, quizResultDescEl;
+        let quizContainer, quizResultContainer, quizQuestionEl, quizOptionsEl, quizRetakeBtn, quizResultTitleEl,
+            quizResultDescEl;
 
 
         // ===== FUNGSI UNTUK KUIS =====
@@ -2010,7 +2322,7 @@
             quizResultTitleEl = document.getElementById('quiz-result-title');
             quizResultDescEl = document.getElementById('quiz-result-desc');
 
-            if (!quizContainer) return; // Hentikan jika kuis tidak ada di halaman
+            if (!quizContainer) return; 
 
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -2019,8 +2331,8 @@
             showQuestion();
 
             if (quizRetakeBtn) {
-                 quizRetakeBtn.removeEventListener('click', startQuiz); // Hapus listener lama jika ada
-                 quizRetakeBtn.addEventListener('click', startQuiz);
+                quizRetakeBtn.removeEventListener('click', startQuiz); // Hapus listener lama jika ada
+                quizRetakeBtn.addEventListener('click', startQuiz);
             }
         }
 
@@ -2080,7 +2392,16 @@
             ebooksGrid.innerHTML = '';
             list.forEach(e => {
                 const tpl = document.getElementById('ebookTpl').content.cloneNode(true);
-                tpl.querySelector('.cover').textContent = e.coverText;
+                const coverEl = tpl.querySelector('.cover');
+                if (e.imgUrl) {
+                    // Jika ada imgUrl, set sebagai background image
+                    coverEl.style.backgroundImage = `url('${e.imgUrl}')`;
+                    coverEl.textContent = ''; // Hapus teks (MF, IP, dll)
+                } else {
+                    // Jika tidak ada imgUrl, pakai coverText seperti biasa
+                    coverEl.style.backgroundImage = 'none';
+                    coverEl.textContent = e.coverText;
+                }
                 tpl.querySelector('h4').textContent = e.title;
                 tpl.querySelector('p').textContent = e.desc;
                 tpl.querySelector('.readBtn').addEventListener('click', () => openReader(e));
@@ -2105,24 +2426,61 @@
                 });
             }
         }
-        
+
+
         // ===== Reader & Download =====
         function openReader(e) {
-            const modal = window.open('', '_blank', 'width=700,height=700');
-            const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text') || '#E5E7EB';
-            modal.document.write(
-                `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e.title}</title></head><body style="font-family:Poppins,Arial;padding:20px;background:#0b1220;color:${textColor};line-height:1.45"><h2>${e.title}</h2><p style='color:${textColor};opacity:.9'>${e.desc}</p><pre style='white-space:pre-wrap;color:rgba(229,231,235,.9)'>Isi e-book (dummy).</pre></body></html>`
-            );
-            modal.document.close();
+            // Logika "Baca" (Gratis): Langsung buka link file di tab baru.
+            if (e.file && (e.file.startsWith('https://') || e.file.startsWith('http://'))) {
+                window.open(e.file, '_blank');
+            } else {
+                console.error('Link e-book tidak valid:', e.file);
+                alert('Maaf, link e-book ini sepertinya rusak.');
+            }
         }
 
         function downloadFile(e) {
-            const a = document.createElement('a');
-            a.href = e.file;
-            a.download = (e.title.replace(/\s+/g, '_') || 'ebook') + '.json';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
+            // Logika "Download" (Cek Subscribe)
+
+            const subs = loadSubs();
+
+            // 2. Cek apakah array 'subs' punya isi (artinya sudah pernah subscribe)
+            if (subs.length === 0) {
+                // JIKA BELUM SUBSCRIBE
+                alert("Anda harus subscribe terlebih dahulu untuk men-download e-book ini.");
+
+                // Ambil elemen form subscribe
+                const subscribeSection = document.getElementById('subscribeForm');
+
+                if (subscribeSection) {
+                    // Scroll ke form subscribe
+                    subscribeSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    // Beri efek highlight pada section subscribe
+                    const subBox = subscribeSection.closest('section'); // Dapatkan <section> terdekat
+                    if (subBox) {
+                        subBox.style.transition = 'background-color 0.2s linear';
+                        subBox.style.backgroundColor = 'rgba(34, 197, 94, 0.1)'; // Warna accent glow
+                        setTimeout(() => {
+                            subBox.style.backgroundColor = ''; // Kembalikan ke normal
+                        }, 1500);
+                    }
+                }
+            } else {
+                // JIKA SUDAH SUBSCRIBE (simulasi berhasil)
+                alert('Terima kasih sudah subscribe! Download Anda akan dimulai.');
+
+                if (e.file && (e.file.startsWith('https://') || e.file.startsWith('http://'))) {
+                    window.open(e.file, '_blank');
+                } else {
+                    console.error('Link e-book tidak valid:', e.file);
+                    alert('Maaf, link e-book ini sepertinya rusak.');
+                }
+                
+            }
         }
 
         // ===== Subscribe (localStorage + download) =====
@@ -2170,9 +2528,7 @@
         }
 
 
-        // ===================================
         // ===== FUNGSI LOAD UTAMA (DOM) =====
-        // ===================================
         // Saat DOM (HTML) sudah siap, jalankan semua kode yang butuh getElementById
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -2230,25 +2586,30 @@
                         minimumFractionDigits: 0,
                         maximumFractionDigits: 0,
                     });
-                    document.getElementById('calc-result-total').textContent = formatter.format(totalValue);
-                    document.getElementById('calc-result-principal').textContent = formatter.format(totalInvested);
-                    document.getElementById('calc-result-interest').textContent = formatter.format(totalInterest);
+                    document.getElementById('calc-result-total').textContent = formatter.format(
+                        totalValue);
+                    document.getElementById('calc-result-principal').textContent = formatter.format(
+                        totalInvested);
+                    document.getElementById('calc-result-interest').textContent = formatter.format(
+                        totalInterest);
                     const resultTitle = calcResultBox.querySelector('h4');
                     resultTitle.textContent = `Hasil Investasi Anda dalam ${years} tahun:`;
                     calcResultBox.classList.remove('hide');
                 });
             }
-            
+
             // ===== Event Listener Filter Ebook =====
-             document.querySelectorAll('.filter-btn').forEach(btn => {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove(
+                        'active'));
                     btn.classList.add('active');
                     const f = btn.dataset.filter;
                     if (f === 'all') {
                         renderEbooks(ebooks);
                     } else if (f === 'Finance') {
-                        const filtered = ebooks.filter(e => e.category === 'Finance' || e.category === 'Money');
+                        const filtered = ebooks.filter(e => e.category === 'Finance' || e
+                            .category === 'Money');
                         renderEbooks(filtered);
                     } else {
                         const filtered = ebooks.filter(e => e.category === f);
@@ -2388,9 +2749,98 @@
             window.addEventListener('scroll', handleScroll); // Ganti dari ('scroll', () => { ... })
 
             lucide.createIcons();
+            // ===== LOGIKA BARU UNTUK SCROLL E-BOOK (DENGAN PANAH) =====
+            const grid = document.getElementById('ebooksGrid');
+            const btnPrev = document.getElementById('scrollPrev');
+            const btnNext = document.getElementById('scrollNext');
 
-/// --- Ambil elemen-elemen HTML ---
-const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang hilang sudah ada di sini
+            if (grid && btnPrev && btnNext) {
+
+                const checkScroll = () => {
+                    if (!grid) return; // Pengaman jika grid tidak ada
+                    // Cek seberapa jauh di-scroll
+                    const scrollLeft = grid.scrollLeft;
+                    // Cek lebar total yang bisa di-scroll
+                    const maxScroll = grid.scrollWidth - grid.clientWidth;
+
+                    // Tampilkan/sembunyikan tombol 'Prev'
+                    btnPrev.classList.toggle('visible', scrollLeft > 0);
+                    // Tampilkan/sembunyikan tombol 'Next'
+                    btnNext.classList.toggle('visible', scrollLeft < maxScroll - 5); // 5px buffer
+                };
+
+                // Klik Tombol Next
+                btnNext.addEventListener('click', () => {
+                    // 320px (lebar kartu) + 18px (gap)
+                    grid.scrollBy({
+                        left: 338,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Klik Tombol Prev
+                btnPrev.addEventListener('click', () => {
+                    grid.scrollBy({
+                        left: -338,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Cek saat di-scroll manual (drag)
+                grid.addEventListener('scroll', checkScroll, {
+                    passive: true
+                });
+
+                
+                // Ini JAUH LEBIH BAIK daripada mengedit renderEbooks
+                const gridObserver = new ResizeObserver(() => {
+                    checkScroll();
+                });
+                gridObserver.observe(grid);
+            }
+            // ===== SELESAI LOGIKA SCROLL BARU =====
+
+            // ===== LOGIKA BARU UNTUK DRAG-TO-SCROLL (GESER DENGAN MOUSE) =====
+            const slider = document.getElementById('ebooksGrid');
+            if (slider) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener('mousedown', (e) => {
+                    // Cek apakah target adalah tombol (agar tombol tetap bisa diklik)
+                    if (e.target.closest('button')) return;
+
+                    isDown = true;
+                    slider.classList.add('active-drag'); // (Opsional) ganti cursor
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('active-drag');
+                });
+
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('active-drag');
+                    _
+                });
+
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // (Angka 2 = sensitivitas, bisa diubah)
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            }
+            // ===== SELESAI LOGIKA DRAG-TO-SCROLL =====
+
+            /// --- Ambil elemen-elemen HTML ---
+            const chatBubble = document.getElementById(
+                "chatBubble"); // <-- Variabel yang hilang sudah ada di sini
             const chatWindow = document.getElementById("chatWindow");
             const closeChat = document.getElementById("closeChat");
             const sendButton = document.getElementById("sendButton");
@@ -2399,9 +2849,9 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
 
             // Variabel untuk menyimpan riwayat chat (PENTING untuk kepribadian)
             let chatHistory = [];
-            
+
             // Variabel untuk melacak status drag (untuk fitur geser)
-            let hasDragged = false; 
+            let hasDragged = false;
 
             // --- Logika untuk Buka/Tutup Jendela Chat ---
             // Cek dulu apakah elemennya ada sebelum menambahkan listener
@@ -2432,7 +2882,7 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
                 function onDragStart(clientX, clientY) {
                     isDragging = true;
                     hasDragged = false; // Reset status drag
-                    
+
                     // Posisi awal mouse
                     startX = clientX;
                     startY = clientY;
@@ -2468,7 +2918,7 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
 
                     chatBubble.style.left = newLeft + 'px';
                     chatBubble.style.top = newTop + 'px';
-                    
+
                     // Override style bottom/right agar tidak konflik
                     chatBubble.style.right = 'auto';
                     chatBubble.style.bottom = 'auto';
@@ -2504,9 +2954,13 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
                 chatBubble.addEventListener('touchstart', (e) => {
                     const touch = e.touches[0];
                     onDragStart(touch.clientX, touch.clientY);
-                    document.addEventListener('touchmove', onTouchMove, { passive: false });
+                    document.addEventListener('touchmove', onTouchMove, {
+                        passive: false
+                    });
                     document.addEventListener('touchend', onTouchEnd);
-                }, { passive: false });
+                }, {
+                    passive: false
+                });
 
                 function onTouchMove(e) {
                     if (!isDragging) return;
@@ -2610,7 +3064,7 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
 
             // --- Fungsi Inti: Memanggil API Gemini ---
             async function panggilGeminiAPI(pesan) {
-              
+
                 // URL sekarang mengarah ke backend Vercel Anda
                 const API_URL = "/api/chat"; // <-- Pastikan ini URL Vercel
 
@@ -2638,7 +3092,8 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
                         const errorData = await response.json();
                         console.error("Error response dari server:", errorData);
                         tampilkanPesan(
-                            "Aduh, serverku lagi error nih: " + (errorData.error || response.statusText) + " 😥",
+                            "Aduh, serverku lagi error nih: " + (errorData.error || response
+                                .statusText) + " 😥",
                             "bot"
                         );
                         chatHistory.pop(); // Hapus pesan user dari history jika gagal
@@ -2665,7 +3120,7 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
                     hapusLoading();
                     console.error("Error fetching API:", error);
                     tampilkanPesan(
-                        "Koneksi internet kamu kayaknya lagi kurang oke, bro. Coba cek lagi deh. 😅",
+                        "Maaf ya sedang ada kendala nihh dari Wealth Buddy 😁 ",
                         "bot"
                     );
                     chatHistory.pop();
@@ -2689,35 +3144,35 @@ const chatBubble = document.getElementById("chatBubble"); // <-- Variabel yang h
         });
 
         async function sendMessageToBot(userMessage) {
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: userMessage,
-          history: [], // bisa diisi kalau mau simpan percakapan
-        }),
-      });
+            try {
+                const response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        message: userMessage,
+                        history: [], // bisa diisi kalau mau simpan percakapan
+                    }),
+                });
 
-      const data = await response.json();
-      if (data.text) {
-        console.log("Bot:", data.text);
-        document.getElementById("botReply").innerText = data.text;
-      } else {
-        console.error("Error:", data.error);
-      }
-    } catch (err) {
-      console.error("Gagal kirim pesan:", err);
-    }
-  }
+                const data = await response.json();
+                if (data.text) {
+                    console.log("Bot:", data.text);
+                    document.getElementById("botReply").innerText = data.text;
+                } else {
+                    console.error("Error:", data.error);
+                }
+            } catch (err) {
+                console.error("Gagal kirim pesan:", err);
+            }
+        }
 
-  // contoh pemanggilan:
-  document.getElementById("sendBtn").addEventListener("click", () => {
-    const userMsg = document.getElementById("userInput").value;
-    sendMessageToBot(userMsg);
-  });
+        // contoh pemanggilan:
+        document.getElementById("sendBtn").addEventListener("click", () => {
+            const userMsg = document.getElementById("userInput").value;
+            sendMessageToBot(userMsg);
+        });
     </script>
 
 
