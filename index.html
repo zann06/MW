@@ -7,6 +7,8 @@
 
     <meta name="theme-color" content="#0f172a" />
     <title>MindWealth Digital — E-book Finansial & Psikologi Uang</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <meta name="description"
         content="MindWealth Digital adalah platform e-book finansial dan psikologi uang yang dibuat oleh Farid, Rakha, dan Adit. Kami membantu kamu memahami perilaku finansial dan membangun mindset keuangan yang sehat." />
@@ -77,6 +79,17 @@
             -webkit-text-size-adjust: 100%;
             overflow-x: hidden;
             overflow-y: auto;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+
+            -khtml-user-select: none;
+
+            -moz-user-select: none;
+
+            -ms-user-select: none;
+
+            user-select: none;
 
         }
 
@@ -769,7 +782,34 @@
         }
 
 
+
+        img.comic-page {
+            max-width: 100%;
+
+            height: auto;
+
+            display: block;
+
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+        }
+
+        .comic-text {
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
         .comic-container {
+            max-width: 900px;
+
+            margin: 20px auto;
+
             margin-top: 24px;
             text-align: center;
             background: var(--glass);
@@ -781,10 +821,43 @@
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
         }
 
-        .comic-container img {
-            max-width: 100%;
-            height: auto;
+
+
+
+        .comic-swiper {
+            width: 100%;
+
             border-radius: 8px;
+
+            overflow: hidden;
+
+        }
+
+
+        .comic-swiper .swiper-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        .comic-swiper .swiper-button-next,
+        .comic-swiper .swiper-button-prev {
+            color: #37B9A3;
+
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .comic-swiper .swiper-button-next:hover,
+        .comic-swiper .swiper-button-prev:hover {
+            opacity: 1;
+        }
+
+
+        .comic-swiper .swiper-pagination-bullet-active {
+            background-color: #37B9A3;
+
         }
 
 
@@ -1593,7 +1666,7 @@
                                     Fitur <i data-lucide="chevron-down" style="width:16px; height:16px;"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a href="#journey" role="menuitem">Jeyo's Journey</a>
+                                    <a href="#journey" role="menuitem">Adit's Journey</a>
                                     <a href="#quiz" role="menuitem">Financial Quiz</a>
                                     <a href="#calculator" role="menuitem">Calculator</a>
                                     <a href="#testimonials" role="menuitem">Testimonials</a>
@@ -1690,13 +1763,46 @@
         </section>
 
         <section id="journey" class="fade-in">
-            <h3><i data-lucide="rocket"></i> Jeyo's Journey to MindWealth</h3>
-            <p class="muted">Ikuti kisah Jeyo dari bingung mengelola uang hingga menjadi investor cerdas bersama kami.
-            </p>
+            <h3><i data-lucide="rocket"></i> Adit's Journey to MindWealth</h3>
+            <p class="muted">Ikuti kisah Adit dari bingung mengelola uang hingga menjadi investor cerdas bersama kami.
 
-            <div class="comic-container">
-                <img src="assets/image_b34096.png" alt="Komik Perjalanan Jeyo di MindWealth Digital">
-            </div>
+                <div class="comic-container">
+                    <div class="swiper comic-swiper">
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic1.jpg" alt="Komik Adit Halaman 1">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic2.jpg" alt="Komik Adit Halaman 2">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic3.jpg" alt="Komik Adit Halaman 3">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic4.jpg" alt="Komik Adit Halaman 4">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic5.jpg" alt="Komik Adit Halaman 5">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic6.jpg" alt="Komik Adit Halaman 6">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic7.jpg" alt="Komik Adit Halaman 7">
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="assets/comic/comic8.jpg" alt="Komik Adit Halaman 8">
+                            </div>
+                        </div>
+
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+
+                    </div>
+                </div>
         </section>
 
         <section id="quiz" class="fade-in">
@@ -1803,6 +1909,7 @@
                         <div class="testimonial-footer">
                             <div class="avatar">JR</div>
                             <div>
+                                <div class="name">Jeyo R.</div>
                                 <div class="name">Jeyo R.</div>
                                 <div class="title">Investor Pemula</div>
                             </div>
@@ -2925,7 +3032,19 @@
                 });
             }
             // ===== SELESAI LOGIKA DRAG-TO-SCROLL =====
-
+            // Pastikan kode ini ada di dalam DOMContentLoaded
+            const comicSwiper = new Swiper('.comic-swiper', {
+                grabCursor: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                keyboard: true,
+            });
             /// --- Ambil elemen-elemen HTML ---
             const chatBubble = document.getElementById(
                 "chatBubble"); // <-- Variabel yang hilang sudah ada di sini
