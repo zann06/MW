@@ -65,7 +65,7 @@
             margin: 0;
             padding: 0;
             padding-top: 90px;
-            
+
             font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
             color: var(--text);
             background: linear-gradient(180deg, var(--bg), var(--section));
@@ -80,7 +80,7 @@
 
         }
 
-        
+
 
         body.loaded {
             opacity: 1;
@@ -93,7 +93,7 @@
             padding: 0 20px;
         }
 
-        
+
         #preloader {
             position: fixed;
             inset: 0;
@@ -125,7 +125,7 @@
             }
         }
 
-        
+
         #scroll-progress {
             position: fixed;
             top: 0;
@@ -138,7 +138,7 @@
         }
 
 
-        
+
         #welcome-screen {
             position: fixed;
             inset: 0;
@@ -154,7 +154,7 @@
             transition: opacity 1s ease;
         }
 
-        
+
         .welcome-bg {
             position: absolute;
             inset: 0;
@@ -167,7 +167,7 @@
             transition: all 0.4s ease;
         }
 
-        
+
         .welcome-inner {
             position: relative;
             z-index: 1;
@@ -219,7 +219,7 @@
             box-shadow: 0 0 35px rgba(34, 197, 94, 0.45);
         }
 
-        
+
         #welcome-screen.hide {
             opacity: 0;
             pointer-events: none;
@@ -258,7 +258,7 @@
 
 
 
-        
+
         header {
             position: fixed;
             top: 0;
@@ -412,7 +412,7 @@
 
 
 
-        
+
         .hero {
             padding: 64px 0;
             display: grid;
@@ -464,14 +464,14 @@
             padding: 48px 0;
         }
 
-        
+
         section {
-            
+
             height: auto;
-            
+
         }
 
-        
+
 
 
         h3 {
@@ -483,7 +483,7 @@
             color: var(--muted);
         }
 
-        
+
         .filters {
             display: flex;
             gap: 8px;
@@ -509,17 +509,17 @@
 
         .ebooks-grid {
             display: flex;
-            
+
             flex-wrap: nowrap;
-            
+
             overflow-x: auto;
-            
+
             gap: 18px;
             margin-top: 18px;
             padding-bottom: 12px;
-            
 
-            
+
+
             scroll-snap-type: x mandatory;
         }
 
@@ -534,15 +534,15 @@
             transition: transform 260ms ease, box-shadow 260ms ease;
 
             .ebook {
-                
 
-                
+
+
                 width: 320px;
-                
+
                 flex-shrink: 0;
-                
+
                 scroll-snap-align: start;
-                
+
             }
         }
 
@@ -583,7 +583,7 @@
         }
 
         @media (max-width: 900px) {
-            
+
 
             .nav-links {
                 display: flex;
@@ -594,19 +594,19 @@
                 flex-direction: column;
                 min-width: 220px;
 
-                
+
                 border-radius: 8px;
-                
+
                 box-shadow: 0 4px 12px #0000001a;
-                
 
-                
-                
-                
-                
-                
 
-                
+
+
+
+
+
+
+
                 opacity: 0;
                 transform: translateX(20px);
 
@@ -627,10 +627,10 @@
 
             .layout-grid-responsive {
                 grid-template-columns: 1fr;
-                
+
             }
 
-            
+
             .blog-layout-grid {
                 grid-template-columns: 1fr;
                 gap: 18px;
@@ -638,10 +638,10 @@
 
             .blog-illustration-aside {
                 display: none;
-                
+
             }
 
-            
+
 
             .menu-toggle {
                 display: block;
@@ -651,7 +651,7 @@
                 grid-template-columns: 1fr;
             }
 
-            
+
             .calculator-glass-box {
                 grid-template-columns: 1fr;
             }
@@ -659,25 +659,25 @@
 
             .nav-dropdown {
                 display: contents;
-                
+
             }
 
             .dropdown-toggle {
-                
+
                 width: 100%;
-                
+
             }
 
             .dropdown-toggle i {
                 display: none;
-                
+
             }
 
             .dropdown-menu {
                 display: none;
-                
+
                 position: static;
-                
+
                 width: 100%;
                 background: none;
                 border: none;
@@ -689,13 +689,13 @@
             }
 
             .dropdown-menu a {
-                
+
                 padding-left: 30px !important;
                 padding-top: 10px;
                 padding-bottom: 10px;
             }
 
-            
+
         }
 
         @media (max-width: 700px) {
@@ -736,17 +736,17 @@
 
         .blog-illustration-aside {
             display: none;
-            
+
         }
 
-        
 
 
-        
+
+
         .blog-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            
+
             gap: 16px;
             margin-top: 12px;
         }
@@ -768,7 +768,7 @@
             color: #1a5ed8;
         }
 
-        
+
         .comic-container {
             margin-top: 24px;
             text-align: center;
@@ -787,7 +787,7 @@
             border-radius: 8px;
         }
 
-        
+
         .quiz-glass-box {
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -825,9 +825,9 @@
             display: none !important;
         }
 
-        
 
-        
+
+
         .calculator-glass-box {
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -866,7 +866,7 @@
 
         .calc-result-box {
             background: rgba(34, 197, 94, 0.1);
-            
+
             border: 1px solid var(--accent);
             border-radius: var(--radius);
             padding: 20px;
@@ -887,12 +887,12 @@
             filter: drop-shadow(0 0 8px var(--accent));
         }
 
-        
+
         .testimonial-slider {
             margin-top: 24px;
             overflow: hidden;
             border-radius: var(--radius);
-            
+
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
             -webkit-backdrop-filter: blur(18px);
@@ -903,24 +903,24 @@
         .testimonial-track {
             display: flex;
             width: 300%;
-            
-            
+
+
             animation: slide 15s infinite ease-in-out;
         }
 
         .testimonial-card {
             width: 33.333%;
-            
+
             flex-shrink: 0;
 
-            
+
             background: none;
             border: none;
             box-shadow: none;
             -webkit-backdrop-filter: none;
             backdrop-filter: none;
 
-            
+
             padding: 24px;
             font-style: italic;
             display: flex;
@@ -961,64 +961,64 @@
             color: var(--muted);
         }
 
-        
+
         @keyframes slide {
 
-            
+
             0%,
             30% {
                 transform: translateX(0%);
             }
 
-            
+
             33.3% {
                 transform: translateX(-33.333%);
             }
 
-            
+
             33.3%,
             63.3% {
                 transform: translateX(-33.333%);
             }
 
-            
+
             66.6% {
                 transform: translateX(-66.666%);
             }
 
-            
+
             66.6%,
             96.6% {
                 transform: translateX(-66.666%);
             }
 
-            
+
             100% {
                 transform: translateX(0%);
             }
         }
 
-        
 
 
-        
+
+
         .nav-dropdown {
             position: relative;
             display: inline-block;
         }
 
-        
+
         .dropdown-toggle {
-            
+
             background: none;
             border: none;
             padding: 0;
             margin: 0;
             font: inherit;
-            
+
             cursor: pointer;
 
-            
+
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
@@ -1028,7 +1028,7 @@
             border-radius: 8px;
             transition: color 0.2s ease, background 0.15s ease, transform 0.12s ease;
 
-            
+
             display: flex;
             align-items: center;
             gap: 4px;
@@ -1040,19 +1040,19 @@
             outline: none;
         }
 
-        
+
 
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
-            
+
             left: 0;
             min-width: 220px;
 
-            
+
             background: rgba(30, 41, 59, 0.9);
-            
+
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             padding: 8px;
@@ -1060,7 +1060,7 @@
             backdrop-filter: blur(18px);
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
             z-index: 1001;
-            
+
         }
 
         .dropdown-menu a {
@@ -1068,24 +1068,24 @@
             width: 100%;
             padding: 10px 12px;
             border-radius: 8px;
-            
+
         }
 
         .dropdown-menu a:hover {
             background: rgba(34, 197, 94, 0.2);
-            
+
             color: var(--accent);
         }
 
         .nav-dropdown:hover .dropdown-menu {
             display: block;
-            
+
         }
 
-        
 
 
-        
+
+
         .pricing-container {
             text-align: center;
             margin-bottom: 3rem;
@@ -1141,7 +1141,7 @@
             transform: translateY(-2px);
         }
 
-        
+
         form {
             background: transparent;
             padding: 12px;
@@ -1194,7 +1194,7 @@
             cursor: pointer;
             box-shadow: 0 18px 44px rgba(34, 197, 94, 0.16);
             display: none;
-            
+
         }
 
         .muted {
@@ -1208,7 +1208,7 @@
             vertical-align: middle;
         }
 
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(12px);
@@ -1220,7 +1220,7 @@
             transform: none;
         }
 
-        
+
         .highlight-basic {
             border: 2px solid #3b82f6;
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.24);
@@ -1231,12 +1231,12 @@
             box-shadow: 0 0 15px rgba(34, 197, 94, 0.24);
         }
 
-        
+
         :focus:not(:focus-visible) {
             outline: none;
         }
 
-        
+
         .btn:hover {
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
@@ -1248,23 +1248,23 @@
             transition: all 0.3s ease;
         }
 
-        
 
-        
+
+
         .chat-bubble {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 60px;
             height: 60px;
-            
+
             background: linear-gradient(45deg, #00A9B0, #1DE9B6);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            
+
             box-shadow: 0 0 15px #1DE9B6, 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
             z-index: 9998;
@@ -1276,14 +1276,14 @@
             transform: scale(1.1);
         }
 
-        
+
         .chat-bubble svg {
             width: 30px;
             height: 30px;
             fill: #fff;
         }
 
-        
+
         .chat-window {
             position: fixed;
             bottom: 100px;
@@ -1292,12 +1292,12 @@
             max-width: 90vw;
             height: 450px;
             background: #0F1A24;
-            
+
             border-radius: 12px;
-            
+
             border: 1px solid #1DE9B6;
-            
-            
+
+
             box-shadow: 0 0 20px rgba(29, 233, 182, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
@@ -1315,17 +1315,17 @@
             visibility: visible;
         }
 
-        
+
         .chat-header {
             background: #1A2B3A;
-            
+
             color: #fff;
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1DE9B6;
-            
+
         }
 
         .chat-header h3 {
@@ -1334,7 +1334,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #1DE9B6;
-            
+
         }
 
         .chat-header #closeChat {
@@ -1344,7 +1344,7 @@
             font-weight: bold;
         }
 
-        
+
         .chat-body {
             flex-grow: 1;
             padding: 15px;
@@ -1355,10 +1355,10 @@
             font-family: Arial, sans-serif;
             font-size: 14px;
             color: #E0F2F1;
-            
+
         }
 
-        
+
         .chat-message {
             padding: 10px 14px;
             border-radius: 18px;
@@ -1369,7 +1369,7 @@
 
         .chat-message.bot {
             background: #1A2B3A;
-            
+
             color: #E0F2F1;
             border-bottom-left-radius: 4px;
             align-self: flex-start;
@@ -1377,9 +1377,9 @@
 
         .chat-message.user {
             background: #1DE9B6;
-            
+
             color: #0F1A24;
-            
+
             border-bottom-right-radius: 4px;
             align-self: flex-end;
             font-weight: 500;
@@ -1393,7 +1393,7 @@
             font-style: italic;
         }
 
-        
+
         .chat-footer {
             display: flex;
             padding: 10px;
@@ -1419,7 +1419,7 @@
         .chat-footer button {
             background: #1DE9B6;
             color: #0F1A24;
-            
+
             border: none;
             padding: 0 18px;
             border-radius: 20px;
@@ -1431,22 +1431,22 @@
 
         .chat-footer button:hover {
             background: #00A9B0;
-            
+
         }
 
 
 
-        
 
-        
+
+
         .ebooks-grid {
             cursor: grab;
-            
+
         }
 
         .ebooks-grid.active-drag {
             cursor: grabbing;
-            
+
 
             /* INI EFEK ANIMASINYA:
      Slider akan membesar 1% dan mendapat bayangan,
@@ -1455,21 +1455,21 @@
             transform: scale(1.01);
             box-shadow: 0 10px 30px rgba(130, 16, 16, 0.15);
             -webkit-user-select: none;
-            
+
             -moz-user-select: none;
-            
+
             -ms-user-select: none;
-            
+
             user-select: none;
         }
 
-        
+
         .ebooks-container-wrapper {
             position: relative;
-            
+
         }
 
-        
+
         .ebooks-grid {
             display: flex;
             flex-wrap: nowrap;
@@ -1480,14 +1480,14 @@
 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            
+
 
             -ms-overflow-style: none;
             scrollbar-width: none;
 
             cursor: grab;
 
-            
+
             transition: background-color 0.2s ease-out, transform 0.1s ease-out;
         }
 
@@ -1497,104 +1497,28 @@
 
         .ebooks-grid.active-drag {
             cursor: grabbing;
-            
-            
-            
-            
-            
+
+
+
+
+
         }
 
-        
+
         .ebook {
             /* CSS LAMA ANDA (seperti background, padding, border) 
        TIDAK PERLU DIHAPUS, biarkan saja.
     */
 
-            
-            
+
+
             width: 320px;
-            
+
             flex-shrink: 0;
-            
+
             scroll-snap-align: start;
-            
+
         }
-
-        
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            
-            transform: translateY(-50%);
-            z-index: 10;
-
-            
-            background: var(--surface-2);
-            
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            transition: all 0.2s ease;
-
-            
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .scroll-btn:hover {
-            background: var(--surface-3);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        
-        .scroll-btn.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .scroll-btn.prev {
-            left: 10px;
-            
-        }
-
-        .scroll-btn.next {
-            right: 10px;
-            
-        }
-
-
-        
-        @media (max-width: 768px) {
-
-            
-            .scroll-btn {
-                display: none;
-            }
-
-            .ebooks-grid {
-                
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            
-            .ebook {
-                width: 280px;
-            }
-        }
-
-        
     </style>
 </head>
 
@@ -2110,6 +2034,15 @@
             },
             {
                 id: 7,
+                title: 'Crypto These For 2024',
+                category: 'Finance',
+                desc: 'Prediksi crypto teratas untuk 2024. Aset digital dan tren yang wajib Anda pantau di kategori Finance.',
+                coverText: 'C2',
+                imgUrl: 'assets/images/cover_C2.png',
+                file: 'https://drive.google.com/file/d/1grtbClBRw7y9dASxKhtraNV914w_yRd-/view?usp=drive_link'
+            },
+            {
+                id: 8,
                 title: 'Candlestick Bible',
                 category: 'Investment',
                 desc: 'Panduan komprehensif untuk trader dalam membaca dan menginterpretasi berbagai pola candlestick untuk analisis teknikal.',
@@ -2118,7 +2051,7 @@
                 file: 'https://drive.google.com/file/d/12yIJZYuRBDWmarLur_XZKZBxOwrt9Jd9/view?usp=drive_link'
             },
             {
-                id: 8,
+                id: 9,
                 title: 'How to Trade with Price Action',
                 category: 'Investment',
                 desc: 'Strategi trading yang berfokus pada analisis pergerakan harga murni (price action) tanpa bergantung pada indikator.',
@@ -2127,7 +2060,7 @@
                 file: 'https://drive.google.com/file/d/1ynX1K-qGTADd8kIqDS0xw6TBatHZ_1q6/view?usp=drive_link'
             },
             {
-                id: 9,
+                id: 10,
                 title: 'AC Research',
                 category: 'Investment',
                 desc: 'Kumpulan data dan analisis riset eksklusif mengenai peluang investasi, valuasi aset, dan sektor-sektor yang berpotensi.',
@@ -2136,7 +2069,7 @@
                 file: 'https://drive.google.com/file/d/15ZMKVVyvgFMhvSWBloD-II-iEC4lDes2/view?usp=drive_link'
             },
             {
-                id: 10,
+                id: 11,
                 title: 'SMC Davinci',
                 category: 'Investment',
                 desc: 'Panduan mendalam tentang strategi trading \'Smart Money Concept\' (SMC), berfokus pada likuiditas dan struktur pasar.',
@@ -2145,7 +2078,7 @@
                 file: 'https://drive.google.com/file/d/1bjqimRx-qOK3Au5rZd7gLmOvgHjyvQdM/view?usp=drive_link'
             },
             {
-                id: 11,
+                id: 12,
                 title: 'Supply and Demand by Uncensored Trader',
                 category: 'Investment',
                 desc: 'Metode trading yang berfokus pada identifikasi zona Supply (penawaran) dan Demand (permintaan) di pasar.',
@@ -2154,7 +2087,7 @@
                 file: 'https://drive.google.com/file/d/187CqMumpdNaQCr3U580oo82rgVqjTe8T/view?usp=drive_link'
             },
             {
-                id: 12,
+                id: 13,
                 title: 'Technical Analiysis For Mega Profit',
                 category: 'Investment',
                 desc: 'Kumpulan teknik dan strategi analisis teknikal untuk mengidentifikasi tren dan peluang profit di pasar saham atau forex.',
@@ -2163,7 +2096,7 @@
                 file: 'https://drive.google.com/file/d/1IuISTMU5q8B3kpzZS9eI3xZF_xb0DVL8/view?usp=drive_link'
             },
             {
-                id: 13,
+                id: 14,
                 title: 'Trade Your Way to Financial Fredom',
                 category: 'Investment',
                 desc: 'Karya klasik Van K. Tharp yang fokus pada psikologi trading, manajemen risiko, dan position sizing untuk profit konsisten.',
@@ -2172,7 +2105,7 @@
                 file: 'https://drive.google.com/file/d/1Q2Fk7dfslcm7a72WW8giLTaZQ63pKw61/view?usp=drive_link'
             },
             {
-                id: 14,
+                id: 15,
                 title: 'Dark Psychology The Partical Uses and Best Defenses of Psychological Warfare in Everyday Life',
                 category: 'Psychology',
                 desc: 'Menjelajahi sisi gelap psikologi, termasuk teknik manipulasi, persuasi, dan cara bertahan dari perang psikologis sehari-hari.',
@@ -2181,7 +2114,7 @@
                 file: 'https://drive.google.com/file/d/1x3uVO9i-kj0jay1hqomY_Kd1SJzQqb-H/view?usp=drive_link'
             },
             {
-                id: 15,
+                id: 16,
                 title: 'The Communication Book 44 Ideas for Better Conversations Every Day',
                 category: 'Psychology',
                 desc: 'Kumpulan 44 ide praktis untuk meningkatkan keterampilan komunikasi, percakapan, dan interaksi sosial Anda setiap hari.',
@@ -2190,7 +2123,7 @@
                 file: 'https://drive.google.com/file/d/1_vl6fCiwLwBYHx9hWCDchuT_Er7JQg6i/view?usp=drive_link'
             },
             {
-                id: 16,
+                id: 17,
                 title: 'The Psychology of Money',
                 category: 'Psychology',
                 desc: 'Buku populer oleh Morgan Housel yang menjelaskan bahwa kesuksesan finansial lebih tentang perilaku daripada kecerdasan teknis.',
@@ -2199,7 +2132,7 @@
                 file: 'https://drive.google.com/file/d/18EBB-ws_fHWsqJVOK_YWEB39ver2a-dU/view?usp=drive_link'
             },
             {
-                id: 17,
+                id: 18,
                 title: 'Think and Grow Rich',
                 category: 'Psychology',
                 desc: 'Karya klasik Napoleon Hill yang menguraikan 13 langkah menuju kesuksesan, berfokus pada kekuatan pikiran dan mindset positif.',
@@ -2208,7 +2141,7 @@
                 file: 'https://drive.google.com/file/d/16LRm8ZWxGu9xvdHQf0YHHzHP2MOF_IUm/view?usp=drive_link'
             },
             {
-                id: 18,
+                id: 19,
                 title: 'How To Win Friends Influence People In The Digital Age',
                 category: 'Psychology',
                 desc: 'Adaptasi modern dari buku klasik Dale Carnegie untuk menjalin hubungan dan berkomunikasi di era digital dan media sosial.',
@@ -2217,7 +2150,7 @@
                 file: 'https://drive.google.com/file/d/1HBMr-e1rCpB5vssSUvqdhT_yt7BHFIBz/view?usp=drive_link'
             },
             {
-                id: 19,
+                id: 20,
                 title: 'Copywriting Revolution',
                 category: 'Psychology',
                 desc: 'Panduan modern tentang seni *copywriting* yang persuasif, menggabungkan psikologi penjualan dengan teknik menulis era digital.',
@@ -2226,7 +2159,7 @@
                 file: 'https://drive.google.com/file/d/1emXja7c8em7xi501AuNKFvyUCPcMRNnK/view?usp=drive_link'
             },
             {
-                id: 20,
+                id: 21,
                 title: 'The Art of Manipulation',
                 category: 'Psychology',
                 desc: 'Mengungkap teknik-teknik manipulasi psikologis, cara kerjanya, dan bagaimana cara mengenali serta melawannya.',
@@ -2235,7 +2168,7 @@
                 file: 'https://drive.google.com/file/d/13mVN741BIZnBQls5UDOZT755uYPU4NtF/view?usp=drive_link'
             },
             {
-                id: 21,
+                id: 22,
                 title: 'You Are a Badass at Making Money Master',
                 category: 'Psychology',
                 desc: 'Panduan motivasional oleh Jen Sincero untuk mengatasi \'mental block\' dan ketakutan Anda seputar uang agar bisa kaya.',
@@ -2243,6 +2176,133 @@
                 imgUrl: 'assets/images/cover_YB.png',
                 file: 'https://drive.google.com/file/d/1HIVQ7jcXx8sJrmvPygF-MV1cYOk9z9WS/view?usp=drive_link'
             },
+            {
+                id: 23,
+                title: 'Profit Konsisten (Ichimoku Kinko Hyo)',
+                category: 'Investment',
+                desc: 'Pelajari strategi trading profit konsisten menggunakan indikator teknikal Ichimoku Kinko Hyo.',
+                coverText: 'CP',
+                imgUrl: 'assets/images/cover_CP.png',
+                file: 'https://drive.google.com/file/d/1PZHRilrqNLiY6dkNe9JIvw8wHQTclUtk/view?usp=drive_link'
+            },
+            {
+                id: 23,
+                title: 'Basic Trading',
+                category: 'Investment',
+                desc: 'Panduan dasar dan pengenalan fundamental untuk memulai trading bagi pemula.',
+                coverText: 'BE',
+                imgUrl: 'assets/images/cover_BE.png',
+                file: 'https://drive.google.com/file/d/1UBTH_4EpWAiOy1LgZZvh05kSKXqviPmR/view?usp=drive_link'
+            },
+            {
+                id: 24,
+                title: 'Belajar Trading Untuk Pemula',
+                category: 'Investment',
+                desc: 'Mulai perjalanan Anda di dunia trading dari nol. Panduan langkah demi langkah untuk pemula.',
+                coverText: 'BTU',
+                imgUrl: 'assets/images/cover_BTU.png',
+                file: 'https://drive.google.com/file/d/1S6YaRN2d2yxMG7vhEd1afT2dw3jcVu_9/view?usp=drive_link'
+            },
+            {
+                id: 25,
+                title: 'Binance Academy Cryptocurrency',
+                category: 'Investment',
+                desc: 'Kumpulan materi edukasi lengkap seputar dunia cryptocurrency dari Binance Academy.',
+                coverText: 'BAC',
+                imgUrl: 'assets/images/cover_BAC.png',
+                file: 'https://drive.google.com/file/d/1q_lsq3-sz05uwAWM8H6EH7e8yELbPl-f/view?usp=drive_link'
+            },
+            {
+                id: 26,
+                title: 'Crypto Cash Machine',
+                category: 'Investment',
+                desc: 'Temukan strategi dan metode untuk membangun aliran pendapatan dari aset crypto.',
+                coverText: 'CCM',
+                imgUrl: 'assets/images/cover_CCM.png',
+                file: 'https://drive.google.com/file/d/1RjKVY_7mKezxYrPp1eWyRPcB1DPnl4pq/view?usp=drive_link'
+            },
+            {
+                id: 27,
+                title: 'Kamus Candlestick',
+                category: 'Investment',
+                desc: 'Referensi lengkap berbagai pola candlestick dan interpretasinya dalam analisis trading.',
+                coverText: 'KC',
+                imgUrl: 'assets/images/cover_KC.png',
+                file: 'https://drive.google.com/file/d/1fpNzRz07aknaP_Oq0uR6z0_h29hcoMsb/view?usp=drive_link'
+            },
+            {
+                id: 28,
+                title: 'Crypto Investing Principles',
+                category: 'Investment',
+                desc: 'Pahami prinsip-prinsip inti dan fundamental untuk berinvestasi di pasar crypto.',
+                coverText: 'CIP',
+                imgUrl: 'assets/images/cover_CIP.png',
+                file: 'https://drive.google.com/file/d/1wUIQkg0Ixim0DEZYPtSho-pA9A_FimSj/view?usp=drive_linkk'
+            },
+            {
+                id: 29,
+                title: 'Cara Cepat Membaca Bahasa Tubuh',
+                category: 'Psychology',
+                desc: 'Panduan praktis untuk menginterpretasi dan memahami makna di balik bahasa tubuh.',
+                coverText: 'CBT',
+                imgUrl: 'assets/images/cover_CBT.png',
+                file: 'https://drive.google.com/file/d/1KPam7k11NhwoHunNGCUdgaxbhtmLWCuP/view?usp=drive_link'
+            },
+            {
+                id: 30,
+                title: 'The Hitler Effect',
+                category: 'Psychology',
+                desc: 'Analisis psikologis tentang pengaruh, karisma, dan kepatuhan massa.',
+                coverText: 'HE',
+                imgUrl: 'assets/images/cover_HE.png',
+                file: 'https://drive.google.com/file/d/1vwBJfu_m__qGni2vcMOQk6emfch6cOnb/view?usp=drive_link'
+            },
+            {
+                id: 31,
+                title: 'Atomic Habits',
+                category: 'Psychology',
+                desc: 'Metode membangun kebiasaan kecil yang baik dan menghilangkan kebiasaan buruk.',
+                coverText: 'AH',
+                imgUrl: 'assets/images/cover_AH.png',
+                file: 'https://drive.google.com/file/d/1A7Fyx8AdKUde_Lj_XrMRKmyVI8jz6y97/view?usp=drive_link'
+            },
+            {
+                id: 32,
+                title: 'Cara Berbicara Kepada Setiap Orang Dalam Setiap Situasi',
+                category: 'Psychology',
+                desc: 'Tingkatkan keterampilan komunikasi Anda agar percaya diri di situasi apapun.',
+                coverText: 'CBK',
+                imgUrl: 'assets/images/cover_CBK.png',
+                file: 'https://drive.google.com/file/d/1tWJOaqE8hDQhjfBvdj-alHODkBgjnjQ1/view?usp=drive_link'
+            },
+            {
+                id: 33,
+                title: 'Sebuah Seni Untuk Bersikap Bodo Amat',
+                category: 'Psychology',
+                desc: 'Pendekatan unik untuk fokus pada hal-hal penting dan menjalani hidup lebih bahagia.',
+                coverText: 'SSU',
+                imgUrl: 'assets/images/cover_SSU.png',
+                file: 'https://drive.google.com/file/d/110YZiNnbEQokBK2q88facKFx_K-76R_v/view?usp=drive_link'
+            },
+            {
+                id: 34,
+                title: 'Seni Berbicara Kepada Siapa Saja, Kapan Saja, di Mana Saja',
+                category: 'Psychology',
+                desc: 'Kiat ahli untuk menjadi pembicara yang lebih efektif dan persuasif di setiap kesempatan.',
+                coverText: 'SBK',
+                imgUrl: 'assets/images/cover_SBK.png',
+                file: 'https://drive.google.com/file/d/1M_5deA3aGBeELIq17BX4WJ_iqH6bLVc4/view?usp=drive_link'
+            },
+            {
+                id: 35,
+                title: 'Seni Membaca Pikiran',
+                category: 'Psychology',
+                desc: 'Pelajari cara memahami apa yang dipikirkan dan dirasakan orang lain melalui petunjuk halus.',
+                coverText: 'SMP',
+                imgUrl: 'assets/images/cover_SMP.png',
+                file: 'https://drive.google.com/file/d/1DKUfQ0H08JVY2yhwDnZcX96ZHW2Ngpmg/view?usp=drive_link'
+            },
+
 
         ];
 
