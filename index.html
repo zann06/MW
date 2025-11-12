@@ -1523,11 +1523,6 @@
         .ebooks-grid.active-drag {
             cursor: grabbing;
 
-
-            /* INI EFEK ANIMASINYA:
-     Slider akan membesar 1% dan mendapat bayangan,
-     sehingga terlihat "terangkat" dari halaman.
-    */
             transform: scale(1.01);
             box-shadow: 0 10px 30px rgba(130, 16, 16, 0.15);
             -webkit-user-select: none;
@@ -1582,10 +1577,7 @@
 
 
         .ebook {
-            /* CSS LAMA ANDA (seperti background, padding, border) 
-       TIDAK PERLU DIHAPUS, biarkan saja.
-    */
-
+    
 
 
             width: 320px;
@@ -2210,21 +2202,20 @@
         </div>
     </template>
     <script>
-        // ===== FUNGSI UNTUK NAVIGASI (DROPDOWN, ACTIVE LINKS) =====
+    
 
         // Fungsi untuk toggle dropdown
         function toggleDropdown(event) {
-            event.preventDefault(); // Mencegah link pindah halaman
+            event.preventDefault();
             const dropdownMenu = event.currentTarget.nextElementSibling;
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
 
-            // Logika untuk mobile (jika dropdown dibuka, menu lain jangan ditutup)
             if (window.innerWidth <= 900) {
-                // Biarkan menu utama tetap terbuka
+            
             }
         }
 
-        // Fungsi untuk menutup dropdown jika klik di luar
+        
         window.onclick = function (event) {
             if (!event.target.matches('.dropdown-toggle')) {
                 const dropdowns = document.getElementsByClassName("dropdown-menu");
@@ -2237,7 +2228,7 @@
             }
         }
 
-        // ===== Data (dummy) =====
+        
         // Kita letakkan datanya di atas agar bisa diakses oleh fungsi di bawah
         const ebooks = [{
                 id: 1,
@@ -2724,7 +2715,7 @@
             }
         };
 
-        // ===== DEKLARASI VARIABEL KUIS (GLOBAL UNTUK SCRIPT INI) =====
+        // ===== DEKLARASI VARIABEL KUIS  =====
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let quizContainer, quizResultContainer, quizQuestionEl, quizOptionsEl, quizRetakeBtn, quizResultTitleEl,
@@ -2733,7 +2724,7 @@
 
         // ===== FUNGSI UNTUK KUIS =====
         function startQuiz() {
-            // Ambil elemennya di sini, SETELAH DOM siap
+            
             quizContainer = document.getElementById('quiz-container');
             quizResultContainer = document.getElementById('quiz-result');
             quizQuestionEl = document.getElementById('quiz-question');
@@ -2751,7 +2742,7 @@
             showQuestion();
 
             if (quizRetakeBtn) {
-                quizRetakeBtn.removeEventListener('click', startQuiz); // Hapus listener lama jika ada
+                quizRetakeBtn.removeEventListener('click', startQuiz);
                 quizRetakeBtn.addEventListener('click', startQuiz);
             }
         }
@@ -2801,21 +2792,21 @@
             if (quizResultTitleEl) quizResultTitleEl.textContent = result.title;
             if (quizResultDescEl) quizResultDescEl.textContent = result.desc;
         }
-        // --- MODIFIKASI: Fungsi untuk render Rekomendasi Admin (dengan Label Ganda) ---
+        
         function renderRecommendations() {
             const grid = document.getElementById('admin-recommendations-grid');
-            // 1. Disesuaikan dengan ID template Anda
+            
             const template = document.getElementById('ebookTpl');
 
-            if (!grid || !template) return; // Keluar jika elemen tidak ditemukan
+            if (!grid || !template) return; 
 
-            grid.innerHTML = ''; // Kosongkan grid
+            grid.innerHTML = ''; 
 
-            // 2. Filter BUKU REKOMENDASI
+            // Filter BUKU REKOMENDASI
             const recommendedBooks = ebooks.filter(e => e.isRecommended === true);
 
             recommendedBooks.forEach(e => {
-                // 3. Gunakan 'ebookTpl'
+                // 'ebookTpl'
                 const tpl = template.content.cloneNode(true);
                 const coverEl = tpl.querySelector('.cover');
 
@@ -2836,9 +2827,9 @@
                 // --- MODIFIKASI DIMULAI: Tambahkan Logika Label Ganda ---
                 // 4. Ambil container label
                 const badgeContainer = tpl.querySelector('.ebook-badge-container');
-                badgeContainer.innerHTML = ''; // Kosongkan
+                badgeContainer.innerHTML = ''; 
 
-                // 5. Cek Rekomendasi (Pasti true, tapi kita tetap tambahkan)
+                // Cek Rekomendasi 
                 if (e.isRecommended) {
                     const recBadge = document.createElement('span');
                     recBadge.className = 'ebook-badge ebook-badge--recommended';
@@ -2846,7 +2837,7 @@
                     badgeContainer.appendChild(recBadge);
                 }
 
-                // 6. Cek Akses (Ini kuncinya, rekomendasi bisa 'free', 'basic', atau 'pro')
+                // Cek Akses (Ini kuncinya, rekomendasi bisa 'free', 'basic', atau 'pro')
                 if (e.access === 'free') {
                     const freeBadge = document.createElement('span');
                     freeBadge.className = 'ebook-badge ebook-badge--free';
@@ -2864,7 +2855,7 @@
                     badgeContainer.appendChild(proBadge);
                 }
 
-                // 7. Logika Tombol (Tidak lagi 'selalu free', sekarang dinamis)
+                // Logika Tombol (Tidak lagi 'selalu free', sekarang dinamis)
                 if (e.access === 'free') {
                     // Jika Rekomendasi + Gratis
                     readBtn.textContent = 'Baca (Gratis)';
@@ -2894,7 +2885,7 @@
                 spaceBetween: 18,
                 grabCursor: true,
                 navigation: {
-                    // 9. Selector panah juga dibuat lebih spesifik
+                    // Selector panah juga dibuat lebih spesifik
                     nextEl: '#recommendations-section .swiper-button-next',
                     prevEl: '#recommendations-section .swiper-button-prev',
                 },
@@ -2906,7 +2897,7 @@
         // ===== FUNGSI RENDER EBOOK & BLOG =====
         function renderEbooks(list) {
             const ebooksGrid = document.getElementById('ebooksGrid');
-            // Menggunakan ID 'totalCount' dari kode yang Anda berikan
+            
             const totalCount = document.getElementById('totalCount');
 
             const template = document.getElementById('ebookTpl');
@@ -2935,7 +2926,7 @@
                 // --- MODIFIKASI LOGIKA LABEL GANDA ---
                 // 1. Ambil container-nya (dari template yang sudah di-modifikasi)
                 const badgeContainer = tpl.querySelector('.ebook-badge-container');
-                badgeContainer.innerHTML = ''; // Kosongkan dulu
+                badgeContainer.innerHTML = ''; 
 
                 // 2. Cek Rekomendasi
                 if (e.isRecommended) {
@@ -2962,9 +2953,7 @@
                     proBadge.textContent = 'Pro';
                     badgeContainer.appendChild(proBadge);
                 }
-                // --- SELESAI LOGIKA LABEL GANDA ---
-
-                // --- LOGIKA TOMBOL (Tidak berubah, hanya dirapikan) ---
+            
                 if (e.access === 'free') {
                     // Logika buku GRATIS
                     readBtn.textContent = 'Baca (Gratis)';
@@ -2978,7 +2967,7 @@
                     downloadBtn.style.display = 'inline-flex';
                     downloadBtn.addEventListener('click', () => downloadFile(e));
                 }
-                // --- PERBAIKAN: Syntax error (tanda '}-') dari kode Anda telah dihapus ---
+                
 
                 ebooksGrid.appendChild(tpl);
             });
@@ -3005,7 +2994,7 @@
 
         // ===== Reader & Download =====
         function openReader(e) {
-            // Logika "Baca" (Gratis): Langsung buka link file di tab baru.
+            
             if (e.file && (e.file.startsWith('https://') || e.file.startsWith('http://'))) {
                 window.open(e.file, '_blank');
             } else {
@@ -3020,7 +3009,7 @@
             // 1. Cek status subscribe dari localStorage (fungsi ini sudah ada di file Anda)
             const subs = loadSubs();
 
-            // 2. Cek apakah array 'subs' punya isi (artinya sudah pernah subscribe)
+            // 2. Cek apakah array 'subs' punya isi 
             if (subs.length === 0) {
                 // JIKA BELUM SUBSCRIBE
                 alert("Anda harus subscribe terlebih dahulu untuk men-download e-book ini.");
@@ -3029,19 +3018,19 @@
                 const subscribeSection = document.getElementById('subscribeForm');
 
                 if (subscribeSection) {
-                    // Scroll ke form subscribe
+                    
                     subscribeSection.scrollIntoView({
                         behavior: 'smooth',
                         block: 'center'
                     });
 
-                    // Beri efek highlight pada section subscribe
-                    const subBox = subscribeSection.closest('section'); // Dapatkan <section> terdekat
+                    
+                    const subBox = subscribeSection.closest('section'); 
                     if (subBox) {
                         subBox.style.transition = 'background-color 0.2s linear';
-                        subBox.style.backgroundColor = 'rgba(34, 197, 94, 0.1)'; // Warna accent glow
+                        subBox.style.backgroundColor = 'rgba(34, 197, 94, 0.1)'; 
                         setTimeout(() => {
-                            subBox.style.backgroundColor = ''; // Kembalikan ke normal
+                            subBox.style.backgroundColor = '';
                         }, 1500);
                     }
                 }
@@ -3049,9 +3038,7 @@
                 // JIKA SUDAH SUBSCRIBE (simulasi berhasil)
                 alert('Terima kasih sudah subscribe! Download Anda akan dimulai.');
 
-                // Lanjutkan logika "download". 
-                // Catatan: Cara terbaik untuk "download" link GDrive adalah membukanya di tab baru.
-                // Pengguna bisa men-download manual dari tampilan Google Drive.
+                
                 if (e.file && (e.file.startsWith('https://') || e.file.startsWith('http://'))) {
                     window.open(e.file, '_blank');
                 } else {
@@ -3079,7 +3066,7 @@
 
         function viewBooks(plan) {
             console.log("Tombol 'Lihat Buku' untuk paket:", plan, "diklik.");
-            // Cukup scroll ke section ebooks
+            
             const ebookSection = document.getElementById('library');
             if (ebookSection) {
                 ebookSection.scrollIntoView({
@@ -3091,7 +3078,7 @@
                 ebookSection.style.transition = 'background-color 0.3s ease-in-out';
                 ebookSection.style.backgroundColor = 'rgba(34, 197, 94, 0.05)';
                 setTimeout(() => {
-                    ebookSection.style.backgroundColor = ''; // Kembalikan ke normal
+                    ebookSection.style.backgroundColor = '';
                 }, 1500);
             }
         }
@@ -3102,7 +3089,7 @@
             let currentSection = "";
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100; // Diberi offset 100px
+                const sectionTop = section.offsetTop - 100; 
                 if (window.scrollY >= sectionTop) {
                     currentSection = section.getAttribute("id");
                 }
@@ -3145,7 +3132,7 @@
                     }, 800);
                 });
             }
-            // --- BARU: Render Rekomendasi Admin ---
+            // Rekomendasi Admin ---
             renderRecommendations();
             // Mulai Kuis
             startQuiz();
@@ -3346,7 +3333,7 @@
             if (yearEl) yearEl.textContent = new Date().getFullYear();
 
             // ===== Scroll progress bar =====
-            window.addEventListener('scroll', handleScroll); // Ganti dari ('scroll', () => { ... })
+            window.addEventListener('scroll', handleScroll); 
 
             lucide.createIcons();
             // ===== LOGIKA BARU UNTUK SCROLL E-BOOK (DENGAN PANAH) =====
@@ -3357,28 +3344,27 @@
             if (grid && btnPrev && btnNext) {
 
                 const checkScroll = () => {
-                    if (!grid) return; // Pengaman jika grid tidak ada
-                    // Cek seberapa jauh di-scroll
+                    if (!grid) return; 
                     const scrollLeft = grid.scrollLeft;
-                    // Cek lebar total yang bisa di-scroll
+                
                     const maxScroll = grid.scrollWidth - grid.clientWidth;
 
-                    // Tampilkan/sembunyikan tombol 'Prev'
+                    
                     btnPrev.classList.toggle('visible', scrollLeft > 0);
-                    // Tampilkan/sembunyikan tombol 'Next'
-                    btnNext.classList.toggle('visible', scrollLeft < maxScroll - 5); // 5px buffer
+                    
+                    btnNext.classList.toggle('visible', scrollLeft < maxScroll - 5); 
                 };
 
-                // Klik Tombol Next
+                
                 btnNext.addEventListener('click', () => {
-                    // 320px (lebar kartu) + 18px (gap)
+                    
                     grid.scrollBy({
                         left: 338,
                         behavior: 'smooth'
                     });
                 });
 
-                // Klik Tombol Prev
+            
                 btnPrev.addEventListener('click', () => {
                     grid.scrollBy({
                         left: -338,
@@ -3386,12 +3372,12 @@
                     });
                 });
 
-                // Cek saat di-scroll manual (drag)
+                
                 grid.addEventListener('scroll', checkScroll, {
                     passive: true
                 });
 
-                // Cek saat ukuran grid berubah (misal: buku ditambah/difilter)
+                // Cek saat ukuran grid berubah 
                 // Ini JAUH LEBIH BAIK daripada mengedit renderEbooks
                 const gridObserver = new ResizeObserver(() => {
                     checkScroll();
@@ -3408,11 +3394,11 @@
                 let scrollLeft;
 
                 slider.addEventListener('mousedown', (e) => {
-                    // Cek apakah target adalah tombol (agar tombol tetap bisa diklik)
+                    
                     if (e.target.closest('button')) return;
 
                     isDown = true;
-                    slider.classList.add('active-drag'); // (Opsional) ganti cursor
+                    slider.classList.add('active-drag'); 
                     startX = e.pageX - slider.offsetLeft;
                     scrollLeft = slider.scrollLeft;
                 });
@@ -3432,7 +3418,7 @@
                     if (!isDown) return;
                     e.preventDefault();
                     const x = e.pageX - slider.offsetLeft;
-                    const walk = (x - startX) * 2; // (Angka 2 = sensitivitas, bisa diubah)
+                    const walk = (x - startX) * 2; 
                     slider.scrollLeft = scrollLeft - walk;
                 });
             }
@@ -3452,7 +3438,7 @@
             });
             /// --- Ambil elemen-elemen HTML ---
             const chatBubble = document.getElementById(
-                "chatBubble"); // <-- Variabel yang hilang sudah ada di sini
+                "chatBubble"); 
             const chatWindow = document.getElementById("chatWindow");
             const closeChat = document.getElementById("closeChat");
             const sendButton = document.getElementById("sendButton");
@@ -3466,13 +3452,12 @@
             let hasDragged = false;
 
             // --- Logika untuk Buka/Tutup Jendela Chat ---
-            // Cek dulu apakah elemennya ada sebelum menambahkan listener
             if (chatBubble) {
                 chatBubble.addEventListener("click", () => {
-                    // Cek apakah baru selesai di-drag
+                    
                     if (hasDragged) {
                         hasDragged = false; // Reset status
-                        return; // Jika ini adalah akhir dari 'drag', JANGAN buka chat
+                        return;
                     }
                     // Jika bukan drag, buka/tutup chat
                     if (chatWindow) chatWindow.classList.toggle("show");
@@ -3504,17 +3489,17 @@
                     offsetY = clientY - chatBubble.getBoundingClientRect().top;
 
                     chatBubble.style.cursor = 'grabbing';
-                    chatBubble.style.transition = 'none'; // Matikan transisi agar tidak lag
+                    chatBubble.style.transition = 'none'; 
                 }
 
                 function onDragMove(clientX, clientY) {
                     if (!isDragging) return;
 
-                    // Cek apakah sudah dianggap 'drag' (bergerak lebih dari 5px)
+                    
                     const deltaX = Math.abs(clientX - startX);
                     const deltaY = Math.abs(clientY - startY);
                     if (deltaX > 5 || deltaY > 5) {
-                        hasDragged = true; // Konfirmasi ini adalah drag, bukan click
+                        hasDragged = true; 
                     }
 
                     let newLeft = clientX - offsetX;
@@ -3523,7 +3508,7 @@
                     // Batasan (Boundaries) agar tidak keluar layar
                     const bubbleWidth = chatBubble.offsetWidth;
                     const bubbleHeight = chatBubble.offsetHeight;
-                    const padding = 10; // Jarak minimal 10px dari pinggir layar
+                    const padding = 10; 
 
                     newLeft = Math.max(padding, Math.min(newLeft, window.innerWidth - bubbleWidth - padding));
                     newTop = Math.max(padding, Math.min(newTop, window.innerHeight - bubbleHeight - padding));
@@ -3539,7 +3524,7 @@
                 function onDragEnd() {
                     isDragging = false;
                     chatBubble.style.cursor = 'grab';
-                    chatBubble.style.transition = ''; // Kembalikan transisi (jika ada)
+                    chatBubble.style.transition = ''; 
 
                     document.removeEventListener('mousemove', onMouseMove);
                     document.removeEventListener('mouseup', onMouseUp);
@@ -3657,9 +3642,9 @@
                 if (!chatBody) return;
                 const divLoading = document.createElement("div");
                 divLoading.classList.add("chat-message", "loading");
-                // Mengganti teks loading sesuai brand
+                
                 divLoading.textContent = "Wealth Buddy lagi mikir... 🌱";
-                divLoading.id = "loadingIndicator"; // Beri ID agar mudah dihapus
+                divLoading.id = "loadingIndicator"; 
                 chatBody.appendChild(divLoading);
 
                 // Auto-scroll
@@ -3677,10 +3662,10 @@
             // --- Fungsi Inti: Memanggil API Gemini ---
             async function panggilGeminiAPI(pesan) {
 
-                // URL sekarang mengarah ke backend Vercel Anda
-                const API_URL = "/api/chat"; // <-- Pastikan ini URL Vercel
+                
+                const API_URL = "/api/chat"; 
 
-                // Ambil 5 riwayat chat terakhir (tanpa kepribadian, itu urusan server)
+                
                 const historyForBackend = chatHistory.slice(-5);
 
                 const requestBody = {
@@ -3697,7 +3682,7 @@
                         body: JSON.stringify(requestBody),
                     });
 
-                    // Hapus loading setelah mendapat jawaban
+                    
                     hapusLoading();
 
                     if (!response.ok) {
@@ -3708,7 +3693,7 @@
                                 .statusText) + " 😥",
                             "bot"
                         );
-                        chatHistory.pop(); // Hapus pesan user dari history jika gagal
+                        chatHistory.pop(); 
                         return;
                     }
 
@@ -3728,7 +3713,7 @@
                     });
 
                 } catch (error) {
-                    // Jika terjadi error di sisi klien (misal: jaringan putus)
+                    
                     hapusLoading();
                     console.error("Error fetching API:", error);
                     tampilkanPesan(
@@ -3737,21 +3722,20 @@
                     );
                     chatHistory.pop();
                 }
-            } // <-- PENUTUP FUNGSI panggilGeminiAPI
-            // ========================================================
+            } 
+            
             // // ========================================================
 
-        }); // <-- INI ADALAH PENUTUP DOMContentLoaded YANG BENAR
+        }); 
 
 
         // 2. Saat semua resource (gambar, dll) sudah siap
         //    Ini adalah blok terpisah. JANGAN digabung dengan DOMContentLoaded.
         window.addEventListener('load', () => {
-            // Sembunyikan Preloader
+            
             const preloader = document.getElementById('preloader');
             if (preloader) setTimeout(() => preloader.classList.add('hide'), 800);
 
-            // Tampilkan body
             document.body.classList.add('loaded');
         });
 
@@ -3764,7 +3748,7 @@
                     },
                     body: JSON.stringify({
                         message: userMessage,
-                        history: [], // bisa diisi kalau mau simpan percakapan
+                        history: [], 
                     }),
                 });
 
