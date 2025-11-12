@@ -120,7 +120,10 @@
 
         #preloader.hide {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
+
+            transition: opacity 0.5s, visibility 0.5s;
         }
 
         .spinner {
@@ -1592,6 +1595,125 @@
             scroll-snap-align: start;
 
         }
+
+
+
+        .ebook .btn-group {
+            margin-top: auto;
+
+            padding-top: 8px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .ebook .btn-sm {
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 6px;
+        }
+
+        .ebook .readBtn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+        }
+
+        .ebook .downloadBtn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+
+        #recommendations-section .swiper-slide {
+            width: 320px;
+
+        }
+
+
+        #recommendations-section {
+            position: relative;
+        }
+
+        #recommendations-section .swiper-button-next,
+        #recommendations-section .swiper-button-prev {
+            color: var(--accent);
+            width: 44px;
+            height: 44px;
+            background: var(--glass);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+
+        #recommendations-section .swiper-button-next:hover,
+        #recommendations-section .swiper-button-prev:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        #recommendations-section .swiper-button-next {
+            right: -10px;
+        }
+
+        #recommendations-section .swiper-button-prev {
+            left: -10px;
+        }
+
+        #recommendations-section .swiper-button-next::after,
+        #recommendations-section .swiper-button-prev::after {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+
+        .ebook-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 6px;
+            margin-bottom: 8px;
+
+            min-height: 20px;
+
+        }
+
+
+        .ebook-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+
+
+
+        .ebook-badge--recommended {
+            background-color: rgba(250, 204, 21, 0.2);
+            color: #facc15;
+        }
+
+
+        .ebook-badge--free {
+            background-color: rgba(148, 163, 184, 0.2);
+            color: var(--muted);
+        }
+
+
+        .ebook-badge--basic {
+            background-color: rgba(30, 58, 138, 0.2);
+            color: #60a5fa;
+        }
+
+
+        .ebook-badge--pro {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: var(--accent);
+        }
     </style>
 </head>
 
@@ -1862,6 +1984,40 @@
                 </div>
             </div>
         </section>
+        <section id="recommendations-section" class="fade-in">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3><i data-lucide="award"></i> Rekomendasi Wealth Buddy </h3>
+            </div>
+
+            <div class="swiper comic-swiper">
+                <div class="swiper-wrapper" id="admin-recommendations-grid">
+                </div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </section>
+
+
+        <template id="ebook-template">
+            <div class="ebook">
+                <div class="cover"></div>
+                <div class="info" style="display: flex; flex-direction: column; flex-grow: 1; height: 100%;">
+                    <h4>Judul E-book</h4>
+                    <p style="font-size: 13px; color: var(--muted); flex-grow: 1;">Deskripsi singkat...</p>
+                    <div class="btn-group">
+                        <button class="btn-sm readBtn">
+                            <i data-lucide="book-open" style="width:14px;height:14px"></i>
+                            Baca (Gratis)
+                        </button>
+                        <button class="btn-sm downloadBtn">
+                            <i data-lucide="download" style="width:14px;height:14px"></i>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </template>
 
         <section id="library" class="fade-in">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
@@ -1871,6 +2027,7 @@
                 </div>
                 <div class="muted">Total: <span id="totalCount">0</span> e-books</div>
             </div>
+
 
             <div class="filters" style="margin-top:12px">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -1910,7 +2067,6 @@
                             <div class="avatar">JR</div>
                             <div>
                                 <div class="name">Jeyo R.</div>
-                                <div class="name">Jeyo R.</div>
                                 <div class="title">Investor Pemula</div>
                             </div>
                         </div>
@@ -1930,7 +2086,7 @@
 
                     <div class="testimonial-card">
                         <p>"Kontennya premium dan aplikatif. Jauh lebih baik dari seminar mahal. 'Pro Plan' sangat
-                            *worth it*!"</p>
+                            worth it!"</p>
                         <div class="testimonial-footer">
                             <div class="avatar">T</div>
                             <div>
@@ -1965,7 +2121,7 @@
                         <li> Update mingguan & bulanan</li>
                         <li> Early access e-book baru</li>
                     </ul>
-                    <button class="plan-btn" onclick="viewBooks('pro')">Liah Buku</button>
+                    <button class="plan-btn" onclick="viewBooks('pro')">Lihat Buku</button>
                 </div>
             </div>
         </div>
@@ -2040,6 +2196,10 @@
         <div class="ebook">
             <div class="cover">CV</div>
             <div style="flex:1">
+
+                <div class="ebook-badge-container">
+                </div>
+
                 <h4>Title</h4>
                 <p class="muted">Short description</p>
                 <div style="display:flex;gap:8px;margin-top:10px">
@@ -2049,7 +2209,6 @@
             </div>
         </div>
     </template>
-
     <script>
         // ===== FUNGSI UNTUK NAVIGASI (DROPDOWN, ACTIVE LINKS) =====
 
@@ -2087,7 +2246,9 @@
                 desc: 'Panduan Robert Kiyosaki tentang 4 tipe penghasil uang (E, S, B, I) dan cara beralih ke kuadran B (Bisnis) dan I (Investor).',
                 coverText: 'CQ',
                 imgUrl: 'assets/images/cover_CQ.jpg',
-                file: 'https://drive.google.com/file/d/1_NUoE0To3VKEpiQgo6EktdwLDPpZ0d7x/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1_NUoE0To3VKEpiQgo6EktdwLDPpZ0d7x/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 2,
@@ -2096,7 +2257,9 @@
                 desc: 'Panduan praktis dan strategi jitu untuk mengelola keuangan pribadi Anda sehari-hari agar lebih efektif dan terarah.',
                 coverText: 'CT',
                 imgUrl: 'assets/images/cover_CT.png',
-                file: 'https://drive.google.com/file/d/1aLYjgpdZCpfEIUiABbQkhcvYD1b3Uq0k/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1aLYjgpdZCpfEIUiABbQkhcvYD1b3Uq0k/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 3,
@@ -2105,7 +2268,9 @@
                 desc: 'Kumpulan perumpamaan dari Babilonia kuno yang mengajarkan prinsip abadi tentang menabung, mengelola utang, dan berinvestasi.',
                 coverText: 'TB',
                 imgUrl: 'assets/images/cover_TB.png',
-                file: 'https://drive.google.com/file/d/1ZykyRcAfEWhSNso-vfphiWRYteGTeHQt/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1ZykyRcAfEWhSNso-vfphiWRYteGTeHQt/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 4,
@@ -2114,7 +2279,9 @@
                 desc: 'Buku klasik yang membandingkan pola pikir "Ayah Kaya" dan "Ayah Miskin" tentang uang, aset, dan literasi finansial.',
                 coverText: 'RD',
                 imgUrl: 'assets/images/cover_RD.jpg',
-                file: 'https://drive.google.com/file/d/1i9PDKpmC9bc9Y42UdMDM_lcIDq7PYyTU/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1i9PDKpmC9bc9Y42UdMDM_lcIDq7PYyTU/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: true
             },
             {
                 id: 5,
@@ -2123,7 +2290,9 @@
                 desc: 'Laporan riset mendalam mengenai tren keuangan terbaru, analisis pasar, dan proyeksi ekonomi untuk keputusan strategis.',
                 coverText: 'TR',
                 imgUrl: 'assets/images/cover_TR.png',
-                file: 'https://drive.google.com/file/d/1CLLYbZEbrpXBqtB8KI4LZNQXvqus2bv5/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1CLLYbZEbrpXBqtB8KI4LZNQXvqus2bv5/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: true
             },
             {
                 id: 6,
@@ -2132,7 +2301,9 @@
                 desc: 'Sebuah panduan strategi untuk mencapai kebebasan finansial, mulai dari mengelola utang hingga membangun arus pendapatan pasif.',
                 coverText: 'KF',
                 imgUrl: 'assets/images/cover_KF.png',
-                file: 'https://drive.google.com/file/d/1ZqlK6xCKw0cPChuh9Yoj1nBwim82y-gj/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1ZqlK6xCKw0cPChuh9Yoj1nBwim82y-gj/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 7,
@@ -2141,7 +2312,9 @@
                 desc: 'Prediksi crypto teratas untuk 2024. Aset digital dan tren yang wajib Anda pantau di kategori Finance.',
                 coverText: 'C2',
                 imgUrl: 'assets/images/cover_C2.png',
-                file: 'https://drive.google.com/file/d/1grtbClBRw7y9dASxKhtraNV914w_yRd-/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1grtbClBRw7y9dASxKhtraNV914w_yRd-/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 8,
@@ -2150,7 +2323,9 @@
                 desc: 'Panduan komprehensif untuk trader dalam membaca dan menginterpretasi berbagai pola candlestick untuk analisis teknikal.',
                 coverText: 'CB',
                 imgUrl: 'assets/images/cover_CB.png',
-                file: 'https://drive.google.com/file/d/12yIJZYuRBDWmarLur_XZKZBxOwrt9Jd9/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/12yIJZYuRBDWmarLur_XZKZBxOwrt9Jd9/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 9,
@@ -2159,7 +2334,9 @@
                 desc: 'Strategi trading yang berfokus pada analisis pergerakan harga murni (price action) tanpa bergantung pada indikator.',
                 coverText: 'HT',
                 imgUrl: 'assets/images/cover_HT.png',
-                file: 'https://drive.google.com/file/d/1ynX1K-qGTADd8kIqDS0xw6TBatHZ_1q6/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1ynX1K-qGTADd8kIqDS0xw6TBatHZ_1q6/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 10,
@@ -2168,7 +2345,9 @@
                 desc: 'Kumpulan data dan analisis riset eksklusif mengenai peluang investasi, valuasi aset, dan sektor-sektor yang berpotensi.',
                 coverText: 'AC',
                 imgUrl: 'assets/images/cover_AC.png',
-                file: 'https://drive.google.com/file/d/15ZMKVVyvgFMhvSWBloD-II-iEC4lDes2/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/15ZMKVVyvgFMhvSWBloD-II-iEC4lDes2/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 11,
@@ -2177,7 +2356,9 @@
                 desc: 'Panduan mendalam tentang strategi trading \'Smart Money Concept\' (SMC), berfokus pada likuiditas dan struktur pasar.',
                 coverText: 'SD',
                 imgUrl: 'assets/images/cover_SD.png',
-                file: 'https://drive.google.com/file/d/1bjqimRx-qOK3Au5rZd7gLmOvgHjyvQdM/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1bjqimRx-qOK3Au5rZd7gLmOvgHjyvQdM/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 12,
@@ -2186,7 +2367,9 @@
                 desc: 'Metode trading yang berfokus pada identifikasi zona Supply (penawaran) dan Demand (permintaan) di pasar.',
                 coverText: 'ST',
                 imgUrl: 'assets/images/cover_ST.png',
-                file: 'https://drive.google.com/file/d/187CqMumpdNaQCr3U580oo82rgVqjTe8T/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/187CqMumpdNaQCr3U580oo82rgVqjTe8T/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 13,
@@ -2195,7 +2378,9 @@
                 desc: 'Kumpulan teknik dan strategi analisis teknikal untuk mengidentifikasi tren dan peluang profit di pasar saham atau forex.',
                 coverText: 'TA',
                 imgUrl: 'assets/images/cover_TA.png',
-                file: 'https://drive.google.com/file/d/1IuISTMU5q8B3kpzZS9eI3xZF_xb0DVL8/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1IuISTMU5q8B3kpzZS9eI3xZF_xb0DVL8/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: true
             },
             {
                 id: 14,
@@ -2204,7 +2389,9 @@
                 desc: 'Karya klasik Van K. Tharp yang fokus pada psikologi trading, manajemen risiko, dan position sizing untuk profit konsisten.',
                 coverText: 'TY',
                 imgUrl: 'assets/images/cover_TY.png',
-                file: 'https://drive.google.com/file/d/1Q2Fk7dfslcm7a72WW8giLTaZQ63pKw61/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1Q2Fk7dfslcm7a72WW8giLTaZQ63pKw61/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 15,
@@ -2213,7 +2400,9 @@
                 desc: 'Menjelajahi sisi gelap psikologi, termasuk teknik manipulasi, persuasi, dan cara bertahan dari perang psikologis sehari-hari.',
                 coverText: 'DP',
                 imgUrl: 'assets/images/cover_DP.png',
-                file: 'https://drive.google.com/file/d/1x3uVO9i-kj0jay1hqomY_Kd1SJzQqb-H/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1x3uVO9i-kj0jay1hqomY_Kd1SJzQqb-H/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 16,
@@ -2222,7 +2411,9 @@
                 desc: 'Kumpulan 44 ide praktis untuk meningkatkan keterampilan komunikasi, percakapan, dan interaksi sosial Anda setiap hari.',
                 coverText: 'TC',
                 imgUrl: 'assets/images/cover_TC.png',
-                file: 'https://drive.google.com/file/d/1_vl6fCiwLwBYHx9hWCDchuT_Er7JQg6i/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1_vl6fCiwLwBYHx9hWCDchuT_Er7JQg6i/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 17,
@@ -2231,7 +2422,9 @@
                 desc: 'Buku populer oleh Morgan Housel yang menjelaskan bahwa kesuksesan finansial lebih tentang perilaku daripada kecerdasan teknis.',
                 coverText: 'TM',
                 imgUrl: 'assets/images/cover_TM.png',
-                file: 'https://drive.google.com/file/d/18EBB-ws_fHWsqJVOK_YWEB39ver2a-dU/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/18EBB-ws_fHWsqJVOK_YWEB39ver2a-dU/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 18,
@@ -2240,7 +2433,9 @@
                 desc: 'Karya klasik Napoleon Hill yang menguraikan 13 langkah menuju kesuksesan, berfokus pada kekuatan pikiran dan mindset positif.',
                 coverText: 'TG',
                 imgUrl: 'assets/images/cover_TG.png',
-                file: 'https://drive.google.com/file/d/16LRm8ZWxGu9xvdHQf0YHHzHP2MOF_IUm/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/16LRm8ZWxGu9xvdHQf0YHHzHP2MOF_IUm/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 19,
@@ -2249,7 +2444,9 @@
                 desc: 'Adaptasi modern dari buku klasik Dale Carnegie untuk menjalin hubungan dan berkomunikasi di era digital dan media sosial.',
                 coverText: 'HI',
                 imgUrl: 'assets/images/cover_HI.png',
-                file: 'https://drive.google.com/file/d/1HBMr-e1rCpB5vssSUvqdhT_yt7BHFIBz/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1HBMr-e1rCpB5vssSUvqdhT_yt7BHFIBz/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 20,
@@ -2258,7 +2455,9 @@
                 desc: 'Panduan modern tentang seni *copywriting* yang persuasif, menggabungkan psikologi penjualan dengan teknik menulis era digital.',
                 coverText: 'CR',
                 imgUrl: 'assets/images/cover_CR.png',
-                file: 'https://drive.google.com/file/d/1emXja7c8em7xi501AuNKFvyUCPcMRNnK/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1emXja7c8em7xi501AuNKFvyUCPcMRNnK/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 21,
@@ -2267,7 +2466,9 @@
                 desc: 'Mengungkap teknik-teknik manipulasi psikologis, cara kerjanya, dan bagaimana cara mengenali serta melawannya.',
                 coverText: 'AM',
                 imgUrl: 'assets/images/cover_AM.png',
-                file: 'https://drive.google.com/file/d/13mVN741BIZnBQls5UDOZT755uYPU4NtF/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/13mVN741BIZnBQls5UDOZT755uYPU4NtF/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: true
             },
             {
                 id: 22,
@@ -2276,7 +2477,9 @@
                 desc: 'Panduan motivasional oleh Jen Sincero untuk mengatasi \'mental block\' dan ketakutan Anda seputar uang agar bisa kaya.',
                 coverText: 'YB',
                 imgUrl: 'assets/images/cover_YB.png',
-                file: 'https://drive.google.com/file/d/1HIVQ7jcXx8sJrmvPygF-MV1cYOk9z9WS/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1HIVQ7jcXx8sJrmvPygF-MV1cYOk9z9WS/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 23,
@@ -2285,7 +2488,9 @@
                 desc: 'Pelajari strategi trading profit konsisten menggunakan indikator teknikal Ichimoku Kinko Hyo.',
                 coverText: 'CP',
                 imgUrl: 'assets/images/cover_CP.png',
-                file: 'https://drive.google.com/file/d/1PZHRilrqNLiY6dkNe9JIvw8wHQTclUtk/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1PZHRilrqNLiY6dkNe9JIvw8wHQTclUtk/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: true
             },
             {
                 id: 23,
@@ -2294,7 +2499,9 @@
                 desc: 'Panduan dasar dan pengenalan fundamental untuk memulai trading bagi pemula.',
                 coverText: 'BE',
                 imgUrl: 'assets/images/cover_BE.png',
-                file: 'https://drive.google.com/file/d/1UBTH_4EpWAiOy1LgZZvh05kSKXqviPmR/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1UBTH_4EpWAiOy1LgZZvh05kSKXqviPmR/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 24,
@@ -2303,7 +2510,9 @@
                 desc: 'Mulai perjalanan Anda di dunia trading dari nol. Panduan langkah demi langkah untuk pemula.',
                 coverText: 'BTU',
                 imgUrl: 'assets/images/cover_BTU.png',
-                file: 'https://drive.google.com/file/d/1S6YaRN2d2yxMG7vhEd1afT2dw3jcVu_9/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1S6YaRN2d2yxMG7vhEd1afT2dw3jcVu_9/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 25,
@@ -2312,7 +2521,9 @@
                 desc: 'Kumpulan materi edukasi lengkap seputar dunia cryptocurrency dari Binance Academy.',
                 coverText: 'BAC',
                 imgUrl: 'assets/images/cover_BAC.png',
-                file: 'https://drive.google.com/file/d/1q_lsq3-sz05uwAWM8H6EH7e8yELbPl-f/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1q_lsq3-sz05uwAWM8H6EH7e8yELbPl-f/view?usp=drive_link',
+                access: 'pro',
+                isRecommended: false
             },
             {
                 id: 26,
@@ -2321,7 +2532,9 @@
                 desc: 'Temukan strategi dan metode untuk membangun aliran pendapatan dari aset crypto.',
                 coverText: 'CCM',
                 imgUrl: 'assets/images/cover_CCM.png',
-                file: 'https://drive.google.com/file/d/1RjKVY_7mKezxYrPp1eWyRPcB1DPnl4pq/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1RjKVY_7mKezxYrPp1eWyRPcB1DPnl4pq/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 27,
@@ -2330,7 +2543,9 @@
                 desc: 'Referensi lengkap berbagai pola candlestick dan interpretasinya dalam analisis trading.',
                 coverText: 'KC',
                 imgUrl: 'assets/images/cover_KC.png',
-                file: 'https://drive.google.com/file/d/1fpNzRz07aknaP_Oq0uR6z0_h29hcoMsb/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1fpNzRz07aknaP_Oq0uR6z0_h29hcoMsb/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 28,
@@ -2339,7 +2554,9 @@
                 desc: 'Pahami prinsip-prinsip inti dan fundamental untuk berinvestasi di pasar crypto.',
                 coverText: 'CIP',
                 imgUrl: 'assets/images/cover_CIP.png',
-                file: 'https://drive.google.com/file/d/1wUIQkg0Ixim0DEZYPtSho-pA9A_FimSj/view?usp=drive_linkk'
+                file: 'https://drive.google.com/file/d/1wUIQkg0Ixim0DEZYPtSho-pA9A_FimSj/view?usp=drive_linkk',
+                access: 'pro',
+                isRecommended: true
             },
             {
                 id: 29,
@@ -2348,7 +2565,9 @@
                 desc: 'Panduan praktis untuk menginterpretasi dan memahami makna di balik bahasa tubuh.',
                 coverText: 'CBT',
                 imgUrl: 'assets/images/cover_CBT.png',
-                file: 'https://drive.google.com/file/d/1KPam7k11NhwoHunNGCUdgaxbhtmLWCuP/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1KPam7k11NhwoHunNGCUdgaxbhtmLWCuP/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: true
             },
             {
                 id: 30,
@@ -2357,7 +2576,9 @@
                 desc: 'Analisis psikologis tentang pengaruh, karisma, dan kepatuhan massa.',
                 coverText: 'HE',
                 imgUrl: 'assets/images/cover_HE.png',
-                file: 'https://drive.google.com/file/d/1vwBJfu_m__qGni2vcMOQk6emfch6cOnb/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1vwBJfu_m__qGni2vcMOQk6emfch6cOnb/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 31,
@@ -2366,7 +2587,9 @@
                 desc: 'Metode membangun kebiasaan kecil yang baik dan menghilangkan kebiasaan buruk.',
                 coverText: 'AH',
                 imgUrl: 'assets/images/cover_AH.png',
-                file: 'https://drive.google.com/file/d/1A7Fyx8AdKUde_Lj_XrMRKmyVI8jz6y97/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1A7Fyx8AdKUde_Lj_XrMRKmyVI8jz6y97/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 32,
@@ -2375,7 +2598,9 @@
                 desc: 'Tingkatkan keterampilan komunikasi Anda agar percaya diri di situasi apapun.',
                 coverText: 'CBK',
                 imgUrl: 'assets/images/cover_CBK.png',
-                file: 'https://drive.google.com/file/d/1tWJOaqE8hDQhjfBvdj-alHODkBgjnjQ1/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1tWJOaqE8hDQhjfBvdj-alHODkBgjnjQ1/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 33,
@@ -2384,7 +2609,9 @@
                 desc: 'Pendekatan unik untuk fokus pada hal-hal penting dan menjalani hidup lebih bahagia.',
                 coverText: 'SSU',
                 imgUrl: 'assets/images/cover_SSU.png',
-                file: 'https://drive.google.com/file/d/110YZiNnbEQokBK2q88facKFx_K-76R_v/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/110YZiNnbEQokBK2q88facKFx_K-76R_v/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
             {
                 id: 34,
@@ -2393,7 +2620,9 @@
                 desc: 'Kiat ahli untuk menjadi pembicara yang lebih efektif dan persuasif di setiap kesempatan.',
                 coverText: 'SBK',
                 imgUrl: 'assets/images/cover_SBK.png',
-                file: 'https://drive.google.com/file/d/1M_5deA3aGBeELIq17BX4WJ_iqH6bLVc4/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1M_5deA3aGBeELIq17BX4WJ_iqH6bLVc4/view?usp=drive_link',
+                access: 'free',
+                isRecommended: true
             },
             {
                 id: 35,
@@ -2402,7 +2631,9 @@
                 desc: 'Pelajari cara memahami apa yang dipikirkan dan dirasakan orang lain melalui petunjuk halus.',
                 coverText: 'SMP',
                 imgUrl: 'assets/images/cover_SMP.png',
-                file: 'https://drive.google.com/file/d/1DKUfQ0H08JVY2yhwDnZcX96ZHW2Ngpmg/view?usp=drive_link'
+                file: 'https://drive.google.com/file/d/1DKUfQ0H08JVY2yhwDnZcX96ZHW2Ngpmg/view?usp=drive_link',
+                access: 'basic',
+                isRecommended: false
             },
 
 
@@ -2511,7 +2742,7 @@
             quizResultTitleEl = document.getElementById('quiz-result-title');
             quizResultDescEl = document.getElementById('quiz-result-desc');
 
-            if (!quizContainer) return; // Hentikan jika kuis tidak ada di halaman
+            if (!quizContainer) return;
 
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -2570,33 +2801,188 @@
             if (quizResultTitleEl) quizResultTitleEl.textContent = result.title;
             if (quizResultDescEl) quizResultDescEl.textContent = result.desc;
         }
+        // --- MODIFIKASI: Fungsi untuk render Rekomendasi Admin (dengan Label Ganda) ---
+        function renderRecommendations() {
+            const grid = document.getElementById('admin-recommendations-grid');
+            // 1. Disesuaikan dengan ID template Anda
+            const template = document.getElementById('ebookTpl');
+
+            if (!grid || !template) return; // Keluar jika elemen tidak ditemukan
+
+            grid.innerHTML = ''; // Kosongkan grid
+
+            // 2. Filter BUKU REKOMENDASI
+            const recommendedBooks = ebooks.filter(e => e.isRecommended === true);
+
+            recommendedBooks.forEach(e => {
+                // 3. Gunakan 'ebookTpl'
+                const tpl = template.content.cloneNode(true);
+                const coverEl = tpl.querySelector('.cover');
+
+                if (e.imgUrl) {
+                    coverEl.style.backgroundImage = `url('${e.imgUrl}')`;
+                    coverEl.textContent = '';
+                } else {
+                    coverEl.style.backgroundImage = 'none';
+                    coverEl.textContent = e.coverText;
+                }
+
+                tpl.querySelector('h4').textContent = e.title;
+                tpl.querySelector('p').textContent = e.desc;
+
+                const readBtn = tpl.querySelector('.readBtn');
+                const downloadBtn = tpl.querySelector('.downloadBtn');
+
+                // --- MODIFIKASI DIMULAI: Tambahkan Logika Label Ganda ---
+                // 4. Ambil container label
+                const badgeContainer = tpl.querySelector('.ebook-badge-container');
+                badgeContainer.innerHTML = ''; // Kosongkan
+
+                // 5. Cek Rekomendasi (Pasti true, tapi kita tetap tambahkan)
+                if (e.isRecommended) {
+                    const recBadge = document.createElement('span');
+                    recBadge.className = 'ebook-badge ebook-badge--recommended';
+                    recBadge.textContent = 'Rekomendasi';
+                    badgeContainer.appendChild(recBadge);
+                }
+
+                // 6. Cek Akses (Ini kuncinya, rekomendasi bisa 'free', 'basic', atau 'pro')
+                if (e.access === 'free') {
+                    const freeBadge = document.createElement('span');
+                    freeBadge.className = 'ebook-badge ebook-badge--free';
+                    freeBadge.textContent = 'Free';
+                    badgeContainer.appendChild(freeBadge);
+                } else if (e.access === 'basic') {
+                    const basicBadge = document.createElement('span');
+                    basicBadge.className = 'ebook-badge ebook-badge--basic';
+                    basicBadge.textContent = 'Basic';
+                    badgeContainer.appendChild(basicBadge);
+                } else if (e.access === 'pro') {
+                    const proBadge = document.createElement('span');
+                    proBadge.className = 'ebook-badge ebook-badge--pro';
+                    proBadge.textContent = 'Pro';
+                    badgeContainer.appendChild(proBadge);
+                }
+
+                // 7. Logika Tombol (Tidak lagi 'selalu free', sekarang dinamis)
+                if (e.access === 'free') {
+                    // Jika Rekomendasi + Gratis
+                    readBtn.textContent = 'Baca (Gratis)';
+                    readBtn.style.display = 'inline-flex';
+                    downloadBtn.style.display = 'none';
+                    readBtn.addEventListener('click', () => openReader(e));
+                } else {
+                    // Jika Rekomendasi + Basic/Pro
+                    readBtn.style.display = 'none';
+                    downloadBtn.textContent = 'Download (Premium)';
+                    downloadBtn.style.display = 'inline-flex';
+                    downloadBtn.addEventListener('click', () => downloadFile(e));
+                }
+                // --- MODIFIKASI SELESAI ---
+
+                // --- Buat slide untuk Swiper ---
+                const swiperSlide = document.createElement('div');
+                swiperSlide.classList.add('swiper-slide');
+                swiperSlide.appendChild(tpl);
+                grid.appendChild(swiperSlide);
+            });
+
+            // Inisialisasi Swiper SETELAH me-render kartu
+            // 8. Dibuat lebih spesifik agar tidak konflik dengan swiper lain
+            new Swiper('#recommendations-section .comic-swiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 18,
+                grabCursor: true,
+                navigation: {
+                    // 9. Selector panah juga dibuat lebih spesifik
+                    nextEl: '#recommendations-section .swiper-button-next',
+                    prevEl: '#recommendations-section .swiper-button-prev',
+                },
+                keyboard: true,
+            });
+        }
 
 
         // ===== FUNGSI RENDER EBOOK & BLOG =====
         function renderEbooks(list) {
             const ebooksGrid = document.getElementById('ebooksGrid');
+            // Menggunakan ID 'totalCount' dari kode yang Anda berikan
             const totalCount = document.getElementById('totalCount');
-            if (!ebooksGrid || !totalCount) return;
+
+            const template = document.getElementById('ebookTpl');
+
+            // Pengecekan disesuaikan dengan 'totalCount'
+            if (!ebooksGrid || !totalCount || !template) return;
 
             ebooksGrid.innerHTML = '';
             list.forEach(e => {
                 const tpl = document.getElementById('ebookTpl').content.cloneNode(true);
                 const coverEl = tpl.querySelector('.cover');
+
                 if (e.imgUrl) {
-                    // Jika ada imgUrl, set sebagai background image
                     coverEl.style.backgroundImage = `url('${e.imgUrl}')`;
-                    coverEl.textContent = ''; // Hapus teks (MF, IP, dll)
+                    coverEl.textContent = '';
                 } else {
-                    // Jika tidak ada imgUrl, pakai coverText seperti biasa
                     coverEl.style.backgroundImage = 'none';
                     coverEl.textContent = e.coverText;
                 }
                 tpl.querySelector('h4').textContent = e.title;
                 tpl.querySelector('p').textContent = e.desc;
-                tpl.querySelector('.readBtn').addEventListener('click', () => openReader(e));
-                tpl.querySelector('.downloadBtn').addEventListener('click', () => downloadFile(e));
+
+                const readBtn = tpl.querySelector('.readBtn');
+                const downloadBtn = tpl.querySelector('.downloadBtn');
+
+                // --- MODIFIKASI LOGIKA LABEL GANDA ---
+                // 1. Ambil container-nya (dari template yang sudah di-modifikasi)
+                const badgeContainer = tpl.querySelector('.ebook-badge-container');
+                badgeContainer.innerHTML = ''; // Kosongkan dulu
+
+                // 2. Cek Rekomendasi
+                if (e.isRecommended) {
+                    const recBadge = document.createElement('span');
+                    recBadge.className = 'ebook-badge ebook-badge--recommended';
+                    recBadge.textContent = 'Rekomendasi';
+                    badgeContainer.appendChild(recBadge);
+                }
+
+                // 3. Cek Akses (Free, Basic, Pro)
+                if (e.access === 'free') {
+                    const freeBadge = document.createElement('span');
+                    freeBadge.className = 'ebook-badge ebook-badge--free';
+                    freeBadge.textContent = 'Free';
+                    badgeContainer.appendChild(freeBadge);
+                } else if (e.access === 'basic') {
+                    const basicBadge = document.createElement('span');
+                    basicBadge.className = 'ebook-badge ebook-badge--basic';
+                    basicBadge.textContent = 'Basic';
+                    badgeContainer.appendChild(basicBadge);
+                } else if (e.access === 'pro') {
+                    const proBadge = document.createElement('span');
+                    proBadge.className = 'ebook-badge ebook-badge--pro';
+                    proBadge.textContent = 'Pro';
+                    badgeContainer.appendChild(proBadge);
+                }
+                // --- SELESAI LOGIKA LABEL GANDA ---
+
+                // --- LOGIKA TOMBOL (Tidak berubah, hanya dirapikan) ---
+                if (e.access === 'free') {
+                    // Logika buku GRATIS
+                    readBtn.textContent = 'Baca (Gratis)';
+                    readBtn.style.display = 'inline-flex';
+                    downloadBtn.style.display = 'none';
+                    readBtn.addEventListener('click', () => openReader(e));
+                } else {
+                    // Logika buku PREMIUM (Basic / Pro)
+                    readBtn.style.display = 'none';
+                    downloadBtn.textContent = 'Download (Premium)';
+                    downloadBtn.style.display = 'inline-flex';
+                    downloadBtn.addEventListener('click', () => downloadFile(e));
+                }
+                // --- PERBAIKAN: Syntax error (tanda '}-') dari kode Anda telah dihapus ---
+
                 ebooksGrid.appendChild(tpl);
             });
+
             totalCount.textContent = list.length;
         }
 
@@ -2616,7 +3002,7 @@
             }
         }
 
-        // ===== Reader & Download =====
+
         // ===== Reader & Download =====
         function openReader(e) {
             // Logika "Baca" (Gratis): Langsung buka link file di tab baru.
@@ -2691,6 +3077,24 @@
             localStorage.setItem(subsKey, JSON.stringify(arr));
         }
 
+        function viewBooks(plan) {
+            console.log("Tombol 'Lihat Buku' untuk paket:", plan, "diklik.");
+            // Cukup scroll ke section ebooks
+            const ebookSection = document.getElementById('library');
+            if (ebookSection) {
+                ebookSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Efek visual highlight pada section
+                ebookSection.style.transition = 'background-color 0.3s ease-in-out';
+                ebookSection.style.backgroundColor = 'rgba(34, 197, 94, 0.05)';
+                setTimeout(() => {
+                    ebookSection.style.backgroundColor = ''; // Kembalikan ke normal
+                }, 1500);
+            }
+        }
         // ===== FUNGSI UNTUK SCROLL & NAVBAR =====
         function handleScroll() {
             const navLinks = document.querySelectorAll(".nav-links a");
@@ -2741,7 +3145,8 @@
                     }, 800);
                 });
             }
-
+            // --- BARU: Render Rekomendasi Admin ---
+            renderRecommendations();
             // Mulai Kuis
             startQuiz();
 
@@ -3327,7 +3732,7 @@
                     hapusLoading();
                     console.error("Error fetching API:", error);
                     tampilkanPesan(
-                        "Maaf ya sedang ada kendala nihh dari Wealth Buddy😁 ",
+                        "Maaf ya sedang ada kendala nih dari Wealth Buddy😁 ",
                         "bot"
                     );
                     chatHistory.pop();
