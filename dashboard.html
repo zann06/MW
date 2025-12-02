@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard — MindWealth</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <aside id="appSidebar" class="app-sidebar">
+        <div class="sidebar-header">
+            <h3>MindWealth</h3>
+            <button id="closeSidebarBtn" class="close-sidebar">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section">
+                <span class="sidebar-label">MAIN MENU</span>
+                <a href="index.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="dashboard.html" class="sidebar-link active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="library-full.html?access=all" class="sidebar-link"><i data-lucide="library"></i> Full Library</a>
+                <a href="trading-journal.html" class="sidebar-link"><i data-lucide="notebook-pen"></i> Trading Journal</a>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-label">CATEGORIES</span>
+                <a href="library-full.html?access=free" class="sidebar-link"><i data-lucide="unlock"></i> Free Tier</a>
+                <a href="library-full.html?access=basic" class="sidebar-link"><i data-lucide="star"></i> Basic Tier</a>
+                <a href="library-full.html?access=pro" class="sidebar-link"><i data-lucide="crown"></i> Pro Tier</a>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-label">SYSTEM</span>
+                <a href="#contact" class="sidebar-link"><i data-lucide="message-circle"></i> Contact Admin</a>
+                <div class="sidebar-link" id="sidebarThemeToggle" style="cursor: pointer;"><i data-lucide="sun"></i> Toggle Theme</div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6281234567890?text=Halo%20MindWealth%20Admin..." target="_blank" class="floating-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <span>Contact Admin</span>
+    </a>
+
+    <header>
+        <div class="container">
+            <nav class="nav-wrap">
+                <div class="brand">
+                    <button class="menu-toggle" id="menuToggle" style="display:block; margin-right:12px;">☰</button>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div style="display:flex;gap:12px">
+                     <a href="index.html" class="btn btn-ghost">Back Home</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 40px;">
+        <section class="fade-in show">
+            <div class="alert-box" style="background: rgba(250, 204, 21, 0.1); border: 1px solid #facc15; color: #facc15; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                <strong>Note:</strong> This is a client-side dashboard. In a real production app, user data should be secured in a backend database, not LocalStorage.
+            </div>
+
+            <div style="background: var(--card); padding: 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                    <h3>Subscriber List</h3>
+                    <button id="exportJsonBtn" class="btn btn-primary"><i data-lucide="download"></i> Export JSON</button>
+                </div>
+                
+                <div style="overflow-x: auto;">
+                    <table class="dashboard-table" style="width:100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="text-align:left; border-bottom:1px solid rgba(255,255,255,0.1);">
+                                <th style="padding:12px;">ID</th>
+                                <th style="padding:12px;">Name</th>
+                                <th style="padding:12px;">Email</th>
+                                <th style="padding:12px;">Plan</th>
+                                <th style="padding:12px;">Join Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscriberTableBody">
+                            <!-- JS populates this -->
+                        </tbody>
+                    </table>
+                </div>
+                <p id="emptyMsg" class="muted" style="margin-top:16px; display:none;">No subscribers found.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
